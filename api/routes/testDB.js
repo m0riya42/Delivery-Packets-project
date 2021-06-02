@@ -7,8 +7,6 @@ router.get("/", function (req, res, next) {
     res.send(databaseConnection);
 });
 // Connecting to MongoDB
-// "mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority"
-
 mongoose.connect("mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority");
 // If there is a connection error send an error message
 mongoose.connection.on("error", error => {
