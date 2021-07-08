@@ -7,10 +7,11 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const SignIn = ({ handleClose }) => {
-
+const SignIn = ({ handleClose, display }) => {
+    let inDisplay;
+    display ? inDisplay = 'block' : inDisplay = 'none';
     return (
-        <modal className="popup-box">
+        <modal className="popup-box" style={{ display: inDisplay }}>
 
             <div className="container container-width box">
                 <div className="card login-card">
@@ -18,9 +19,9 @@ const SignIn = ({ handleClose }) => {
                         <div className="col-md-5">
                             <img src="login.jpg" alt="login" className="login-card-img" />
                         </div>
-                        <div className="close-icon" onClick={handleClose}>
+                        <span className="close-icon" onClick={handleClose}>
                             <FontAwesomeIcon icon={faTimes} />
-                        </div>
+                        </span>
                         <div className="col-md-7" style={{ display: "flex" }}>
                             <div className="card-body" dir="rtl" style={{ display: " flex", flexDirection: "column" }}>
                                 <div className="brand-wrapper">

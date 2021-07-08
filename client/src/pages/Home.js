@@ -19,10 +19,10 @@ const Home = () => {
     return (<div>
         {/* <Preloder /> */}  {/*the startup */}
         <div className="culmn">
-            <SignIn handleClose={togglePopup} />
+            <SignIn handleClose={togglePopup} display={isOpen} />
             <NavBar />
             <HomeSection />
-            <AboutSection />
+            <AboutSection handleClose={togglePopup} />
             <FeatureSection />
             {/* <TeamSkillsSection /> */}
             <ChooseSection />
