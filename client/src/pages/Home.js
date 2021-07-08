@@ -11,7 +11,7 @@ import PortfolioSection from '../components/Layout/Sections/PortfolioSection'
 import TextSection from '../components/Layout/Sections/TextSection'
 const Home = () => {
     return (<div>
-        {/* <Preloder /> */}  {/*the startup */}
+     {/*<Preloder />*/}   {/*the startup */}
         <div className="culmn">
             <NavBar />
             <HomeSection />
