@@ -6,11 +6,18 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+<<<<<<< HEAD
     "boostrap": "^2.0.0",
     "bootstrap": "^5.0.2",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+=======
+    "babel": "^6.23.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "debug": "^2.6.9",
+>>>>>>> 3cc1a98737183359d4c77249cb95c5756c14b988
     "ejs": "^3.1.6",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
@@ -18,5 +25,9 @@
     "jquery": "^3.6.0",
     "mongoose": "^5.12.12",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/preset-flow": "^7.14.5"
   }
 }
