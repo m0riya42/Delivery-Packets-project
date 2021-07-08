@@ -12,7 +12,7 @@ import TextSection from '../components/Layout/Sections/TextSection'
 import SignIn from '../components/Modals/SignIn'
 const Home = () => {
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
