@@ -9,12 +9,14 @@ import TeamSkillsSection from '../components/Layout/Sections/TeamSkillsSection'
 import ChooseSection from '../components/Layout/Sections/ChooseSection'
 import PortfolioSection from '../components/Layout/Sections/PortfolioSection'
 import TextSection from '../components/Layout/Sections/TextSection'
+import SignIn from '../components/Modals/SignIn'
 const Home = () => {
     return (<div>
         {/* <Preloder /> */}  {/*the startup */}
         <div className="culmn">
             <NavBar />
             <HomeSection />
+            <SignIn />
             <AboutSection />
             <FeatureSection />
             {/* <TeamSkillsSection /> */}
