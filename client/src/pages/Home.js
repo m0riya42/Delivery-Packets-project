@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../components/Layout/Footer'
 import NavBar from '../components/Layout/NavBar'
 import Preloder from '../components/Layout/Preloader'
@@ -9,13 +9,20 @@ import TeamSkillsSection from '../components/Layout/Sections/TeamSkillsSection'
 import ChooseSection from '../components/Layout/Sections/ChooseSection'
 import PortfolioSection from '../components/Layout/Sections/PortfolioSection'
 import TextSection from '../components/Layout/Sections/TextSection'
+import SignIn from '../components/Modals/SignIn'
 const Home = () => {
+
+    const [isOpen, setIsOpen] = useState(true);
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
     return (<div>
      {/*<Preloder />*/}   {/*the startup */}
         <div className="culmn">
+            <SignIn handleClose={togglePopup} display={isOpen} />
             <NavBar />
             <HomeSection />
-            <AboutSection />
+            <AboutSection handleClose={togglePopup} />
             <FeatureSection />
             {/* <TeamSkillsSection /> */}
             <ChooseSection />
