@@ -37,12 +37,12 @@ const NavBar = () => {
                 {/* <!-- navbar menu --> */}
                 <div className="collapse navbar-collapse" id="navbar-menu">
                     <ul className="nav navbar-nav navbar-right">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">About</a></li>
-                        <li><a href="#service">Service</a></li>
+                        <li><a href="#home">עמוד הבית</a></li>
+                        <li><a href="#features">עלינו</a></li>
+                        <li><a href="#service">שירותים</a></li>
                         <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#test">Testimonial</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#contact">צרו קשר</a></li>
                     </ul>
                 </div>
             </div>

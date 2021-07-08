@@ -12,14 +12,16 @@ const FeatureSection = () => {
                         <div className="col-md-5">
                             <div className="features_item">
                                 <div className="head_title">
-                                    <h2 className="text-uppercase">Our <strong>Featured</strong></h2>
+                                    <h2 className="text-uppercase"> <strong>אודותינו</strong></h2>
                                 </div>
                                 <div className="featured_content">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit donec fringilla iaculis facilisis
-                                        morbi nulla lectus, luctus interdum eu ultricies ac tortor maecenas nec massa sit
-                                        amet erat condimentum porttitor ac quis turpis.</p>
+                                    <p>כולנו עוברים תקופה קשה…
+אבל יש כאלה שקשה להם אפילו יותר
+זה הזמן לעזור להם ולתרום 
+תרמו לקשישים, ניצולי שואה ומשפחות נזקקות כמיטב יכולתכם
+</p>
 
-                                    <a href="" className="btn btn-default m-top-40">Read More</a>
+                                    <a href="" className="btn btn-default m-top-40">קראו עוד</a>
                                 </div>
                             </div>
                         </div>
@@ -31,26 +33,26 @@ const FeatureSection = () => {
                                     <div className="divider_vertical"></div>
                                     <div className="col-xs-6">
                                         <div className="features_item_text">
-                                            <img src="assets/images/featured1.jpg" alt="" className="img-circle" />
-                                            <p className="m-top-20">Trending Design</p>
+                                            <img src="assets/images/food.JPG" alt="" className="img-circle" />
+                                            {/* <p className="m-top-20">מזון</p> */}
                                         </div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div className="features_item_text">
-                                            <img src="assets/images/featured2.jpg" alt="" className="img-circle" />
-                                            <p className="m-top-20">Easy to Customize</p>
+                                            <img src="assets/images/rsz_center.jpg" alt="" className="img-circle" />
+                                            {/* <p className="m-top-20">תרופות</p> */}
                                         </div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div className="features_item_text m-top-50">
-                                            <img src="assets/images/featured3.jpg" alt="" className="img-circle" />
-                                            <p className="m-top-20">Responsive Design</p>
+                                            <img src="assets/images/rsz_plan.jpg" alt="" className="img-circle" />
+                                            {/* <p className="m-top-20">מוצרים</p> */}
                                         </div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div className="features_item_text m-top-50">
-                                            <img src="assets/images/featured4.jpg" alt="" className="img-circle" />
-                                            <p className="m-top-20">Free Google Font</p>
+                                            <img src="assets/images/rsz_law.jpg" alt="" className="img-circle" />
+                                            {/* <p className="m-top-20">ציוד</p> */}
                                         </div>
                                     </div>
 

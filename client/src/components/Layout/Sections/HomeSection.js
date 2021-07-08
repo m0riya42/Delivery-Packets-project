@@ -10,8 +10,8 @@ const HomeSection = () => {
                             <div className="hello">
                                 <div className="slid_item">
                                     <div className="home_text ">
-                                        <h1 className="text-yellow">Welcome to Made</h1>
-                                        <h3 className="text-white text-uppercase">We Create a Concept into The Market </h3>
+                                        <h1 className="text-yellow">ברוכים הבאים</h1>
+                                        <h3 className="text-white text-uppercase"> </h3>
                                     </div>
                                 </div>
                                 {/* <!-- End off slid item --> */}
@@ -26,7 +26,7 @@ const HomeSection = () => {
                         <span className="mouse">
                             <span className="mouse-movement"></span>
                         </span>
-                        <span className="mouse-message fadeIn">Explore</span> <br />
+                        <span className="mouse-message fadeIn">גלול מטה</span> <br />
                         {/* <!--<i className="fa fa-angle-down m-top-10 fadeIn mouse-message"></i>-->  */}
                     </a>
 

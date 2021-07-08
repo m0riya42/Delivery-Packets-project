@@ -11,13 +11,13 @@ const ChooseSection = () => {
                             <div className="choose_mac">
                                 <div className="choose_slide">
                                     <div className="choose_item">
-                                        <img src="assets/images/choose-img1.png" alt="" />
+                                        <img src="assets/images/rsz_hands-2847508_1920.jpg" alt="" />
                                     </div>
                                     <div className="choose_item">
-                                        <img src="assets/images/choose-img1.png" alt="" />
+                                        <img src="assets/images/rsz_team-spirit-2447163_1920.jpg" alt="" />
                                     </div>
                                     <div className="choose_item">
-                                        <img src="assets/images/choose-img1.png" alt="" />
+                                        <img src="assets/images/rsz_hands-2906458_1920.jpg" alt="" />
                                     </div>
                                 </div>
                             </div>
@@ -27,23 +27,23 @@ const ChooseSection = () => {
                         <div className="col-md-5 col-md-offset-1">
                             <div className="choose_content sm-m-top-40">
                                 <div className="head_title">
-                                    <h2 className="text-uppercase">Why <strong>Choose Us</strong></h2>
+                                    <h2 className="text-uppercase">הפעילות <strong>שלנו</strong></h2>
                                 </div>
                                 <div className="choose_item_text fix">
-                                    <h6><i className="fa fa-check-square-o"></i> Easy to costumize.</h6>
-                                    <p>Atque ducimus velit, earum quidem, iusto dolorem. </p>
+                                    <h6><i className="fa fa-check-square-o"></i> סיוע לחיים</h6>
+                                    <p>סיוע ורשת תמיכה בנזקקים ובעלי מוגבלויות </p>
                                 </div>
                                 <div className="choose_item_text fix m-top-20">
-                                    <h6><i className="fa fa-check-square-o"></i> Full of features.</h6>
-                                    <p>Atque ducimus velit, earum quidem, iusto dolorem. </p>
+                                    <h6><i className="fa fa-check-square-o"></i> ביטחון תזונתי</h6>
+                                    <p>צמצום בעיית אי הביטחן התזונתי </p>
                                 </div>
                                 <div className="choose_item_text fix m-top-20">
-                                    <h6><i className="fa fa-check-square-o"></i> 24/7 Support.</h6>
-                                    <p>Atque ducimus velit, earum quidem, iusto dolorem. </p>
+                                    <h6><i className="fa fa-check-square-o"></i> ביטחון תרופתי</h6>
+                                    <p>דאגה והספקה של תרופות  </p>
                                 </div>
                                 <div className="choose_item_text fix m-top-20">
-                                    <h6><i className="fa fa-check-square-o"></i> All in psd files.</h6>
-                                    <p>Atque ducimus velit, earum quidem, iusto dolorem. </p>
+                                    <h6><i className="fa fa-check-square-o"></i> העלאת מודעות</h6>
+                                    <p>העלאת המודעות לבעיית העוני והובלת שינוי </p>
                                 </div>
                             </div>
                         </div>

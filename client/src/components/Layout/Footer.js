@@ -10,32 +10,28 @@ const Footer = () => {
                     <div className="widget_area">
                         <div className="col-md-3">
                             <div className="widget_item widget_about">
-                                <h5 className="text-white">About Us</h5>
-                                <p className="m-top-30">Lorem ipsum dolor sit amet consec tetur adipiscing elit
-                                    nulla aliquet pretium nisi in cursus
-                                    maecenas nec eleifen.</p>
+                                <h5 className="text-white">אודותינו</h5>
+                                <p className="m-top-30">העמותה הוקמה לפני כשנתיים עקב משבר הקורונה שפקד את הארץ, ומונה כמאות מתנדבים ברחבי הארץ, כיום כ500 משפחות נעזרות בעמותה זו</p>
                                 <div className="widget_ab_item m-top-30">
                                     <div className="item_icon"><i className="fa fa-location-arrow"></i></div>
                                     <div className="widget_ab_item_text">
-                                        <h6 className="text-white">Location</h6>
+                                        <h6 className="text-white">כתובת</h6>
                                         <p>
-                                            123 suscipit ipsum nam auctor
-                                            mauris dui, ac sollicitudin mauris,
-                                            Bandung</p>
+                                            ישראל, ירושלים, בית הדפוס 7 גבעת  שאול</p>
                                     </div>
                                 </div>
                                 <div className="widget_ab_item m-top-30">
                                     <div className="item_icon"><i className="fa fa-phone"></i></div>
                                     <div className="widget_ab_item_text">
-                                        <h6 className="text-white">Phone :</h6>
+                                        <h6 className="text-white">טלפון :</h6>
                                         <p>+1 2345 6789</p>
                                     </div>
                                 </div>
                                 <div className="widget_ab_item m-top-30">
                                     <div className="item_icon"><i className="fa fa-envelope-o"></i></div>
                                     <div className="widget_ab_item_text">
-                                        <h6 className="text-white">Email Address :</h6>
-                                        <p>youremail@mail.com</p>
+                                        <h6 className="text-white">כתובת מייל :</h6>
+                                        <p>friendForYou@gmail.com</p>
                                     </div>
                                 </div>
                             </div>
@@ -45,26 +41,26 @@ const Footer = () => {
 
                         <div className="col-md-3">
                             <div className="widget_item widget_latest sm-m-top-50">
-                                <h5 className="text-white">Latest News</h5>
+                                <h5 className="text-white">אירועי העמותה</h5>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/ltst-img-1.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="assets/images/rsz_mic.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                        <a href="">21<sup>th</sup> July 2016</a>
+                                        <p>מופע התרמה בסיוע מהאומנים הטובים במדינה</p>
+                                        <a href="">21<sup>th</sup> 2021 ינואר</a>
                                     </div>
                                 </div>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/ltst-img-2.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="assets/images/rsz_1color-balloons.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                        <a href="">21<sup>th</sup> July 2016</a>
+                                        <p> אירוע חנוכת בית למרכז החדש בדרום הארץ</p>
+                                        <a href="">12<sup>th</sup> מרץ 2021</a>
                                     </div>
                                 </div>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/ltst-img-3.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="assets/images/rsz_food_pk.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                        <a href="">21<sup>th</sup> July 2016</a>
+                                        <p>מבצע ארצי לאיסוף חבילות מזון לנדקקים, פרטים נוספים יעלו בהמשך</p>
+                                        <a href="">8<sup>th</sup> יוני 2021</a>
                                     </div>
                                 </div>
                             </div>
@@ -74,13 +70,13 @@ const Footer = () => {
 
                         <div className="col-md-3">
                             <div className="widget_item widget_service sm-m-top-50">
-                                <h5 className="text-white">Latest News</h5>
+                                <h5 className="text-white">המטרות שלנו</h5>
                                 <ul className="m-top-20">
-                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> Web Design</a></li>
-                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> User Interface Design</a></li>
-                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> Web Hosting</a></li>
-                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> Themes</a></li>
-                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> Support Forums</a></li>
+                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> לפעול לצמצום העוני למען יצירת חברה צודקת וטובה יותר</a></li>
+                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> סיוע לאוכלוסיות במצוקה על בסיס אוניברסלי</a></li>
+                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> הנעת החברה האזרחית לערבות הדדית ונתינה</a></li>
+                                    <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> הובלת שינוי בסדר העדיפויות הלאומי</a></li>
+                                    {/* <li className="m-top-20"> <a href="#"><i className="fa fa-angle-right"></i> Support Forums</a></li> */}
                                 </ul>
 
                             </div>
@@ -90,7 +86,7 @@ const Footer = () => {
 
                         <div className="col-md-3">
                             <div className="widget_item widget_newsletter sm-m-top-50">
-                                <h5 className="text-white">Newsletter</h5>
+                                <h5 className="text-white">הצטרפו לניוזלטר שלנו</h5>
                                 <form className="form-inline m-top-30">
                                     <div className="form-group">
                                         <input type="email" className="form-control" placeholder="Enter you Email" />
@@ -98,11 +94,11 @@ const Footer = () => {
                                     </div>
 
                                 </form>
-                                <div className="widget_brand m-top-40">
+                                {/* <div className="widget_brand m-top-40">
                                     <a href="" className="text-uppercase">Your Logo</a>
                                     <p>Lorem ipsum dolor sit amet consec tetur
                                         adipiscing elit nulla aliquet pretium nisi in</p>
-                                </div>
+                                </div> */}
                                 <ul className="list-inline m-top-20">
                                     <li>-  <a href=""><i className="fa fa-facebook"></i></a></li>
                                     <li><a href=""><i className="fa fa-twitter"></i></a></li>
@@ -122,11 +118,10 @@ const Footer = () => {
             <div className="main_footer fix bg-mega text-center p-top-40 p-bottom-30 m-top-80">
                 <div className="col-md-12">
                     <p className="wow fadeInRight" data-wow-duration="1s">
-                        Made with
                         <i className="fa fa-heart"></i>
-                        by
-                        <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a>
-                        2016. All Rights Reserved
+                        חברים לעת צרה
+                        <i className="fa fa-heart"></i>
+                        
                     </p>
                 </div>
             </div>
