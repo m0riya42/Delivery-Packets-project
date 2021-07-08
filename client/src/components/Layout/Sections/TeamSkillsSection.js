@@ -3,7 +3,7 @@ import React from 'react'
 const TeamSkillsSection = () => {
     return (
         // <!--Team And Skill Section-->
-        <section id="teams" class="teams roomy-80">
+        <section id="" class="teams roomy-80">
             <div class="container">
                 <div class="row">
                     <div class="main_teams_content fix">

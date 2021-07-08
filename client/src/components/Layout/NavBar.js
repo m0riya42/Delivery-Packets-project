@@ -15,19 +15,20 @@ const NavBar = () => {
 
 
             <div className="container">
-                <div className="attr-nav">
+                <div className="attr-nav" style={{float: "left"}}>
                     <ul>
                         <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
                     </ul>
                 </div>
 
                 {/* <!-- Start Header Navigation --> */}
-                <div className="navbar-header">
+                <div className="navbar-header" style={{float: "right", margin_left: "36px"}}>
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i className="fa fa-bars"></i>
                     </button>
                     <a className="navbar-brand" href="#brand">
-                        <img src="assets/images/logo.png" className="logo" alt="" />
+                        
+                        <img src="assets/images/icon-removebg-preview.png" className="logo" alt="" />
                         {/* <!--<img src="assets/images/footer-logo.png" className="logo logo-scrolled" alt="">--> */}
                     </a>
 
@@ -36,12 +37,13 @@ const NavBar = () => {
 
                 {/* <!-- navbar menu --> */}
                 <div className="collapse navbar-collapse" id="navbar-menu">
-                    <ul className="nav navbar-nav navbar-right">
+                    <ul className="nav navbar-nav navbar-right" style={{"flex-direction": "row-reverse", display: "flex"}}>
+                        <li><a href="">          </a></li>
                         <li><a href="#home">עמוד הבית</a></li>
-                        <li><a href="#features">עלינו</a></li>
-                        <li><a href="#service">שירותים</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#test">Testimonial</a></li>
+                        <li><a href="#features">אודותינו</a></li>
+                        <li><a href="#activity">הפעילות שלנו</a></li>
+                        <li><a href="#text">השותפים שלנו</a></li>
+                        {/* <li><a href="#test">Testimonial</a></li> */}
                         <li><a href="#contact">צרו קשר</a></li>
                     </ul>
                 </div>

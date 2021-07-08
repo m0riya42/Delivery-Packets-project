@@ -12,7 +12,7 @@ const FeatureSection = () => {
                         <div className="col-md-5">
                             <div className="features_item">
                                 <div className="head_title">
-                                    <h2 className="text-uppercase"> <strong>אודותינו</strong></h2>
+                                    <h2 className="text-uppercase" style={{borderColor: "#6ea0dd", borderLeftWidth: "10px"}}> <strong>אודותינו</strong></h2>
                                 </div>
                                 <div className="featured_content">
                                     <p>כולנו עוברים תקופה קשה…
@@ -21,7 +21,7 @@ const FeatureSection = () => {
 תרמו לקשישים, ניצולי שואה ומשפחות נזקקות כמיטב יכולתכם
 </p>
 
-                                    <a href="" className="btn btn-default m-top-40">קראו עוד</a>
+                                    <a href="" className="btn btn-default m-top-40" style={{color: "black", background: "#6ea0dd", borderColor: "#6ea0dd"}}>קראו עוד</a>
                                 </div>
                             </div>
                         </div>

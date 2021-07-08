@@ -119,7 +119,7 @@ const Footer = () => {
                 <div className="col-md-12">
                     <p className="wow fadeInRight" data-wow-duration="1s">
                         <i className="fa fa-heart"></i>
-                        חברים לעת צרה
+                        יד לחבר
                         <i className="fa fa-heart"></i>
                         
                     </p>

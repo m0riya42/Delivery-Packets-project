@@ -1,7 +1,7 @@
 import React from 'react'
 const HomeSection = () => {
     return (
-        <section id="home" className="home bg-black fix">
+        <section id="home" className="home bg-white fix" >
             <div className="overlay"></div>
             <div className="container">
                 <div className="row">
@@ -22,13 +22,13 @@ const HomeSection = () => {
                     </div>
 
 
-                    <a className="mouse-scroll" href="#about">
+                    {/* <a className="mouse-scroll" href="#about">
                         <span className="mouse">
                             <span className="mouse-movement"></span>
                         </span>
                         <span className="mouse-message fadeIn">גלול מטה</span> <br />
-                        {/* <!--<i className="fa fa-angle-down m-top-10 fadeIn mouse-message"></i>-->  */}
-                    </a>
+                        {/* <!--<i className="fa fa-angle-down m-top-10 fadeIn mouse-message"></i>-->  
+                    </a> */}
 
                 </div>
                 {/* <!--End off row--> */}
