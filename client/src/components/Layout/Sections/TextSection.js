@@ -3,7 +3,7 @@ import React from 'react'
 const TextSection = () => {
     return (
         // <!--Test section-->
-        <section id="text" className="test bg-grey roomy-60 fix">
+        <section id="text" className="test bg-white roomy-60 fix">
             <div className="container">
                 <div className="row">
                     <div className="main_test fix">
@@ -28,6 +28,10 @@ const TextSection = () => {
 
 
 
+
+
+
+
                         <div className="col-md-6">
                             <div className="cbrand text-center">
                                 <div className="divider_horizontal"></div>
@@ -44,7 +48,7 @@ const TextSection = () => {
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item m-top-40">
-                                        <img src="assets/images/keshet.jpg" alt="" />
+                                        <img src="assets/images/mako.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
@@ -64,3 +68,5 @@ const TextSection = () => {
 }
 
 export default TextSection
+
+

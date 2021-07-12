@@ -17,7 +17,8 @@ const Home = () => {
         setIsOpen(!isOpen);
     }
     return (<div>
-     {/*<Preloder />*/}   {/*the startup */}
+     <Preloder > 
+    </Preloder>
         <div className="culmn">
             <SignIn handleClose={togglePopup} display={isOpen} />
             <NavBar />
@@ -29,9 +30,8 @@ const Home = () => {
             {/* <PortfolioSection /> */}
             <TextSection />
             <Footer />
-
-
         </div>
+        
     </div>
     )
     // (

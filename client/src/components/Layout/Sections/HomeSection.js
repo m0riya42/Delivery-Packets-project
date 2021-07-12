@@ -2,7 +2,7 @@ import React from 'react'
 const HomeSection = () => {
     return (
         <section id="home" className="home bg-white fix" >
-            <div className="overlay"></div>
+            <div className="overlay" style={{background: "url(assets/images/a006.jpg)"}}></div>
             <div className="container">
                 <div className="row">
                     <div className="main_home text-center">
