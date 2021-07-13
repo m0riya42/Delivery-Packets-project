@@ -6,7 +6,7 @@ import '../App.css';
 import Users from './managerPages/Users';
 
 const Manager = () => {
-    const pages = [{ ref: "/manager/blog", text: "בלוג" }]
+    const pages = [{ ref: "/manager/blog", text: "" }]
 
 
     /* return <Router>
@@ -26,7 +26,7 @@ const Manager = () => {
     </Switch>
   </Router>*/
 
-    const users = [{ fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }, { fullName: 'אוריה כהן' }]
+    const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן' , phone: '050-467-3212', email: 'none@gmail.com'}, { fullName: 'אוריה כהן' , phone: '050-467-3212', email: 'none@gmail.com'}]
     return (
 
         <div>

@@ -36,26 +36,55 @@ const UserCard = ({ user }) => {
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.cardRoot} >
+            <CardActions className={classes.cardFooter} style={{background: "#3bb6b1"}}>
+                    <br/>
+                </CardActions>
                 {/* className={classes.root} */}
                 <CardActionArea>
-                    <Avatar src="assets/images/coolAvatar.jpg" className={classes.cardAvatar} />
+                    <Avatar src="assets/images/avatar.jpg" className={classes.cardAvatar} />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2" align="center">
+                        <Typography gutterBottom variant="h5" component="h2" align="center" style={{fontWeight: "bold"}}>
                             {user.fullName}
                         </Typography>
-                        <Divider variant="middle" />
+                        <Divider variant="middle" style={{margin: "10px"}} />
                         <Typography variant="body2" color="textSecondary" component="p" align="center">
-                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                            across all continents except Antarctica
+                            {user.email}
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p" align="center">
+                            {user.phone}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
-                    <Button size="small" color="primary">
-                        Share
+                    <Button size="large" color="primary">
+                        <i class="fa fa-user-times" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i class="fa fa-user-plus" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i class="fa fa-comments" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button>
                     <Button size="small" color="primary">
-                        Learn More
+                        <i class="fa fa-pencil" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    </Button>
+                   
+                </CardActions>
+                <CardActions className={classes.cardFooter} style={{background: "#3bb6b1"}}>
+                    <Button size="large" color="primary">
+                        <i className="fa fa-facebook" style={{color: "white"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i className="fa fa-linkedin" style={{color: "white"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i className="fa fa-twitter" style={{color: "white"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i className="fa fa-instagram" style={{color: "white"}}></i>
+                    </Button>
+                    <Button size="large" color="primary">
+                        <i class="fa fa-github" style={{color: "white"}}></i>
                     </Button>
                 </CardActions>
             </Card>
