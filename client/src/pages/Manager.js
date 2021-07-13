@@ -33,7 +33,7 @@ const Manager = () => {
             <Preloder >
             </Preloder>
             <NavBar pages={pages} />
-            <div id="managerContainer" style={{ height: "100rem", "padding-top": "106px" }}>
+            <div id="managerContainer"  style={{ height: "100rem", "padding-top": "106px" , background: "url(assets/images/a0010.jpg)"}}>
                 <Users users={users} />
             </div>
             {/* <Chat/> */}

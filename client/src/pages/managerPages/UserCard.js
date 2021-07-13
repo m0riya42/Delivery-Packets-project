@@ -46,7 +46,7 @@ const UserCard = ({ user }) => {
                         <Typography gutterBottom variant="h5" component="h2" align="center" style={{fontWeight: "bold"}}>
                             {user.fullName}
                         </Typography>
-                        <Divider variant="middle" style={{margin: "10px"}} />
+                        <Divider variant="middle" style={{width: "72px", margin: "auto", marginBottom: "10px"}} />
                         <Typography variant="body2" color="textSecondary" component="p" align="center">
                             {user.email}
                         </Typography>
@@ -70,23 +70,7 @@ const UserCard = ({ user }) => {
                     </Button>
                    
                 </CardActions>
-                <CardActions className={classes.cardFooter} style={{background: "#3bb6b1"}}>
-                    <Button size="large" color="primary">
-                        <i className="fa fa-facebook" style={{color: "white"}}></i>
-                    </Button>
-                    <Button size="large" color="primary">
-                        <i className="fa fa-linkedin" style={{color: "white"}}></i>
-                    </Button>
-                    <Button size="large" color="primary">
-                        <i className="fa fa-twitter" style={{color: "white"}}></i>
-                    </Button>
-                    <Button size="large" color="primary">
-                        <i className="fa fa-instagram" style={{color: "white"}}></i>
-                    </Button>
-                    <Button size="large" color="primary">
-                        <i class="fa fa-github" style={{color: "white"}}></i>
-                    </Button>
-                </CardActions>
+                
             </Card>
         </Grid>
 
