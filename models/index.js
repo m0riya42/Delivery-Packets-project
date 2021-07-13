@@ -2,7 +2,7 @@ const debug = require("debug")("lab4:model");
 const mongo = require("mongoose");
 
 
-let URI=""
+let URI="ENTER URL"
 let db = mongo.createConnection();
 (async () => {
     try {
@@ -17,3 +17,5 @@ require("./user")(db);
 require("./customers")(db);
 
 module.exports = model => db.model(model);
+
+
