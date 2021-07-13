@@ -13,15 +13,16 @@ import SignIn from '../components/Modals/SignIn'
 const Home = () => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const pages = [{ ref: "#home", text: "עמוד הבית" }, { ref: "#features", text: "אודותינו" }, { ref: "#activity", text: "הפעילות שלנו" }, { ref: "#text", text: "השותפים שלנו" }, { ref: "#contact", text: "צרו קשר" }]
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
     return (<div>
-     <Preloder > 
-    </Preloder>
+        <Preloder >
+        </Preloder>
         <div className="culmn">
             <SignIn handleClose={togglePopup} display={isOpen} />
-            <NavBar />
+            <NavBar pages={pages} />
             <HomeSection />
             <AboutSection handleClose={togglePopup} />
             <FeatureSection />
@@ -31,12 +32,9 @@ const Home = () => {
             <TextSection />
             <Footer />
         </div>
-        
+
     </div>
     )
-    // (
-    {/* <h2> Home works!</h2> */ }
-    // )
 }
 
 export default Home

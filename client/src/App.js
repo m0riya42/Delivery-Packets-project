@@ -7,6 +7,7 @@ import FormLearn from './components/FormLearn/FormLearn'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About';
+import Manager from './pages/Manager';
 
 
 
@@ -51,33 +52,8 @@ import About from './pages/About';
 // }
 
 
-// <Router>
-//   <Route path="/" exact>
-//   </Route>
-//   <Redirect to={this.state.apiResponse} />
-// </Router>
 
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 
 
@@ -106,8 +82,11 @@ const App = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/about" exact>
+      <Route path="/about/" exact>
         <About />
+      </Route>
+      <Route path="/manager/" >
+        <Manager />
       </Route>
       <Redirect to="/" />
     </Switch>
