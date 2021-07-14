@@ -4,12 +4,12 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider } from '@material-ui/core';
 import { Avatar } from '@material-ui/core';
+import Input from '../../shared/components/Input';
 
 
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
         height: '150px', width: '150px', " margin-left": "28%", "margin-top": "6%"
     }
 });
-const UserCard = ({ user }) => {
+const UserCard = ({ user , handleClose }) => {
 
     const classes = useStyles();
 
@@ -41,7 +41,7 @@ const UserCard = ({ user }) => {
                 </CardActions>
                 {/* className={classes.root} */}
                 <CardActionArea>
-                    <Avatar src="assets/images/avatar.jpg" className={classes.cardAvatar} />
+                    <Avatar src="assets/images/avatar7.png" className={classes.cardAvatar} />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2" align="center" style={{fontWeight: "bold"}}>
                             {user.fullName}
@@ -56,16 +56,16 @@ const UserCard = ({ user }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
-                    <Button size="large" color="primary">
+                    {/* <Button size="large" color="primary">
                         <i class="fa fa-user-times" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
-                    </Button>
+                    </Button> */}
                     <Button size="large" color="primary">
                         <i class="fa fa-user-plus" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button>
                     <Button size="large" color="primary">
                         <i class="fa fa-comments" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button>
-                    <Button size="small" color="primary">
+                    <Button size="small" color="primary" onClick={ handleClose}>
                         <i class="fa fa-pencil" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button>
                    
@@ -80,4 +80,4 @@ const UserCard = ({ user }) => {
 }
 
 
-export default UserCard
+export default UserCard;
