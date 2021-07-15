@@ -26,9 +26,7 @@ const Home = () => {
             <HomeSection />
             <AboutSection handleClose={togglePopup} />
             <FeatureSection />
-            {/* <TeamSkillsSection /> */}
             <ChooseSection />
-            {/* <PortfolioSection /> */}
             <TextSection />
             <Footer />
         </div>

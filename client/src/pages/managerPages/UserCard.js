@@ -29,24 +29,24 @@ const useStyles = makeStyles({
         height: '150px', width: '150px', " margin-left": "28%", "margin-top": "6%"
     }
 });
-const UserCard = ({ user , handleClose }) => {
+const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => {
 
     const classes = useStyles();
 
     return (
         <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.cardRoot} >
-            <CardActions className={classes.cardFooter} style={{background: "#3bb6b1"}}>
-                    <br/>
+                <CardActions className={classes.cardFooter} style={{ background: "#3bb6b1" }}>
+                    <br />
                 </CardActions>
                 {/* className={classes.root} */}
                 <CardActionArea>
                     <Avatar src="assets/images/avatar7.png" className={classes.cardAvatar} />
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2" align="center" style={{fontWeight: "bold"}}>
+                        <Typography gutterBottom variant="h5" component="h2" align="center" style={{ fontWeight: "bold" }}>
                             {user.fullName}
                         </Typography>
-                        <Divider variant="middle" style={{width: "72px", margin: "auto", marginBottom: "10px"}} />
+                        <Divider variant="middle" style={{ width: "72px", margin: "auto", marginBottom: "10px" }} />
                         <Typography variant="body2" color="textSecondary" component="p" align="center">
                             {user.email}
                         </Typography>
@@ -59,18 +59,18 @@ const UserCard = ({ user , handleClose }) => {
                     {/* <Button size="large" color="primary">
                         <i class="fa fa-user-times" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button> */}
-                    <Button size="large" color="primary">
-                        <i class="fa fa-user-plus" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    <Button size="large" color="primary" onClick={handleNewUser}>
+                        <i class="fa fa-user-plus" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
                     </Button>
-                    <Button size="large" color="primary">
-                        <i class="fa fa-comments" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    <Button size="large" color="primary" onClick={handleChatToUser}>
+                        <i class="fa fa-comments" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
                     </Button>
-                    <Button size="small" color="primary" onClick={ handleClose}>
-                        <i class="fa fa-pencil" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
+                    <Button size="small" color="primary" onClick={handleEditUser}>
+                        <i class="fa fa-pencil" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
                     </Button>
-                   
+
                 </CardActions>
-                
+
             </Card>
         </Grid>
 

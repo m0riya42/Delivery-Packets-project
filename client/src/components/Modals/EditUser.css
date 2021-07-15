@@ -18,3 +18,11 @@ body{
 .me-2 {
     margin-right: .5rem!important;
 }
+
+/* .MuiInputLabel-formControl.MuiInputLabel-formControl {
+    top: 0;
+    right:0% !important;
+    /* left: 0; */
+    /* position: absolute;
+    transform: translate(0, 24px) scale(1); */
+/*} */
