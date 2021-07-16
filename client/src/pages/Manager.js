@@ -81,9 +81,9 @@ const Manager = () => {
       </Preloder>
       <NavBar pages={pages} />
       <div id="managerContainer" style={{ height: "100rem", "padding-top": "106px", background: "url(assets/images/a0010.jpg)" }}>
-        <EditUser handleClose={handlers.closeHandle} display={isOpen} user={userToEdit} handleSave={handlers.saveUser} />
-        <Users users={users} handlers={handlers} />
-        {/* <Chat handleClose={togglePopup} display={true}/> */}
+        {/* <EditUser handleClose={handlers.closeHandle} display={isOpen} user={userToEdit} handleSave={handlers.saveUser} />
+        <Users users={users} handlers={handlers} /> */}
+        <Chat handleClose={handlers.closeHandle} display={isOpen}/>
         {/* <Chart/> */}
       </div>
       <Footer />
