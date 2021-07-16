@@ -13,7 +13,7 @@ const Manager = () => {
   const [editUserIsOpen, setEditUserIsOpen] = useState(false);
   const [chatIsOpen, setChatIsOpen] = useState(false);
   const [userToEdit, setUserToEdit] = useState({});
-  const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+  const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
 
 
 
@@ -89,7 +89,7 @@ const Manager = () => {
       <Preloder >
       </Preloder>
       <NavBar pages={pages} />
-      <div id="managerContainer" style={{ height: "100rem", "padding-top": "106px", background: "url(assets/images/a0010.jpg)" }}>
+      <div id="managerContainer" style={{ height: "fit-content","padding-bottom": "106px", "padding-top": "106px", background: "url(assets/images/a0010.jpg)" }}>
         <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
         <Users users={users} handlers={handlers} />
         <Chat handleClose={handlers.openChat} display={chatIsOpen} />

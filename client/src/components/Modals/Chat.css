@@ -70,23 +70,23 @@ body{
     color: #444;
 }
 .box.box-solid.box-primary {
-    border: 1px solid #3c8dbc;
+    border: 1px solid #3bb6b1;
 }
 .box.box-solid.box-primary>.box-header {
     color: #fff;
-    background: #3c8dbc;
-    background-color: #3c8dbc;
+    background: #3bb6b1;
+    background-color: #3bb6b1;
 }
 .box.box-solid.box-primary>.box-header a, .box.box-solid.box-primary>.box-header .btn {
     color: #fff;
 }
 .box.box-solid.box-info {
-    border: 1px solid #00c0ef;
+    border: 1px solid #3bb6b1;
 }
 .box.box-solid.box-info>.box-header {
     color: #fff;
-    background: #00c0ef;
-    background-color: #00c0ef;
+    background: #3bb6b1;
+    background-color: #3bb6b1;
 }
 .box.box-solid.box-info>.box-header a, .box.box-solid.box-info>.box-header .btn {
     color: #fff;
@@ -428,12 +428,12 @@ body{
     border-left-color: #dd4b39;
 }
 .direct-chat-primary .right>.direct-chat-text {
-    background: #3c8dbc;
-    border-color: #3c8dbc;
+    background: #3bb6b1;
+    border-color: #3bb6b1;
     color: #fff;
 }
 .direct-chat-primary .right>.direct-chat-text:after, .direct-chat-primary .right>.direct-chat-text:before {
-    border-left-color: #3c8dbc;
+    border-left-color: #3bb6b1;
 }
 .direct-chat-warning .right>.direct-chat-text {
     background: #f39c12;
