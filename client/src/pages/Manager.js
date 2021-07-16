@@ -10,7 +10,8 @@ import Chat from '../components/Modals/Chat';
 
 const Manager = () => {
   const pages = [{ ref: "/manager/Users", text: "פרטי עובדים" }, { ref: "/", text: "" }, { ref: "/", text: "" }, { ref: "/", text: "" }]
-  const [isOpen, setIsOpen] = useState(false);
+  const [editUserIsOpen, setEditUserIsOpen] = useState(false);
+  const [chatIsOpen, setChatIsOpen] = useState(false);
   const [userToEdit, setUserToEdit] = useState({});
   const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
 
@@ -20,7 +21,12 @@ const Manager = () => {
   const handlers = {
     //close an open
     closeHandle: () => {
-      setIsOpen(!isOpen);
+      setEditUserIsOpen(!editUserIsOpen);
+    },
+    openChat: () => {
+      console.log('chat To User');
+
+      setChatIsOpen(!chatIsOpen)
     },
     updateUserToEdit: (user) => {
       setUserToEdit(user)
@@ -45,9 +51,9 @@ const Manager = () => {
       handlers.updateUserToEdit(user);
 
     },
-    chatToUser: () => {
-      console.log('chat To User');
-    },
+    // chatToUser: () => {
+    //   console.log('chat To User');
+    // },
     newUser: () => {
       console.log('new User');
 
@@ -84,9 +90,9 @@ const Manager = () => {
       </Preloder>
       <NavBar pages={pages} />
       <div id="managerContainer" style={{ height: "100rem", "padding-top": "106px", background: "url(assets/images/a0010.jpg)" }}>
-        {/* <EditUser handleClose={handlers.closeHandle} display={isOpen} user={userToEdit} handleSave={handlers.saveUser} />
-        <Users users={users} handlers={handlers} /> */}
-        <Chat handleClose={handlers.closeHandle} display={isOpen}/>
+        <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
+        <Users users={users} handlers={handlers} />
+        <Chat handleClose={handlers.openChat} display={chatIsOpen} />
         {/* <Chart/> */}
       </div>
       <Footer />
