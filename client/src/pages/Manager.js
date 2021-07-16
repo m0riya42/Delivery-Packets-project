@@ -12,7 +12,7 @@ const Manager = () => {
   const pages = [{ ref: "/manager/Users", text: "פרטי עובדים" }, { ref: "/", text: "" }, { ref: "/", text: "" }, { ref: "/", text: "" }]
   const [isOpen, setIsOpen] = useState(false);
   const [userToEdit, setUserToEdit] = useState({});
-  const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+  const users = [{ fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
 
   const handlers = {
     //close an open
@@ -20,11 +20,12 @@ const Manager = () => {
       setIsOpen(!isOpen);
     },
     updateUserToEdit: (user) => {
-
       setUserToEdit(user)
+    },
+    saveUser: (user) => {
 
-      //sand user information to the server to save it -DB
-      //-->right now we need to save in the list
+      handlers.updateUserToEdit(user);
+      //Send user information to the server to save it -DB
       users[0] = user
       console.log(users)
 
@@ -32,10 +33,7 @@ const Manager = () => {
       //clse window
       handlers.closeHandle()
       //change user information on view--> refresh page
-      // globalThis.reload() //true- because we wants him to ask for users information again
       // window.location.reload(true);
-
-
     },
     editUser: (user) => {
       //Open the Window:
@@ -83,7 +81,7 @@ const Manager = () => {
       </Preloder>
       <NavBar pages={pages} />
       <div id="managerContainer" style={{ height: "100rem", "padding-top": "106px", background: "url(assets/images/a0010.jpg)" }}>
-        <EditUser handleClose={handlers.closeHandle} display={isOpen} user={userToEdit} handleSave={handlers.updateUserToEdit} />
+        <EditUser handleClose={handlers.closeHandle} display={isOpen} user={userToEdit} handleSave={handlers.saveUser} />
         <Users users={users} handlers={handlers} />
         {/* <Chat handleClose={togglePopup} display={true}/> */}
         {/* <Chart/> */}

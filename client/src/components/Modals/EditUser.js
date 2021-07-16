@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditUser.css'
 // import Input from '../../shared/components/Input'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -17,7 +17,8 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
-
+// import { create } from 'jss';
+// import rtl from 'jss-rtl';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,38 +36,29 @@ const useStyles = makeStyles((theme) => ({
         width: '25ch',
     },
 }));
-const EditUser = ({ user, handleClose, display, handleSave }) => {
-    // const [userInformation, setIsOpen] = useState(user);
-    const userInformation = { ...user };
-    // const userInformation = { name: 'moriya' };
-    const updateUser = () => {
 
+
+const EditUser = ({ user, handleClose, display, handleSave }) => {
+    const classes = useStyles();
+    console.log(user)
+    const [userInformation, setValues] = useState({});
+    useEffect(() => {
+        setValues(user);
+    }, [user]);
+    console.log(userInformation)
+
+    const updateUser = () => {
+        console.log('update user')
         return userInformation
     }
 
-    /**************************************************************** */
-
-
-    const classes = useStyles();
-    const [values, setValues] = React.useState({
-        amount: '',
-        password: '',
-        weight: '',
-        weightRange: '',
-        showPassword: false,
-    });
-
     const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
+        console.log('on change')
+        setValues({ ...userInformation, [prop]: event.target.value });
     };
 
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
-    };
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+
 
 
 
@@ -89,7 +81,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                     <div className="d-flex flex-column align-items-center text-center">
                                         <img src="assets/images/avatar7.png" alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
                                         <div className="mt-3">
-                                            <h4>John Doe</h4>
+                                            <h4>{userInformation.fullName}</h4>
                                             <p className="text-secondary mb-1">Full Stack Developer</p>
                                             <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                                             <br />
@@ -102,68 +94,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                         </div>
 
 
-                        {/* userInformation */}
-                        {/* ********************************************************* */}
-                        {/* <div className="col-lg-8">
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="row mb-3">
-                                        <div className="col-sm-9 text-secondary" dir="rtl">
-                                            <input value={userInformation.id} type="text" className="form-control" style={{ borderColor: "#3bb6b1", borderRadius: 5 }} />
-                                        </div>
-                                        <div className="col-sm-3" >
-                                            <h6 className="mb-0" style={{ textAlign: "right", fontSize: "15px", fontWeight: "bold", marginTop: "15px" }}>תעודת זהות</h6>
-                                        </div>
-                                    </div>
-                                    <div className="row mb-3">
-                                        <div className="col-sm-9 text-secondary" dir="rtl">
-                                            <input value={userInformation.fullName} type="text" className="form-control" style={{ borderColor: "#3bb6b1" }} />
-                                            <TextField id="userFullName" label="Required" defaultValue="Hello World" />
-
-                                        </div>
-                                        <div className="col-sm-3" >
-                                            <h6 className="mb-0" style={{ textAlign: "right", fontSize: "15px", fontWeight: "bold", marginTop: "15px" }}>שם מלא</h6>
-                                        </div>
-                                    </div>
-                                    <div className="row mb-3">
-                                        <div className="col-sm-9 text-secondary" dir="rtl">
-                                            <input value={userInformation.phone} type="text" className="form-control" style={{ borderColor: "#3bb6b1" }} />
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <h6 className="mb-0" style={{ textAlign: "right", fontSize: "15px", fontWeight: "bold", marginTop: "15px" }}>טלפון</h6>
-                                        </div>
-                                    </div>
-                                    <div className="row mb-3">
-                                        <div className="col-sm-9 text-secondary" dir="rtl">
-                                            <input value={userInformation.email} type="text" className="form-control" style={{ borderColor: "#3bb6b1" }} />
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <h6 className="mb-0" style={{ textAlign: "right", fontSize: "15px", fontWeight: "bold", marginTop: "15px" }}>מייל</h6>
-                                        </div>
-                                    </div>
-                                    <div className="row mb-3">
-                                        <div className="col-sm-9 text-secondary" dir="rtl">
-                                            <input value={userInformation.address} type="text" className="form-control" style={{ borderColor: "#3bb6b1" }} />
-                                        </div>
-                                        <div className="col-sm-3" >
-                                            <h6 className="mb-0" style={{ textAlign: "right", fontSize: "15px", fontWeight: "bold", marginTop: "15px" }}>כתובת</h6>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div className="row">
-                                        <div className="col-sm-3"></div>
-                                        <div className="col-sm-6 text-secondary">
-                                            <Input type="button" handle={() => handleSave(updateUser())} className="btn btn-primary px-4" value="שמור שינויים" style={{ borderColor: "#3bb6b1" }} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
-                        {/* new */}
-
-
-
-                        <div className="col-lg-8">
+                        <div className="col-lg-8" dir="rtl">
                             <div className="card">
                                 <div className="card-body row mb-3" dir="rtl">
                                     <TextField fullWidth
@@ -173,79 +104,49 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0% !important' }}
                                         // style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right' }}
                                         value={userInformation.id}
-                                    // InputProps={{
-                                    //     startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                                    // }}
+                                        onChange={handleChange('id')}
                                     />
                                     <br></br>
                                     <TextField fullWidth
                                         label="שם מלא"
                                         id="userFullName"
                                         className={clsx(classes.margin)}
-                                        classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
+                                        // classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
                                         value={userInformation.fullName}
-                                    // InputProps={{
-                                    //     startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                                    // }}
+                                        onChange={handleChange('fullName')}
+
                                     />
                                     <TextField fullWidth
                                         label="טלפון"
                                         id="userPhone"
                                         className={clsx(classes.margin)}
-                                        classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
                                         value={userInformation.phone}
-                                    // InputProps={{
-                                    //     startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                                    // }}
+                                        onChange={handleChange('phone')}
+
                                     />
                                     <TextField fullWidth
                                         label="מייל"
                                         id="userMail"
                                         className={clsx(classes.margin)}
-                                        classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
                                         value={userInformation.email}
-                                    // InputProps={{
-                                    //     startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                                    // }}
+                                        onChange={handleChange('email')}
+
                                     />
                                     <TextField fullWidth
                                         label="כתובת"
                                         id="userAddress"
                                         className={clsx(classes.margin)}
-                                        style={{ right: ' 0% !important', borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', }}
                                         value={userInformation.address}
-                                    // InputProps={{
-                                    //     startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                                    // }}
+                                        onChange={handleChange('address')}
+
                                     />
-                                    <div className="row">
-                                        <div className="col-sm-3"></div>
-                                        <div className="col-sm-6 text-secondary" >
-                                            <Input type="button" handle={() => handleSave(updateUser())} className="btn btn-primary px-4" value="שמור שינויים" style={{ borderColor: "#3bb6b1", 'margin-right': '148px' }} />
-                                        </div>
+                                    <div style={{ display: 'flex', width: '100%', 'justify-content': 'center', 'align-items': 'center' }} >
+                                        <Input type="button" onClick={() => { console.log('save'); handleSave(updateUser()) }} className="btn btn-primary px-4" value="שמור שינויים" style={{ background: "#3bb6b1", fontWeight: 'bold' }} />
                                     </div>
 
-                                    {/* <FormControl className={clsx(classes.margin, classes.textField)}>
-                                        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-                                        <Input
-                                            id="standard-adornment-password"
-                                            type={values.showPassword ? 'text' : 'password'}
-                                            value={values.password}
-                                            onChange={handleChange('password')}
-                                            endAdornment={
-                                                <InputAdornment position="end">
-                                                    <IconButton
-                                                        aria-label="toggle password visibility"
-                                                        onClick={handleClickShowPassword}
-                                                        onMouseDown={handleMouseDownPassword}
-                                                    >
-                                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                                    </IconButton>
-                                                </InputAdornment>
-                                            }
-                                        />
-                                    </FormControl> */}
-                                    {/* <FormControl fullWidth className={classes.margin}>
+
+                                    {/* </FormControl> 
+                                    <FormControl fullWidth className={classes.margin}>
                                         <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
                                         <Input
                                             id="standard-adornment-amount"
@@ -259,10 +160,6 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                             </div>
                         </div>
 
-
-
-
-                        {/* new */}
 
                     </div>
                 </div>
