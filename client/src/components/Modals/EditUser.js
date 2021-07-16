@@ -88,7 +88,6 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                             <button class="btn btn-primary" style={{ background: "#3bb6b1" }}>מנהל\עובד</button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -156,16 +155,12 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         />
                                     </FormControl> */}
                                 </div>
-
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
         </modal>
-
     )
 }
 
