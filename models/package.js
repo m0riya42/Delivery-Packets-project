@@ -20,5 +20,7 @@ module.exports = db => {
         //deliveryDay: {  $range: [ 1, 29 ] },
         
     }, { autoIndex: true });
+
+    db.model('Package', schema);
     
 };

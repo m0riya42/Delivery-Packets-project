@@ -19,4 +19,7 @@ module.exports = db => {
        //workSchedule: {type: Array, required: false},
 
     }, {autoIndex: true});
+
+    db.model('Users', schema);
+
 };
