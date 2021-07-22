@@ -12,8 +12,7 @@ const SignIn = ({ handleClose, display }) => {
     display ? inDisplay = 'block' : inDisplay = 'none';
     return (
         <modal className="popup-box" style={{ display: inDisplay }}>
-
-            <div className="container container-width box">
+            <div className="container container-width boxSignIn" style={{ top: "20px" }}>
                 <div className="card login-card">
                     <div className="row no-gutters" style={{ display: "flex", flexDirection: "row-reverse" }}>
                         <div className="col-md-5">
@@ -41,13 +40,11 @@ const SignIn = ({ handleClose, display }) => {
 
                                     {/* <input name="login" id="login" className="btn btn-block login-btn mb-4" style={{ background: 'rgb(59, 182, 177)', borderRadius: "17px" }} type="button" value="התחבר" /> */}
                                 </form>
-                                <a href="#!" className="forgot-password-link" style={{ textAlign: "center" }}>שכחתי סיסמה</a>
-
+                                <a href="" className="forgot-password-link" style={{ textAlign: "center" }}>שכחתי סיסמה</a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </modal>
 
