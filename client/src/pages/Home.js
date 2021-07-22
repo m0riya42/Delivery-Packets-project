@@ -17,22 +17,39 @@ const Home = () => {
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
-    return (<div>
-        <Preloder >
-        </Preloder>
-        <div className="culmn">
-            <SignIn handleClose={togglePopup} display={isOpen} />
-            <NavBar pages={pages} />
-            <HomeSection />
-            <AboutSection handleClose={togglePopup} />
-            <FeatureSection />
-            <ChooseSection />
-            <TextSection />
-            <Footer />
-        </div>
 
-    </div>
-    )
+    // const [token, setToken] = useState();
+    function setToken(userToken) {
+        sessionStorage.setItem('token', JSON.stringify(userToken));
+
+    }
+
+    function getToken() {
+
+    }
+    const token = getToken();
+
+    if (!token) {
+        //   return <Login setToken={setToken} />
+        // }
+
+        return (<div>
+            <Preloder >
+            </Preloder>
+            <div className="culmn">
+                <SignIn handleClose={togglePopup} display={isOpen} setToken={setToken} />
+                <NavBar pages={pages} />
+                <HomeSection />
+                <AboutSection handleClose={togglePopup} />
+                <FeatureSection />
+                <ChooseSection />
+                <TextSection />
+                <Footer />
+            </div>
+
+        </div>
+        )
+    }
 }
 
 export default Home

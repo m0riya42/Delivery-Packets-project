@@ -6,6 +6,12 @@ let databaseConnection = "Waiting for Database response...";
 router.get("/", function (req, res, next) {
     res.send(databaseConnection);
 });
+
+
+
+
+
+
 // Connecting to MongoDB
 mongoose.connect("mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority");
 // If there is a connection error send an error message
@@ -18,4 +24,8 @@ mongoose.connection.once("open", () => {
     console.log("Connected to Database!");
     databaseConnection = "Connected to Database";
 });
+
+// const DB = require("./createDB");
+//DB.createDB(WorkersDB,MangersDB,SuppliersDB,CustomersDB,StoresDB,CatalogDB);
+
 module.exports = router;

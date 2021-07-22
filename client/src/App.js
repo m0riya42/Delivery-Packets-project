@@ -75,6 +75,13 @@ import Manager from './pages/Manager';
 }*/
 
 const App = () => {
+  const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
+
+  // if (auth) { //-------------->Manager/User
+  //   return <Profile/>
+  // }
+  //else{ return <Home/>}
+
   return <Router>
     <Switch>
 
@@ -82,9 +89,9 @@ const App = () => {
       <Route path="/" exact>
         <Home />
       </Route>
-      <Route path="/about/" exact>
+      {/* <Route path="/about/" exact>
         <About />
-      </Route>
+      </Route> */}
       <Route path="/manager/" >
         <Manager />
       </Route>
