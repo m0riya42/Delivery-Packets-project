@@ -32,12 +32,12 @@ const PortfolioSection = () => {
                         <div className="grid text-center">
 
                             <div className="grid-item transition metal ium">
-                                <img alt="" src="assets/images/porfolio-1.jpg" />
+                                <img alt="" src="/assets/images/porfolio-1.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-110">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-1.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-1.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
@@ -45,12 +45,12 @@ const PortfolioSection = () => {
                             {/* <!-- End off grid item --> */}
 
                             <div className="grid-item metalloid " >
-                                <img alt="" src="assets/images/porfolio-2.jpg" />
+                                <img alt="" src="/assets/images/porfolio-2.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-180">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-2.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-2.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
@@ -58,12 +58,12 @@ const PortfolioSection = () => {
                             {/* <!-- End off grid item --> */}
 
                             <div className="grid-item post-transition metal numberGreaterThan50">
-                                <img alt="" src="assets/images/porfolio-3.jpg" />
+                                <img alt="" src="/assets/images/porfolio-3.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-50">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-3.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-3.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
@@ -71,12 +71,12 @@ const PortfolioSection = () => {
                             {/* <!-- End off grid item --> */}
 
                             <div className="grid-item post-transition metal ium" >
-                                <img alt="" src="assets/images/porfolio-4.jpg" />
+                                <img alt="" src="/assets/images/porfolio-4.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-180">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-4.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-4.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
@@ -84,12 +84,12 @@ const PortfolioSection = () => {
                             {/* <!-- End off grid item --> */}
 
                             <div className="grid-item metal ar" >
-                                <img alt="" src="assets/images/porfolio-5.jpg" />
+                                <img alt="" src="/assets/images/porfolio-5.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-110">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-5.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-5.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
@@ -97,12 +97,12 @@ const PortfolioSection = () => {
                             {/* <!-- End off grid item --> */}
 
                             <div className="grid-item alkali ar" >
-                                <img alt="" src="assets/images/porfolio-6.jpg" />
+                                <img alt="" src="/assets/images/porfolio-6.jpg" />
                                 <div className="grid_hover_area text-center">
                                     <div className="girid_hover_text m-top-50">
                                         <h4 className="text-white">Your Work Title</h4>
                                         <p className="text-white">- Business Card, Branding</p>
-                                        <a href="assets/images/porfolio-6.jpg" className="btn btn-primary popup-img">View Project</a>
+                                        <a href="/assets/images/porfolio-6.jpg" className="btn btn-primary popup-img">View Project</a>
                                     </div>
                                 </div>
                                 {/* <!-- End off grid Hover area --> */}
