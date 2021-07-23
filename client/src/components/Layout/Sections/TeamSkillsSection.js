@@ -24,7 +24,7 @@ const TeamSkillsSection = () => {
                             <div class="teams_item text-center sm-m-top-50">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <img src="assets/images/team1.jpg" alt="" class="img-circle" />
+                                        <img src="/assets/images/team1.jpg" alt="" class="img-circle" />
                                         <h4 class="m-top-20">John <strong>Doe</strong></h4>
                                         <h5>Lead Designer</h5>
                                         <div class="separator"></div>
@@ -36,7 +36,7 @@ const TeamSkillsSection = () => {
                                     </div>
                                     {/* <!-- End off col-md-4 --> */}
                                     <div class="col-sm-4">
-                                        <img src="assets/images/team2.jpg" alt="" class="img-circle" />
+                                        <img src="/assets/images/team2.jpg" alt="" class="img-circle" />
                                         <h4 class="m-top-20">Sarah <strong>Smith</strong></h4>
                                         <h5>UX Designer</h5>
                                         <div class="separator"></div>
@@ -48,7 +48,7 @@ const TeamSkillsSection = () => {
                                     </div>
                                     {/* <!-- End off col-md-4 --> */}
                                     <div class="col-sm-4">
-                                        <img src="assets/images/team3.jpg" alt="" class="img-circle" />
+                                        <img src="/assets/images/team3.jpg" alt="" class="img-circle" />
                                         <h4 class="m-top-20">Fabian <strong>Doe</strong></h4>
                                         <h5>Web Engineer</h5>
                                         <div class="separator"></div>

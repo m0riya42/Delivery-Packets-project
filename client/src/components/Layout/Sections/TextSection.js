@@ -7,14 +7,14 @@ const TextSection = () => {
             <div className="container">
                 <div className="row">
                     <div className="main_test fix">
-                    <div className="col-md-6 sm-m-top-40">
+                        <div className="col-md-6 sm-m-top-40">
                             <div className="test_item1 fix ">
                                 <div className="head_title fix">
-                                    <h2 className="text-uppercase" style={{borderColor: "#feb099", borderLeftWidth: "10px"}}>השותפים <strong>שלנו</strong></h2>
+                                    <h2 className="text-uppercase" style={{ borderColor: "#feb099", borderLeftWidth: "10px" }}>השותפים <strong>שלנו</strong></h2>
                                 </div>
                                 <div className="item_img">
-                                    <img className="img-circle" src="assets/images/avatar.jpg" alt="" />
-                                    <i className="fa fa-quote-left" style={{color: "#feb099"}}></i>
+                                    <img className="img-circle" src="/assets/images/avatar.jpg" alt="" />
+                                    <i className="fa fa-quote-left" style={{ color: "#feb099" }}></i>
                                 </div>
 
                                 <div className="item_text">
@@ -38,22 +38,22 @@ const TextSection = () => {
                                 <div className="divider_vertical"></div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item">
-                                        <img src="assets/images/friends.jpg" alt="" />
+                                        <img src="/assets/images/friends.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item">
-                                        <img src="assets/images/intel.jpg" alt="" />
+                                        <img src="/assets/images/intel.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item m-top-40">
-                                        <img src="assets/images/mako.jpg" alt="" />
+                                        <img src="/assets/images/mako.jpg" alt="" />
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item m-top-40">
-                                        <img src="assets/images/store.jpg" alt="" />
+                                        <img src="/assets/images/store.jpg" alt="" />
                                     </div>
                                 </div>
                             </div>

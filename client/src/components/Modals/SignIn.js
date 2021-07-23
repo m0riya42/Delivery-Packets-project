@@ -25,7 +25,7 @@ async function loginUser(credentials) {
 
 
 
-const SignIn = ({ handleClose, display, setToken }) => {
+const SignIn = ({ handleClose, display, setToken, authenticate }) => {
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
 
@@ -34,12 +34,19 @@ const SignIn = ({ handleClose, display, setToken }) => {
 
     const handleSubmit = async e => {
         console.log("in handle")
-        // e.preventDefault();
-        const token = await loginUser({
-            username,
-            password
-        });
-        setToken(token);
+        e.preventDefault();
+        // const token = await loginUser({
+        //     username,
+        //     password
+        // });
+        // setToken(token);
+
+
+
+        //check- this will be the answer from the server after authentication
+        setTimeout(() => authenticate({
+            type: 'manager', userName: 'oria'
+        }), 2000)
     }
 
 
@@ -73,10 +80,8 @@ const SignIn = ({ handleClose, display, setToken }) => {
                                         <label for="password" className="sr-only">Password</label>
                                         <Input type="password" name="password" id="password" placeholder="סיסמה" onChange={e => setPassword(e.target.value)} />
                                     </div>
-                                    {/* <Input type="button" name="login" id="login" value="התחבר" onClick={handleSubmit} /> */}
-                                    <button name="login" id="login" value="התחבר" onClick={handleSubmit} />
-
-                                    {/* <input name="login" id="login" className="btn btn-block login-btn mb-4" style={{ background: 'rgb(59, 182, 177)', borderRadius: "17px" }} type="button" value="התחבר" /> */}
+                                    <button name="login" id="login" onClick={handleSubmit} style={{ width: "118px", height: "50px", background: 'rgb(59, 182, 177)', borderRadius: "17px", color: '#fff' }} >התחבר
+                                    </button>
                                 </form>
                                 <a href="" className="forgot-password-link" style={{ textAlign: "center" }}>שכחתי סיסמה</a>
                             </div>

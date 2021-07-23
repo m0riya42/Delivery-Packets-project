@@ -79,7 +79,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         <FontAwesomeIcon icon={faTimes} />
                                     </span>
                                     <div className="d-flex flex-column align-items-center text-center">
-                                        <img src="assets/images/avatar7.png" alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
+                                        <img src="/assets/images/avatar7.png" alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
                                         <div className="mt-3">
                                             <h4>{userInformation.fullName}</h4>
                                             <p className="text-secondary mb-1">Full Stack Developer</p>

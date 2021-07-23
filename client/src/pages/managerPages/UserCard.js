@@ -41,7 +41,7 @@ const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => 
                 </CardActions>
                 {/* className={classes.root} */}
                 <CardActionArea>
-                    <Avatar src="assets/images/avatar7.png" className={classes.cardAvatar} />
+                    <Avatar src="/assets/images/avatar7.png" className={classes.cardAvatar} />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2" align="center" style={{ fontWeight: "bold" }}>
                             {user.fullName}

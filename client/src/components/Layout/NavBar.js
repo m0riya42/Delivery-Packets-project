@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 const NavBar = ({ pages }) => {
     return (
         <nav className="navbar navbar-default bootsnav navbar-fixed no-background white">
@@ -28,7 +29,7 @@ const NavBar = ({ pages }) => {
                     </button>
                     <a className="navbar-brand" href="#brand">
 
-                        <img src="assets/images/yadToFriend.svg" className="logo" alt="" width="93px" style={{ margin: '-14px' }} />
+                        <img src="/assets/images/yadToFriend.svg" className="logo" alt="" width="93px" style={{ margin: '-14px' }} />
                     </a>
 
                 </div>
@@ -39,8 +40,11 @@ const NavBar = ({ pages }) => {
                     <ul className="nav navbar-nav navbar-right" style={{ "flex-direction": "row-reverse", display: "flex" }}>
                         <li><a href="">          </a></li>
                         {
+
                             pages.map((page) => {
-                                return (<li ><a href={page.ref}>{page.text}</a></li>)
+                                let retVal;
+                                page.ref[0] === '#' ? retVal = (<li ><a href={page.ref}>{page.text}</a></li>) : retVal = (<li ><NavLink to={page.ref}>{page.text}</NavLink></li>);
+                                return retVal
                             })
                         }
                     </ul>

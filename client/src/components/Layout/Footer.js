@@ -3,13 +3,13 @@ import React from 'react'
 const Footer = () => {
     return (
 
-        <footer id="contact" className="footer action-lage bg-black p-top-80" style={{direction: "rtl",textAlign: "right"}}>
+        <footer id="contact" className="footer action-lage bg-black p-top-80" style={{ direction: "rtl", textAlign: "right" }}>
             {/* <!--<div className="action-lage"></div>--> */}
             <div className="container">
                 <div className="row">
                     <div className="widget_area">
 
-                    <div className="col-md-3">
+                        <div className="col-md-3">
                             <div className="widget_item widget_newsletter sm-m-top-50">
                                 <h5 className="text-white">הצטרפו לניוזלטר שלנו</h5>
                                 <form className="form-inline m-top-30">
@@ -59,21 +59,21 @@ const Footer = () => {
                             <div className="widget_item widget_latest sm-m-top-50">
                                 <h5 className="text-white">אירועי העמותה</h5>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/rsz_mic.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="/assets/images/rsz_mic.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
                                         <p>מופע התרמה בסיוע מהאומנים הטובים במדינה</p>
                                         <a href="">21<sup>th</sup> 2021 ינואר</a>
                                     </div>
                                 </div>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/rsz_1color-balloons.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="/assets/images/rsz_1color-balloons.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
                                         <p> אירוע חנוכת בית למרכז החדש בדרום הארץ</p>
                                         <a href="">12<sup>th</sup> מרץ 2021</a>
                                     </div>
                                 </div>
                                 <div className="widget_latst_item m-top-30">
-                                    <div className="item_icon"><img src="assets/images/rsz_food_pk.jpg" alt="" /></div>
+                                    <div className="item_icon"><img src="/assets/images/rsz_food_pk.jpg" alt="" /></div>
                                     <div className="widget_latst_item_text">
                                         <p>מבצע ארצי לאיסוף חבילות מזון לנדקקים, פרטים נוספים יעלו בהמשך</p>
                                         <a href="">8<sup>th</sup> יוני 2021</a>
@@ -116,9 +116,9 @@ const Footer = () => {
                         </div>
                         {/* <!-- End off col-md-3 --> */}
 
-                        
 
-                     
+
+
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ const Footer = () => {
                         <i className="fa fa-heart"></i>
                         יד לחבר
                         <i className="fa fa-heart"></i>
-                        
+
                     </p>
                 </div>
             </div>
