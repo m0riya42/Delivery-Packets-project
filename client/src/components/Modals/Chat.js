@@ -48,7 +48,7 @@ const Chat = ({ handleClose, display }) => {
                             </div>
                         </div>
 
-                        <div className="box-footer">
+                        <div className="box-footer" style={{background: "antiquewhite"}}>
                             <form action="#" method="post">
                                 <div className="input-group">
                                     <input type="text" name="message" placeholder="Type Message ..." className="form-control">

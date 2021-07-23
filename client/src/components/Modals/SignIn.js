@@ -80,7 +80,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
                                         <label for="password" className="sr-only">Password</label>
                                         <Input type="password" name="password" id="password" placeholder="סיסמה" onChange={e => setPassword(e.target.value)} />
                                     </div>
-                                    <button name="login" id="login" onClick={handleSubmit} style={{ width: "118px", height: "50px", background: 'rgb(59, 182, 177)', borderRadius: "17px", color: '#fff' }} >התחבר
+                                    <button name="login" id="login" onClick={handleSubmit} style={{ width: "118px", height: "50px", marginLeft: "52px", background: 'rgb(59, 182, 177)', borderRadius: "17px", color: '#fff' }} >התחבר
                                     </button>
                                 </form>
                                 <a href="" className="forgot-password-link" style={{ textAlign: "center" }}>שכחתי סיסמה</a>

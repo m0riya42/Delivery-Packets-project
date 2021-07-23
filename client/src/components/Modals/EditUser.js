@@ -58,22 +58,18 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
     };
 
 
-
-
-
-
     /**************************************************************** */
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
 
     return (
         <modal className="popup-box" style={{ display: inDisplay }}>
-            <div className="container" style={{ marginTop: "80px" }}>
+            <div className="container" style={{ marginTop: "50px" }}>
                 <div className="main-body">
                     <div className="row" style={{ display: "flex" }}>
                         {/* closeIcon */}
                         <div className="col-lg-4">
-                            <div className="card" style={{ height: "470px" }}>
+                            <div className="card" style={{ height: "570px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
@@ -100,12 +96,10 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         label="תעודת זהות"
                                         id="userId"
                                         className={clsx(classes.margin)}
-                                        style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0% !important' }}
-                                        // style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right' }}
+                                        // style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0% !important' }}
                                         value={userInformation.id}
                                         onChange={handleChange('id')}
                                     />
-                                    <br></br>
                                     <TextField fullWidth
                                         label="שם מלא"
                                         id="userFullName"
@@ -113,6 +107,24 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         // classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
                                         value={userInformation.fullName}
                                         onChange={handleChange('fullName')}
+
+                                    />
+                                    <TextField fullWidth
+                                        label="שם משתמש"
+                                        id="userName"
+                                        className={clsx(classes.margin)}
+                                        // classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
+                                        value={userInformation.userName}
+                                        onChange={handleChange('userName')}
+
+                                    />
+                                    <TextField fullWidth
+                                        label="סיסמה"
+                                        id="userPassword"
+                                        className={clsx(classes.margin)}
+                                        // classes={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0 % !important' }}
+                                        value={userInformation.password}
+                                        onChange={handleChange('password')}
 
                                     />
                                     <TextField fullWidth
