@@ -39,9 +39,6 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
     //     //     password
     //     // });
     //     // setToken(token);
-
-
-
     //     //check- this will be the answer from the server after authentication
     //     setTimeout(() => authenticate({
     //         type: 'manager', userName: 'oria'
@@ -56,12 +53,21 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
             password: passwordinfo
         }
         console.log(data);
-        axios.post('http://localhost:9000/login', data )
+        axios.post('http://localhost:9000/login', data)
             .then(res => {
-                console.log(res)
+                console.log(res);
+                if (res.status == 200){
+                    setTimeout(() => authenticate({
+                        type: 'manager', userName: 'oria'
+                    }), 2000)
+                }
+            //    else {
+
+            //    }
             })
             .catch(err => {
-                console.log(err)})
+                console.log(err);
+            })
     }
 
     return (

@@ -21,7 +21,8 @@ const Maps = ({ }) => {
         longitude: 35.197460,
         zoom: 12,
         width: "80vw", 
-        height: "80vh"
+        height: "80vh",
+        
     });
 
     return (
@@ -47,6 +48,7 @@ const Maps = ({ }) => {
                 <ReactMapGL {...viewport} 
                 mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
                 onViewportChange={(viewport) => {setViewport(viewport)}}
+                //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
                 mapStyle="mapbox://styles/mapbox/streets-v11"
                 >
 

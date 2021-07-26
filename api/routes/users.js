@@ -24,29 +24,28 @@ router.post('/', async function (req, res, next) {
   let hashUser = '';
   users.forEach(user => {
     if ((user.Active) && (user.userName == userName)) {
-      console.log('useruseruser');
       hashUser = user.password;
     }
   });
 
   bcrypt.compare(req.body.password, hashUser, function (err, result) {
     if (result) {
-      console.log("true");
+      const createToken = jwt.sign({ password }, 'jwtSecret', {
+        expiresIn: 24 * 60 * 60 * 1000,
+      })
+      res.send({
+        token: createToken,
+        message: "success",
+        user: req.body
+      });
     }
     else {
-      console.log("wrong");
+     // res.send({ message: 'Wrong username/password!' }).status(404);
+     res.sendStatus(404);
     }
   });
 
-  const createToken = jwt.sign({ password }, 'jwtSecret', {
-    expiresIn: 24 * 60 * 60 * 1000,
-  })
 
-  res.send({
-    token: createToken,
-    msg: "success",
-    user: req.body
-  });
 
 
   // bcrypt.hash('', saltRounds, (err, hash) => {
