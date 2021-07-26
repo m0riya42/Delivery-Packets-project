@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "mongo": "node ./models/mongo.js",
+    "createDB": "node createDB.js"
   },
   "dependencies": {
     "babel": "^6.23.0",
