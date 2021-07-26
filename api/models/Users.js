@@ -16,9 +16,6 @@ module.exports = db => {
         image: { type: String }
 
     }, { autoIndex: true });
-
-    db.model('Users', schema);
-
  
 
     schema.statics.CREATE = async function (user) {
@@ -37,12 +34,6 @@ module.exports = db => {
         });
 
     };
-
-    // on every save, add the date
-    schema.pre('save', function (next) {
-        //אם נרצה להוסיף שכלולים של בדיקות וכאלה אז כאן יהיה קריאה לפונקציות שעושות בדיקות אלה
-        next();
-    });
 
     // schema.statics.REQUEST = async function () {
     //     debug('I am in REQUEST function');
@@ -100,7 +91,7 @@ module.exports = db => {
     // the schema is useless so far
     // we need to create a model using it
     // db.model('User', schema, 'User'); // (model, schema, collection)
-    db.model('Users', schema); // if model name === collection name
+    db.model('users', schema); // if model name === collection name
     //debug("Users model created");
 
 };

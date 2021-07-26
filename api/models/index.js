@@ -7,13 +7,14 @@ let db = mongo.createConnection();
 (async () => {
     try {
         await db.openUri(URI);
+        console.log("DB is open")
     } catch (err) {
-        debug("Error connecting to DB: " + err);
+        console.log("Error connecting to DB: " + err);
     }
 })();
-debug('Pending DB connection');
+console.log('Pending DB connection');
 
-require("./Users")(db);
+require("./users")(db);
 //require("./package")(db);
 //require("./workSchedule")(db);
 

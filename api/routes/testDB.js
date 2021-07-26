@@ -21,8 +21,5 @@ mongoose.connection.once("open", () => {
 
 });
 
-// const DB = require("../createDB");
-// const UsersDB = require('../models/user');
-// DB.createDB(UsersDB);
 
 module.exports = router;
