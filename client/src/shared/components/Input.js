@@ -6,7 +6,7 @@ const Input = ({ type, name, id, classes, placeholder, value, handle, onChange: 
         if (classes)
             classEl += classes;
 
-        return <input onChange={onChangeHandler} value={value} type={type} name={name} id={id} className={classEl} placeholder={placeholder} style={{ borderBlockColor: "rgb(59, 182, 177)", borderRadius: "17px" }} />
+        return <input onChange={onChangeHandler} value={value} type={type} name={name} id={id} className={classEl} placeholder={placeholder} style={{ borderColor: "rgb(59, 182, 177)", borderRadius: "17px" }} />
     }
 
     else {

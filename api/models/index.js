@@ -1,4 +1,3 @@
-const debug = require("debug")("lab4:model");
 const mongo = require("mongoose");
 
 
@@ -7,7 +6,7 @@ let db = mongo.createConnection();
 (async () => {
     try {
         await db.openUri(URI);
-        console.log("DB is open")
+        //console.log("DB is open")
     } catch (err) {
         console.log("Error connecting to DB: " + err);
     }
