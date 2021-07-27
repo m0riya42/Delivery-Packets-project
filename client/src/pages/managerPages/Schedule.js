@@ -12,7 +12,19 @@ import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import axios from 'axios';
 
+
+var users = []
+    axios.post('http://localhost:9000/usersInfo/getUsers')
+    .then(res => {
+        //console.log(res.data);
+        users = res.data;
+        //console.log(users);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 const useStyles = makeStyles({
     table: {
@@ -23,7 +35,7 @@ const useStyles = makeStyles({
 const Schedule = ({ }) => {
     const classes = useStyles();
 
-    const users = [{ id: '123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address: 'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+    //const users = [{ id: '123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address: 'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
 
     function createData(id, fullName, email, phone, address) {
         return { id, fullName, email, phone, address };

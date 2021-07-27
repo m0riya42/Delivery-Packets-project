@@ -69,19 +69,20 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                     <div className="row" style={{ display: "flex" }}>
                         {/* closeIcon */}
                         <div className="col-lg-4">
-                            <div className="card" style={{ height: "570px" }}>
+                            <div className="card" style={{ height: "445px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
                                     </span>
                                     <div className="d-flex flex-column align-items-center text-center">
-                                        <img src="/assets/images/avatar7.png" alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
+                                        <img src={user.image} alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
                                         <div className="mt-3">
                                             <h4>{userInformation.fullName}</h4>
-                                            <p className="text-secondary mb-1">Full Stack Developer</p>
-                                            <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                                            {/* <p className="text-secondary mb-1">Full Stack Developer</p>
+                                            <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p> */}
                                             <br />
-                                            <button class="btn btn-primary" style={{ background: "#3bb6b1" }}>מנהל\עובד</button>
+                                            <br/>
+                                            <button class="btn btn-primary" style={{ background: "#3bb6b1" }}>{user.type}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -109,7 +110,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         onChange={handleChange('fullName')}
 
                                     />
-                                    <TextField fullWidth
+                                    {/* <TextField fullWidth
                                         label="שם משתמש"
                                         id="userName"
                                         className={clsx(classes.margin)}
@@ -126,7 +127,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         value={userInformation.password}
                                         onChange={handleChange('password')}
 
-                                    />
+                                    /> */}
                                     <TextField fullWidth
                                         label="טלפון"
                                         id="userPhone"

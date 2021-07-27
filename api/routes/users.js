@@ -9,7 +9,7 @@ const User = require('../models')("users");
 
 
 /* POST users listing. */
-router.post('/', async function (req, res, next) {
+router.post('/login', async function (req, res, next) {
   console.log("i am here")
   var userName = req.body.username;
   var password = req.body.password;
@@ -40,13 +40,10 @@ router.post('/', async function (req, res, next) {
       });
     }
     else {
-     // res.send({ message: 'Wrong username/password!' }).status(404);
-     res.sendStatus(404);
+      // res.send({ message: 'Wrong username/password!' }).status(404);
+      res.sendStatus(404);
     }
   });
-
-
-
 
   // bcrypt.hash('', saltRounds, (err, hash) => {
   //   if (err){
@@ -55,6 +52,18 @@ router.post('/', async function (req, res, next) {
   //   console.log(hash)
   // });
 
+})
+
+router.post('/getUsers', async function (req, res, next) {
+  console.log("give me users");
+  let users = [];
+  try {
+    users = await User.REQUEST();
+  }
+  catch (err) { console.log(`Failed: ${err}`) }
+
+  //console.log(users);
+  res.send(users);
 });
 
 module.exports = router;

@@ -31,19 +31,6 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
 
     const [usernameinfo, setUserName] = useState();
     const [passwordinfo, setPassword] = useState();
-    // const handleSubmit = async e => {
-    //     console.log("in handle")
-    //     e.preventDefault();
-    //     // const token = await loginUser({
-    //     //     username,
-    //     //     password
-    //     // });
-    //     // setToken(token);
-    //     //check- this will be the answer from the server after authentication
-    //     setTimeout(() => authenticate({
-    //         type: 'manager', userName: 'oria'
-    //     }), 2000)
-    // }
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -53,17 +40,17 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
             password: passwordinfo
         }
         console.log(data);
-        axios.post('http://localhost:9000/login', data)
+        axios.post('http://localhost:9000/usersInfo/login', data)
             .then(res => {
                 console.log(res);
-                if (res.status == 200){
+                if (res.status == 200) {
                     setTimeout(() => authenticate({
                         type: 'manager', userName: 'oria'
                     }), 2000)
                 }
-            //    else {
-
-            //    }
+                else {
+                    alert('Wrong username/password ')
+                }
             })
             .catch(err => {
                 console.log(err);

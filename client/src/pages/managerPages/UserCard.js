@@ -41,21 +41,25 @@ const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => 
                 </CardActions>
                 {/* className={classes.root} */}
                 <CardActionArea>
-                    <Avatar src="/assets/images/avatar7.png" className={classes.cardAvatar} />
+                    <Avatar src={user.image} className={classes.cardAvatar} />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2" align="center" style={{ fontWeight: "bold" }}>
                             {user.fullName}
                         </Typography>
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
+                            {user.type}
+                        </Typography>
                         <Divider variant="middle" style={{ width: "72px", margin: "auto", marginBottom: "10px" }} />
-                        <Typography variant="body2" color="textSecondary" component="p" align="center">
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
                             {user.email}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" align="center">
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
                             {user.phone}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
+
                     {/* <Button size="large" color="primary">
                         <i class="fa fa-user-times" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
                     </Button> */}
