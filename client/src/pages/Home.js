@@ -28,9 +28,8 @@ const Home = ({ authenticate }) => {
             <FeatureSection />
             <ChooseSection />
             <TextSection />
-            <Footer />
+            {/* <Footer /> */}
         </div>
-
     </div>
     )
 }

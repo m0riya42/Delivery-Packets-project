@@ -1,7 +1,8 @@
-import React, { useState, Fragment, useEffect } from 'react'
+import React from 'react'
+//{ useState, Fragment, useEffect }
 import '../App.css';
 import UsersInfo from './managerPages/UsersInfo';
-import { matchPath } from "react-router";
+//import { matchPath } from "react-router";
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import Schedule from './managerPages/Schedule';
 import Chart from './managerPages/Chart';

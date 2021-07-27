@@ -7,20 +7,20 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-async function loginUser(credentials) {
-    console.log(credentials)
-    // return fetch('http://localhost:9000/login', {
-    //     method: 'Post',
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(credentials)
-    // })
-    //     .then(data => {
-    //         // data.json();
-    //         console.log(data)
-    //     })
-}
+// async function loginUser(credentials) {
+//     console.log(credentials)
+//     // return fetch('http://localhost:9000/login', {
+//     //     method: 'Post',
+//     //     headers: {
+//     //         'Content-Type': 'application/json'
+//     //     },
+//     //     body: JSON.stringify(credentials)
+//     // })
+//     //     .then(data => {
+//     //         // data.json();
+//     //         console.log(data)
+//     //     })
+// }
 
 
 
@@ -43,14 +43,14 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
         axios.post('http://localhost:9000/usersInfo/login', data)
             .then(res => {
                 console.log(res);
-                if (res.status == 200) {
-                    setTimeout(() => authenticate({
-                        type: 'manager', userName: 'oria'
-                    }), 2000)
-                }
-                else {
-                    alert('Wrong username/password ')
-                }
+                // if (res.status == 200) {
+                //     setTimeout(() => authenticate({
+                //         type: 'manager', userName: 'oria'
+                //     }), 2000)
+                // }
+                // else {
+                //     alert('Wrong username/password ')
+                // }
             })
             .catch(err => {
                 console.log(err);
@@ -59,7 +59,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
 
     return (
         <modal className="popup-box" style={{ display: inDisplay }}>
-            <div className="container container-width boxSignIn" style={{ top: "20px" }}>
+            <div className="container container-width boxSignIn" style={{ top: "30px" }}>
                 <div className="card login-card">
                     <div className="row no-gutters" style={{ display: "flex", flexDirection: "row-reverse" }}>
                         <div className="col-md-5">

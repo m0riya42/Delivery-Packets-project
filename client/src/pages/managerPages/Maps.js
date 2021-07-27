@@ -1,20 +1,20 @@
 import React, {useState} from 'react';
-import { useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
+// import { useEffect } from 'react';
+// import Grid from '@material-ui/core/Grid';
 import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+//import DateFnsUtils from '@date-io/date-fns';
+//import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import ReactMapGL from "react-map-gl" 
 
 
 
 
-const Maps = ({ }) => {
+const Maps = () => {
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date());
-    const handleDateChange = (date) => {
-        setSelectedDate(date);
-    };
+    // const [selectedDate, setSelectedDate] = React.useState(new Date());
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    // };
 
     const [viewport, setViewport] = useState({
         latitude: 31.770809,
