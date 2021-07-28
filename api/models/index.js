@@ -14,7 +14,7 @@ let db = mongo.createConnection();
 console.log('Pending DB connection');
 
 require("./users")(db);
-//require("./package")(db);
+require("./packages")(db);
 //require("./workSchedule")(db);
 
 module.exports = model => db.model(model);

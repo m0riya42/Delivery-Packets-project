@@ -11,7 +11,8 @@ import { Checkbox } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker  } from '@material-ui/pickers';
+import deLocale from "date-fns/locale/he";
 import axios from 'axios';
 
 
@@ -48,7 +49,6 @@ const Schedule = () => {
     })
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
-
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
@@ -57,12 +57,12 @@ const Schedule = () => {
     return (
 
         <div>
-            <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                <Grid container justifyContent="space-around">
+            <MuiPickersUtilsProvider utils={DateFnsUtils} locale={deLocale}>
+                <Grid container justifyContent="space-around" >
                     <KeyboardDatePicker 
                         disableToolbar
                         variant="inline"
-                        //format="MM/dd/yyyy"
+                        format="dd/MM/yyyy"
                         margin="normal"
                         id="date-picker-inline"
                         //label="Date picker inline"

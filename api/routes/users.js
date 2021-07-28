@@ -21,6 +21,7 @@ router.post('/login', async function (req, res, next) {
   }
   catch (err) { console.log(`Failed: ${err}`) }
 
+
   let hashUser = '';
   users.forEach(user => {
     if ((user.Active) && (user.userName == userName)) {
@@ -64,6 +65,7 @@ router.post('/getUsers', async function (req, res, next) {
 
   //console.log(users);
   res.send(users);
-});
+})
+
 
 module.exports = router;

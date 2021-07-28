@@ -1,6 +1,4 @@
-const debug = require("debug")("lab4:model-user");
 const mongo = require("mongoose");
-const passportLocalMongoose = require("passport-local-mongoose");
 
 
 module.exports = db => {
@@ -12,21 +10,16 @@ module.exports = db => {
         email: { type: String, unique: true },
         phone: { type: String, unique: true },
         address: {type: String, unique: true, required: true},
-
-        //package: { type: String, enum: ["", "", ""] },
-
         packageArrived: {type: Boolean, default: false, required: true},
-
-        //deliveryDay: {  $range: [ 1, 29 ] },
         
     }, { autoIndex: true });
 
-    db.model('Package', schema);
+    //db.model('packages', schema);
     
 
 
     schema.statics.CREATE = async function (package) {
-        debug("create \n");
+        console.log("create \n");
         return this.create({
             Active: true,
             id: package[0],
@@ -46,11 +39,11 @@ module.exports = db => {
     });
 
     schema.statics.REQUEST = async function () {
-        debug('I am in REQUEST function');
+        console.log('I am in REQUEST function');
         // no arguments - bring all at once
         const args = Array.from(arguments); // [...arguments]
         if (args.length === 0) {
-            debug("request: no arguments - bring all at once");
+            console.log("request: no arguments - bring all at once");
             return this.find({}).exec();
         }
 
@@ -58,7 +51,7 @@ module.exports = db => {
         let callback = arguments[arguments.length - 1];
         if (callback instanceof Function) {
             let asynch = callback.constructor.name === 'AsyncFunction';
-            debug(`request: with ${asynch ? 'async' : 'sync'} callback`);
+            console.log(`request: with ${asynch ? 'async' : 'sync'} callback`);
             args.pop();
             let cursor, user;
             try {
@@ -81,18 +74,18 @@ module.exports = db => {
 
         // request by id as a hexadecimal string
         if (args.length === 1 && typeof args[0] === "string") {
-            debug("request: by ID");
+            console.log("request: by ID");
             return this.findById(args[0]).exec();
         }
 
         // There is no callback - bring requested at once
-        debug(`request: without callback: ${JSON.stringify(args)}`)
-        //debug(await this.find(...args).exec());
+        console.log(`request: without callback: ${JSON.stringify(args)}`)
+        //console.log(await this.find(...args).exec());
         let cursor = await this.find(...args).cursor();
         let result = [];
         while (null !== (user = await cursor.next())) {
             result.push(user);
-            debug("user in REQUEST" + user);
+            console.log("user in REQUEST" + user);
         }
         return result;
     };
@@ -101,6 +94,6 @@ module.exports = db => {
         // the schema is useless so far
     // we need to create a model using it
     // db.model('User', schema, 'User'); // (model, schema, collection)
-    db.model('Package', schema); // if model name === collection name
-    debug("Package model created");
+    db.model('packages', schema); // if model name === collection name
+    console.log("packages model created");
 };

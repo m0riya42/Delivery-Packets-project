@@ -43,14 +43,14 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
         axios.post('http://localhost:9000/usersInfo/login', data)
             .then(res => {
                 console.log(res);
-                // if (res.status == 200) {
-                //     setTimeout(() => authenticate({
-                //         type: 'manager', userName: 'oria'
-                //     }), 2000)
-                // }
-                // else {
-                //     alert('Wrong username/password ')
-                // }
+                if (res.status == 200) {
+                    setTimeout(() => authenticate({
+                        type: 'manager', userName: 'oria'
+                    }), 2000)
+                }
+                else {
+                    alert('Wrong username/password ')
+                }
             })
             .catch(err => {
                 console.log(err);
