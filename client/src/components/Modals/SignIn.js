@@ -62,7 +62,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
     }
 
     return (
-        <modal className="popup-box" style={{ display: inDisplay }}>
+        <div className="popup-box" style={{ display: inDisplay }}>
             <div className="container container-width boxSignIn" style={{ top: "30px" }}>
                 <div className="card login-card">
                     <div className="row no-gutters" style={{ display: "flex", flexDirection: "row-reverse" }}>
@@ -94,14 +94,14 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
                     </div>
                 </div>
             </div>
-        </modal>
+        </div>
 
     )
 }
 
-SignIn.propTypes = {
-    setToken: PropTypes.func.isRequired
-}
+// SignIn.propTypes = {
+//     setToken: PropTypes.func.isRequired
+// }
 
 
 export default SignIn;

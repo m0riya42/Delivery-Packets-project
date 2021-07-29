@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Chat.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -48,13 +48,13 @@ const Chat = ({ handleClose, display }) => {
                             </div>
                         </div>
 
-                        <div className="box-footer" style={{background: "antiquewhite"}}>
+                        <div className="box-footer" style={{ background: "antiquewhite" }}>
                             <form action="#" method="post">
                                 <div className="input-group">
                                     <input type="text" name="message" placeholder="Type Message ..." className="form-control">
                                     </input>
                                     <span className="input-group-btn">
-                                        <button type="submit" style={{ background: "#3bb6b1"}} className="btn btn-primary btn-flat">Send</button>
+                                        <button type="submit" style={{ background: "#3bb6b1" }} className="btn btn-primary btn-flat">Send</button>
                                     </span>
                                 </div>
                             </form>

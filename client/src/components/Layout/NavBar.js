@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 const NavBar = ({ pages }) => {
     return (
         <nav className="navbar navbar-default bootsnav navbar-fixed no-background white">
@@ -18,7 +18,7 @@ const NavBar = ({ pages }) => {
             <div className="container" style={{ display: 'block' }}>
                 <div className="attr-nav" style={{ float: "left" }}>
                     <ul>
-                        <li className="search"><a href="#"><i className="fa fa-user"></i></a></li>
+                        <li className="search"><i className="fa fa-user"></i></li>
                     </ul>
                 </div>
 
@@ -37,13 +37,13 @@ const NavBar = ({ pages }) => {
 
                 {/* <!-- navbar menu --> */}
                 <div className="collapse navbar-collapse" id="navbar-menu">
-                    <ul className="nav navbar-nav navbar-right" style={{ "flex-direction": "row-reverse", display: "flex" }}>
-                        <li><a href="">          </a></li>
+                    <ul className="nav navbar-nav navbar-right" style={{ "flexDirection": "row-reverse", display: "flex" }}>
+                        <li style={{ width: "20px" }} />
                         {
 
                             pages.map((page) => {
                                 let retVal;
-                                page.ref[0] === '#' ? retVal = (<li ><a href={page.ref}>{page.text}</a></li>) : retVal = (<li ><NavLink to={page.ref}>{page.text}</NavLink></li>);
+                                page.ref[0] === '#' ? retVal = (<li key={page.text}><a href={page.ref}>{page.text}</a></li>) : retVal = (<li ><NavLink to={page.ref}>{page.text}</NavLink></li>);
                                 return retVal
                             })
                         }

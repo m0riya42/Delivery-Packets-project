@@ -72,9 +72,7 @@ const Manager = ({ pagesHandler }) => {
     <div id="managerContainer" style={{ height: "fitContent", "paddingBottom": "106px", "paddingTop": "106px", background: "url(/assets/images/a0010.jpg)" }}>
       <Switch>
         {/* <Route path="/" exact >
-         
-
-        </Route> */}
+                 </Route> */}
         <Route path="/Users" >
           <UsersInfo />
         </Route>
@@ -88,14 +86,14 @@ const Manager = ({ pagesHandler }) => {
           <Maps />
         </Route>
         <Route path="/ManagerHome" >
-        <CreatePost handleClose={closeEditPost} display={isOpen} handleSave={publishPost} />
+          <CreatePost handleClose={closeEditPost} display={isOpen} handleSave={publishPost} />
           <Button onClick={openEditPost} variant="outlined" color="primary" style={{ right: '-87%', width: '159px', 'font-size': '23px', height: '61px' }}>
             פוסט חדש
           </Button>
           <Blog listOfPosts={listOfPosts} />
         </Route>
         <Redirect from="/" to="/ManagerHome" />
-to: object
+        to: object
       </Switch>
     </div >
 

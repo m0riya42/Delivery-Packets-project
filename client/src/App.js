@@ -1,16 +1,10 @@
-//import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from "react"
-// import React, { Component, useState } from "react"
-// import LearnReact from './components/LearnReact/LearnReact';
-// import FormLearn from './components/FormLearn/FormLearn'
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/Home'
-// import About from './pages/About';
 import Manager from './pages/Manager';
 import Preloder from './components/Layout/Preloader';
 import NavBar from './components/Layout/NavBar';
-// import UsersInfo from './pages/managerPages/UsersInfo';
 import Footer from './components/Layout/Footer';
 
 const App = () => {
@@ -26,9 +20,6 @@ const App = () => {
     setPages(pages)
   }
 
-  // const setReturnValHandler = (val) => {
-  //   setReturnVal(val)
-  // }
   useEffect(() => {
     console.log(pages)
     setPages(pages)
