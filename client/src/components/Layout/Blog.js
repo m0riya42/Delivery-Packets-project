@@ -4,6 +4,11 @@ import Post from './Post';
 import SidePosts from './SidePosts';
 const Blog = ({ listOfPosts }) => {
     return <>
+
+        {/* <div class="blog_header">
+            <h2>עדכונים- יד לחבר</h2>
+        </div> */}
+
         <div class="row" style={{ "flex-direction": "row-reverse" }}>
             <div class="leftcolumn" style={{
                 'display': 'flex',
@@ -15,7 +20,9 @@ const Blog = ({ listOfPosts }) => {
                 })}
             </div>
             <div class="rightcolumn">
-                <SidePosts />
+                {listOfPosts.leftPosts.map((post) => {
+                    return <SidePosts innerHtml={post.innerHtml} />
+                })}
             </div>
         </div>
     </>

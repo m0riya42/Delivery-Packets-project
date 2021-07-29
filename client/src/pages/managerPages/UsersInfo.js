@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import Users from './Users';
+import Users from '../../components/Accessories/Users';
 import EditUser from '../../components/Modals/EditUser';
 import SaveUser from '../../components/Modals/SaveUser';
 import Chat from '../../components/Modals/Chat';
 import axios from 'axios';
 
 var users = []
-    axios.post('http://localhost:9000/usersInfo/getUsers')
+axios.post('http://localhost:9000/usersInfo/getUsers')
     .then(res => {
         //console.log(res.data);
         users = res.data;
@@ -26,7 +26,7 @@ const UsersInfo = ({ pages }) => {
 
     //const users = [{id:'123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address:'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
 
-    
+
 
     const handlers = {
         //close an open
@@ -66,10 +66,10 @@ const UsersInfo = ({ pages }) => {
         },
 
         newUser: () => {
-           //Open the Window:
-           handlers.closeHandleSave();
-           //Show User Information
-           //handlers.updateUserToEdit();
+            //Open the Window:
+            handlers.closeHandleSave();
+            //Show User Information
+            //handlers.updateUserToEdit();
 
         }
 

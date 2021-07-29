@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import './Manager.css'
 import UsersInfo from './managerPages/UsersInfo';
 //import { matchPath } from "react-router";
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
@@ -9,8 +10,26 @@ import Maps from './managerPages/Maps';
 import Blog from '../components/Layout/Blog';
 import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
+import socketClient from "socket.io-client";
 
+// const SERVER = "ws://127.0.0.1:9000";
+// const SERVER = "http://localhost:9000";
+// var socket = socketClient(SERVER);
+// socket.on('connection', () => {
+//   console.log(`I'm connected with the back-end`);
+// });
+// var io = require('socket.io-client')
+// var socket = io.connect('http://localhost:9000', { reconnect: true, rejectUnauthorized: false, allowEIO3: true });
+// socket.on('connect', function (socket) {
+//   console.log('Connected!');
+// });
 
+// const io = require('socket.io-client');
+// const socket = io.connect('http://localhost:9000');
+
+// socket.on('connect', () => {
+//   console.log('Successfully connected!');
+// });
 
 
 const Manager = ({ pagesHandler }) => {
@@ -18,7 +37,11 @@ const Manager = ({ pagesHandler }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
     leftPosts:
-      [],
+      [{
+        innerHtml: ` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
+      <h4>עמותת עזרה לנזקקים</h4>`}, {
+        innerHtml: ` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`
+      }],
     rightPosts: [{
       title: "פתיחת שנה ביד לחבר", titleDescription: "חבילות לראש השנה", date: new Date(2020, 8, 25), text: `
     <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
@@ -87,9 +110,12 @@ const Manager = ({ pagesHandler }) => {
         </Route>
         <Route path="/ManagerHome" >
           <CreatePost handleClose={closeEditPost} display={isOpen} handleSave={publishPost} />
-          <Button onClick={openEditPost} variant="outlined" color="primary" style={{ right: '-87%', width: '159px', 'font-size': '23px', height: '61px' }}>
-            פוסט חדש
-          </Button>
+          <div style={{ background: 'white' }}>
+
+            <Button onClick={openEditPost} variant="outlined" color="primary" style={{ right: '-87%', width: '159px', 'font-size': '23px', height: '61px', }}>
+              פוסט חדש
+            </Button>
+          </div>
           <Blog listOfPosts={listOfPosts} />
         </Route>
         <Redirect from="/" to="/ManagerHome" />

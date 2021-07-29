@@ -5,19 +5,19 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Chat = ({ handleClose, display }) => {
+const Chat = ({ handleClose, display, msgs, myIcon, userIcon }) => {
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
     return (
-        <modal className="popup-box" style={{ background: "transparent", display: inDisplay }}>
+        <div className="popup-box" style={{ background: "transparent", display: inDisplay, position: 'absolute', zIndex: 1 }}>
 
-            <div className="col-lg-3" style={{ display: inDisplay, bottom: "10%" }}>
-                <div className="box box-primary direct-chat direct-chat-primary" style={{ border: 'antiquewhite', background: 'antiquewhite', 'border-radius': '38px', position: "absolute", marginTop: "50px", top: '200px' }}>
+            <div className="col-lg-3" style={{ display: inDisplay, bottom: "-30%" }}>
+                <div className="chatStyle chatStylebox box-primary direct-chat direct-chat-primary chatStyle" style={{ background: 'url(/assets/images/chat_pattern.png)', backgroundSize: '318px' }} >
                     <div className="box-header with-border" style={{ height: "40px" }}>
 
                         <div className="box-tools pull-right">
 
-                            <span className="close-icon" onClick={handleClose} style={{ display: "contents", marginLeft: -"35px", marginTop: -"14px" }}>
+                            <span className="close-icon" onClick={handleClose} style={{ display: "contents", marginLeft: -"35px", marginTop: -"14px", color: 'rgb(87 96 91)' }}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
                             {/* <button type="button" className="btn btn-box-tool" data-widget="remove" onClick={handleClose}><i class="fa fa-times"></i></button> */}
@@ -48,13 +48,13 @@ const Chat = ({ handleClose, display }) => {
                             </div>
                         </div>
 
-                        <div className="box-footer" style={{ background: "antiquewhite" }}>
+                        <div className="box-footer" style={{ background: "#cbe2cf" }}>
                             <form action="#" method="post">
                                 <div className="input-group">
                                     <input type="text" name="message" placeholder="Type Message ..." className="form-control">
                                     </input>
                                     <span className="input-group-btn">
-                                        <button type="submit" style={{ background: "#3bb6b1" }} className="btn btn-primary btn-flat">Send</button>
+                                        <button type="submit" style={{ background: "#2ec365" }} className="btn btn-primary btn-flat">Send</button>
                                     </span>
                                 </div>
                             </form>
@@ -62,7 +62,7 @@ const Chat = ({ handleClose, display }) => {
                     </div>
                 </div>
             </div>
-        </modal>
+        </div>
 
     )
 }

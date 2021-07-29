@@ -34,7 +34,7 @@ const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => 
     const classes = useStyles();
 
     return (
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={4} style={{ zIndex: 2 }}>
             <Card className={classes.cardRoot} >
                 <CardActions className={classes.cardFooter} style={{ background: "#3bb6b1" }}>
                     <br />
@@ -46,14 +46,14 @@ const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => 
                         <Typography gutterBottom variant="h5" component="h2" align="center" style={{ fontWeight: "bold" }}>
                             {user.fullName}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{ fontSize: "16px", color: "black" }}>
                             {user.type}
                         </Typography>
                         <Divider variant="middle" style={{ width: "72px", margin: "auto", marginBottom: "10px" }} />
-                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{ fontSize: "16px", color: "black" }}>
                             {user.email}
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{fontSize: "16px", color: "black"}}>
+                        <Typography variant="body2" color="textSecondary" component="p" align="center" style={{ fontSize: "16px", color: "black" }}>
                             {user.phone}
                         </Typography>
                     </CardContent>

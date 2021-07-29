@@ -6,8 +6,59 @@ import Manager from './pages/Manager';
 import Preloder from './components/Layout/Preloader';
 import NavBar from './components/Layout/NavBar';
 import Footer from './components/Layout/Footer';
+import socketClient from "socket.io-client";
+// import io from "socket.io-client";
+
+// // var io = require('socket.io-client')
+// const ENDPOINT = 'http://127.0.0.1:9000'
+// // var socket = io(ENDPOINT);
+// var socket = io.connect(ENDPOINT);
+// socket.on('connect', function (socket) {
+//   console.log('Connected!');
+// })
 
 const App = () => {
+  // const [name, setName] = useState('');
+  // const [room, setRoom] = useState('');
+  // const [users, setUsers] = useState('');
+  // const [message, setMessage] = useState('');
+  // const [messages, setMessages] = useState([]);
+
+
+  // useEffect(() => {
+  // const { name, room } = queryString.parse(location.search);
+
+  // socket = io(ENDPOINT);
+
+  // setRoom(room);
+  // setName(name)
+
+  //   socket.emit('join', { name, room }, (error) => {
+  //     if (error) {
+  //       alert(error);
+  //     }
+  //   });
+  // }, [ENDPOINT, location.search]);
+
+  // useEffect(() => {
+  //   socket.on('message', message => {
+  //     setMessages(messages => [...messages, message]);
+  //   });
+
+  //   socket.on("roomData", ({ users }) => {
+  //     setUsers(users);
+  //   });
+  // }, []);
+
+  // const sendMessage = (event) => {
+  //   event.preventDefault();
+
+  //   if (message) {
+  //     socket.emit('sendMessage', message, () => setMessage(''));
+  //   }
+  // }
+
+
 
   const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);

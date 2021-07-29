@@ -2,6 +2,18 @@ body{
     margin-top:20px;
     background:#eee;
 }
+
+
+.chatStyle{
+    border: #c4f2cc;
+ /* background: red !important; */
+ /* background: url(/assets/images/chat_pattern.png) repeat !important ; */
+     border-radius:38px;
+       position: absolute;
+        margin-top: 50px;
+         top:200px;
+
+}
 .box {
     position: relative;
     border-radius: 3px;
@@ -70,23 +82,23 @@ body{
     color: #444;
 }
 .box.box-solid.box-primary {
-    border: 1px solid #3bb6b1;
+    border: 1px solid #2ec365;
 }
 .box.box-solid.box-primary>.box-header {
     color: #fff;
-    background: #3bb6b1;
-    background-color: #3bb6b1;
+    background: #2ec365;
+    background-color: #2ec365;
 }
 .box.box-solid.box-primary>.box-header a, .box.box-solid.box-primary>.box-header .btn {
     color: #fff;
 }
 .box.box-solid.box-info {
-    border: 1px solid #3bb6b1;
+    border: 1px solid #2ec365;
 }
 .box.box-solid.box-info>.box-header {
     color: #fff;
-    background: #3bb6b1;
-    background-color: #3bb6b1;
+    background: #2ec365;
+    background-color: #2ec365;
 }
 .box.box-solid.box-info>.box-header a, .box.box-solid.box-info>.box-header .btn {
     color: #fff;
@@ -305,7 +317,7 @@ body{
     border-radius: 5px;
     position: relative;
     padding: 5px 10px;
-    background: #d2d6de;
+    background: #fffecf;
     border: 1px solid #d2d6de;
     margin: 5px 0 0 50px;
     color: #444;
@@ -428,12 +440,12 @@ body{
     border-left-color: #dd4b39;
 }
 .direct-chat-primary .right>.direct-chat-text {
-    background: #3bb6b1;
-    border-color: #3bb6b1;
+    background: #2ec365;
+    border-color: #2ec365;
     color: #fff;
 }
 .direct-chat-primary .right>.direct-chat-text:after, .direct-chat-primary .right>.direct-chat-text:before {
-    border-left-color: #3bb6b1;
+    border-left-color: #2ec365;
 }
 .direct-chat-warning .right>.direct-chat-text {
     background: #f39c12;

@@ -4,6 +4,8 @@
     margin-top: 20px;
     direction: rtl;
     text-align: center;
+    margin: 31px;
+
  }
 
  /* Fake image */
@@ -16,10 +18,16 @@
   h5{
     font-weight: bold;
     font-size: 28px;
+    /* margin: 31px; */
+    /* margin-bottom: 31px;
+    margin-top: 15px; */
+
   }
 
   h2{
     font-size: 4rem;
     color: #106490;
     font-weight: 700;
+    margin-bottom: 31px;
+    margin-top: 31px;
   }
