@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FeatureSection = () => {
+const AboutSection = () => {
 
     return (
         // <!--Featured Section-->
@@ -70,4 +70,4 @@ const FeatureSection = () => {
     )
 }
 
-export default FeatureSection
+export default AboutSection

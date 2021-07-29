@@ -13,10 +13,7 @@ import NavBar from './components/Layout/NavBar';
 // import UsersInfo from './pages/managerPages/UsersInfo';
 import Footer from './components/Layout/Footer';
 
-
-
 const App = () => {
-
 
   const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);

@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
-import Footer from '../components/Layout/Footer'
-import HomeSection from '../components/Layout/Sections/HomeSection'
-import AboutSection from '../components/Layout/Sections/AboutSection'
-import FeatureSection from '../components/Layout/Sections/FeatureSection'
-import ChooseSection from '../components/Layout/Sections/ChooseSection'
-import TextSection from '../components/Layout/Sections/TextSection'
+import WelcomeSection from './HomeSections/WelcomeSection'
+import OpenningSection from './HomeSections/OpenningSection'
+import AboutSection from './HomeSections/AboutSection'
+import OurActivitiesSection from './HomeSections/OurActivitiesSection'
+import OurPartnersSection from './HomeSections/OurPartnersSection'
 import SignIn from '../components/Modals/SignIn'
 const Home = ({ authenticate }) => {
-
-
-
 
     const [isOpen, setIsOpen] = useState(false);
     const openSignInPopUp = () => {
@@ -23,12 +19,11 @@ const Home = ({ authenticate }) => {
         <div className="culmn">
             <SignIn handleClose={closeSignInPopUp} display={isOpen} authenticate={authenticate} />
             {/* setToken={setToken} /> */}
-            <HomeSection />
-            <AboutSection handleClose={openSignInPopUp} />
-            <FeatureSection />
-            <ChooseSection />
-            <TextSection />
-            {/* <Footer /> */}
+            <WelcomeSection />
+            <OpenningSection signInPopUp={openSignInPopUp} />
+            <AboutSection />
+            <OurActivitiesSection />
+            <OurPartnersSection />
         </div>
     </div>
     )

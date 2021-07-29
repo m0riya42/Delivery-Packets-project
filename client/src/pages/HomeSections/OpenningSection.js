@@ -1,6 +1,6 @@
 import React from 'react'
-import Input from '../../../shared/components/Input';
-const AboutSection = ({ handleClose }) => {
+import Input from '../../components/Accessories/Input';
+const OpenningSection = ({ signInPopUp }) => {
     return (
         <section id="about" className="about bg-yellow roomy-80" style={{ background: "#3bb6b1" }}>
             <div className="container">
@@ -11,7 +11,7 @@ const AboutSection = ({ handleClose }) => {
                             <h1 className="text-white">- <i className="fa fa-heart" style={{ color: "red" }}></i> -</h1>
                             <h3 className="text-black text-uppercase">גוף התנדבותי התומך באוכלוסיות קשישים ובעלי מוגבלות המספק חבילות מזון ותרופות</h3>
 
-                            <Input type="button" name="openLogin" id="openLogin" classes="btn btn-primary m-top-100" value="התחברות" handle={handleClose} />
+                            <Input type="button" name="openLogin" id="openLogin" classes="btn btn-primary m-top-100" value="התחברות" handle={signInPopUp} />
 
                         </div>
                     </div>
@@ -21,4 +21,4 @@ const AboutSection = ({ handleClose }) => {
     )
 }
 
-export default AboutSection;
+export default OpenningSection;

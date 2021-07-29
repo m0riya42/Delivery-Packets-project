@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ChooseSection = () => {
+const OurActivitiesSection = () => {
     return (
         // <!--Choose section-->
         <section id="activity" className="choose bg-white roomy-80">
@@ -67,4 +67,4 @@ const ChooseSection = () => {
     )
 }
 
-export default ChooseSection
+export default OurActivitiesSection

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextSection = () => {
+const OurPartnersSection = () => {
     return (
         // <!--Test section-->
         <section id="text" className="test bg-white roomy-60 fix">
@@ -67,6 +67,6 @@ const TextSection = () => {
     )
 }
 
-export default TextSection
+export default OurPartnersSection
 
 

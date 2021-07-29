@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './SignIn.css'
-import Input from '../../shared/components/Input'
+import Input from '../Accessories/Input'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
@@ -42,11 +42,15 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
         console.log(data);
         axios.post('http://localhost:9000/usersInfo/login', data)
             .then(res => {
+                debugger
                 console.log(res);
-                if (res.status == 200) {
-                    setTimeout(() => authenticate({
-                        type: 'manager', userName: 'oria'
-                    }), 2000)
+                if (res.status === 200) {
+                    // setTimeout(
+                    // () => 
+                    authenticate({
+                        type: res.data.user.type === "מנהל" ? 'manager' : 'worker', userName: res.data.user.userName, user: res.data.user
+                    })
+                    // , 2000)
                 }
                 else {
                     alert('Wrong username/password ')

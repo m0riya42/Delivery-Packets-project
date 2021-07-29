@@ -1,3 +1,5 @@
+const lodash = require('lodash')
+// const underscore = require('underscore')
 var express = require('express');
 var router = express.Router();
 
@@ -10,6 +12,7 @@ const User = require('../models')("users");
 
 /* POST users listing. */
 router.post('/login', async function (req, res, next) {
+  //the password here is visable and its wrong!
   console.log("i am here")
   var userName = req.body.username;
   var password = req.body.password;
@@ -21,23 +24,26 @@ router.post('/login', async function (req, res, next) {
   }
   catch (err) { console.log(`Failed: ${err}`) }
 
-
+  let currentUser;
   let hashUser = '';
   users.forEach(user => {
     if ((user.Active) && (user.userName == userName)) {
+      currentUser = user
       hashUser = user.password;
     }
   });
 
   bcrypt.compare(req.body.password, hashUser, function (err, result) {
+    const userWithoutPass = lodash.omit(currentUser, ['password'])
     if (result) {
+      // console.log(userWithoutPass)
       const createToken = jwt.sign({ password }, 'jwtSecret', {
         expiresIn: 24 * 60 * 60 * 1000,
       })
       res.send({
         token: createToken,
         message: "success",
-        user: req.body
+        user: userWithoutPass
       });
     }
     else {

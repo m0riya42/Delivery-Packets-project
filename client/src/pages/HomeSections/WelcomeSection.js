@@ -1,5 +1,5 @@
 import React from 'react'
-const HomeSection = () => {
+const WelcomeSection = () => {
     return (
         <section id="home" className="home bg-white fix" >
             <div className="overlay" style={{ background: "url(/assets/images/a006.jpg)" }}></div>
@@ -22,14 +22,6 @@ const HomeSection = () => {
                     </div>
 
 
-                    {/* <a className="mouse-scroll" href="#about">
-                        <span className="mouse">
-                            <span className="mouse-movement"></span>
-                        </span>
-                        <span className="mouse-message fadeIn">גלול מטה</span> <br />
-                        {/* <!--<i className="fa fa-angle-down m-top-10 fadeIn mouse-message"></i>-->  
-                    </a> */}
-
                 </div>
                 {/* <!--End off row--> */}
             </div>
@@ -40,4 +32,4 @@ const HomeSection = () => {
     )
 }
 
-export default HomeSection
+export default WelcomeSection

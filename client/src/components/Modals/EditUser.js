@@ -5,29 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 // import TextField from '@material-ui/core/TextField';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
+import { useStyles } from './utils'
 
 // import { create } from 'jss';
 // import rtl from 'jss-rtl';
 
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-    withoutLabel: {
-        marginTop: theme.spacing(3),
-    },
-    textField: {
-        width: '25ch',
-    },
-}));
 
 
 const EditUser = ({ user, handleClose, display, handleSave }) => {
@@ -73,7 +58,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                             {/* <p className="text-secondary mb-1">Full Stack Developer</p>
                                             <p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p> */}
                                             <br />
-                                            <br/>
+                                            <br />
                                             <button class="btn btn-primary" style={{ background: "#3bb6b1" }}>{user.type}</button>
                                         </div>
                                     </div>

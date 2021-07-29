@@ -1,0 +1,25 @@
+.post_card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
+    direction: rtl;
+    text-align: center;
+ }
+
+ /* Fake image */
+.fakeimg {
+    background-color: #aaa;
+    width: 100%;
+    padding: 20px;
+  }
+
+  h5{
+    font-weight: bold;
+    font-size: 28px;
+  }
+
+  h2{
+    font-size: 4rem;
+    color: #106490;
+    font-weight: 700;
+  }

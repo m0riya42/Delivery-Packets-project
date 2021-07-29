@@ -16,7 +16,7 @@ module.exports = db => {
         image: { type: String }
 
     }, { autoIndex: true });
- 
+
 
     schema.statics.CREATE = async function (user) {
         console.log("create \n");
@@ -41,7 +41,9 @@ module.exports = db => {
         const args = Array.from(arguments); // [...arguments]
         if (args.length === 0) {
             //console.log("request: no arguments - bring all at once");
-            return this.find({}).exec();
+            return this.find({}, (err, res) => { }).select('-__v -_id').exec();
+            // return this.find({}).select('-__v -_id -password');
+            // return this.find({}, { "password": 0 }).exec();
         }
 
         // perhaps last argument is a callback for every single document
@@ -52,7 +54,7 @@ module.exports = db => {
             args.pop();
             let cursor, user;
             try {
-                cursor = await this.find(...args).cursor();
+                cursor = await this.find(...args).select('-__v -_id').cursor();
             } catch (err) { throw err; }
             try {
                 while (null !== (user = await cursor.next())) {
@@ -72,13 +74,13 @@ module.exports = db => {
         // request by id as a hexadecimal string
         if (args.length === 1 && typeof args[0] === "string") {
             console.log("request: by ID");
-            return this.findById(args[0]).exec();
+            return this.findById(args[0]).select('-__v -_id').exec();
         }
 
         // There is no callback - bring requested at once
         console.log(`request: without callback: ${JSON.stringify(args)}`)
         //console.log(await this.find(...args).exec());
-        let cursor = await this.find(...args).cursor();
+        let cursor = await this.find(...args).select('-__v -_id').cursor();
         let result = [];
         while (null !== (user = await cursor.next())) {
             result.push(user);
@@ -86,7 +88,7 @@ module.exports = db => {
         }
         return result;
     };
-    schema.statics.DELETE = async function (id) { return this.findByIdAndRemove(id).exec(); };
+    schema.statics.DELETE = async function (id) { return this.findByIdAndRemove(id).select('-__v -_id').exec(); };
 
     // the schema is useless so far
     // we need to create a model using it

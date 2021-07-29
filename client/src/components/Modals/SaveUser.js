@@ -3,27 +3,11 @@ import './SaveUser.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import { Select } from '@material-ui/core';
+import { useStyles } from './utils'
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    margin: {
-        margin: theme.spacing(1),
-    },
-    withoutLabel: {
-        marginTop: theme.spacing(3),
-    },
-    textField: {
-        width: '25ch',
-    },
-}));
 
 
 const SaveUser = ({ handleClose, display, handleSave }) => {
@@ -55,17 +39,17 @@ const SaveUser = ({ handleClose, display, handleSave }) => {
                                         <img src="/assets/images/avatar0.jpg" alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
                                         <div className="mt-3">
                                             <h4>משתמש חדש במערכת</h4>
-                                            <br/>
-                                             <h5 className="text-secondary mb-1">סמן טיפוס עובד</h5>
+                                            <br />
+                                            <h5 className="text-secondary mb-1">סמן טיפוס עובד</h5>
                                             {/*<p className="text-muted font-size-sm">Bay Area, San Francisco, CA</p> */}
-                                        
+
                                             <br />
                                             {/* <button class="btn btn-primary" style={{ background: "#3bb6b1" }}>tttttt</button> */}
-                                            <Select id ="userType" style={{width: "170px", height: "50px", background: "#3bb6b1"}} >
-                                                <option style={{fontSize: "20px", fontWeight: "bold", textAlign: "center"}} value="מנהל">מנהל</option>
-                                                <option style={{fontSize: "20px", fontWeight: "bold", textAlign: "center"}} value="עובד">עובד</option>
+                                            <Select id="userType" style={{ width: "170px", height: "50px", background: "#3bb6b1" }} >
+                                                <option style={{ fontSize: "20px", fontWeight: "bold", textAlign: "center" }} value="מנהל">מנהל</option>
+                                                <option style={{ fontSize: "20px", fontWeight: "bold", textAlign: "center" }} value="עובד">עובד</option>
                                             </Select>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
