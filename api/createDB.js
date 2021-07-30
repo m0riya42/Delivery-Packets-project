@@ -1,6 +1,7 @@
 const User = require('./models')("users");
 const Package = require('./models')("packages");
-const Blog = require('./models')("blog");
+const RightPosts = require('./models')("rightPosts");
+const LeftPosts = require('./models')("leftPosts");
 
 
 
@@ -21,25 +22,43 @@ const Blog = require('./models')("blog");
     ['309827183', 'אוהד טוהר', 'ohad183@gmail.com', '050-1192847', 'ירושלים חגי 22']
   ];
 
-  let Posts = [
-    /*  title: post[0],
-            titleDescription: post[1],
-            date: post[2],
-            text: post[3],
-            images: post[4],*/
-
-
-    // ["פתיחת שנה", "חבילות לראש השנה", new Date(2020, 08, 25), "", []]
+  let rPosts = [
+    ["פתיחת שנה ביד לחבר",  "חבילות לראש השנה", new Date(2020, 8, 25), `
+    <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
+    <p>בשעה טובה נפתח את פעילותנו במשלוח מיוחד לכבוד ראש השנה.</p>
+    <p ><strong>עובדים יקרים! </strong>יש לעדכן את שעות הפעילות בהם לא תוכלו לעבוד.</p>
+    <p><span style="color: #ff0000;"><strong>שנה טובה לכולנו!</strong></span></p>`],
+    ["מעבר כתובת",  "שינוי כתובת העמותה",  new Date(2020, 8, 31), `<p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><img src="https://icon-library.com/images/position-icon/position-icon-8.jpg" width="184" height="184" /></p>
+    <p><strong>שימו לב!&nbsp;</strong>עברנו לכתובת חדשה:</p>
+    <p>&nbsp;בית הדפוס 7, גבעת שאול, ירושלים</p>
+    <p>&nbsp;</p>`],
+    ['שעות חלוקה בשבוע הקרוב',  'עדכון שעות',  new Date(2020, 9, 4), `<p><img src="https://www.ynet.co.il/PicServer5/2019/04/11/9180259/917944801000100980651no.jpg" alt="היכן נתנדב השבוע?" width="343" height="213" /></p>
+    <p>בשבוע הקרוב החלוקות ייתקיימו בין השעות:</p>
+    <p>15:30-20:00</p>
+    <p>נסיעה טובה!</p>`]
+     //["פתיחת שנה", "חבילות לראש השנה", new Date(2020, 08, 25), ""]
     // ["פתיחת שנה", "חבילות לראש השנה", "", []]
-    ["פתיחת שנה", "חבילות לראש השנה", ""]
+    //["פתיחת שנה", "חבילות לראש השנה", "",""]
   ]
+
+  let lPosts = [
+
+    [` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
+      <h4>עמותת עזרה לנזקקים</h4>`], 
+     [` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`]
+  ]
+ 
+
   //console.log(Users);           
 
   // try {
   //   Users.forEach(async item => await User.CREATE(item));
   // } catch (err) { }
   try {
-    Packages.forEach(async item => await Package.CREATE(item));
-    Posts.forEach(async item => await Blog.CREATE(item));
+    //Packages.forEach(async item => await Package.CREATE(item));
+    //rPosts.forEach(async item => await RightPosts.CREATE(item));
+    lPosts.forEach(async item => await LeftPosts.CREATE(item));
   } catch (err) { }
 })();

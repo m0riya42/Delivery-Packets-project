@@ -56,7 +56,7 @@ const CreatePost = ({ handleClose, display, handleSave }) => {
             theme: 'snow'
         });
         quill.format('align', 'right');
-        debugger
+        //debugger
         window.getQuill = () => quill;
 
     }

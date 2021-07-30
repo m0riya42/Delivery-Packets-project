@@ -16,7 +16,7 @@ const Blog = ({ listOfPosts }) => {
             }}>
                 {listOfPosts.rightPosts.map((post) => {
                     // return <Post title={post.title} titleDescription={post.titleDescription} date={post.date} text={post.text} images={post.images} />
-                    return <Post title={post.title} titleDescription={post.titleDescription} date={post.date} text={post.text} images={post.images} />
+                    return <Post title={post.title} titleDescription={post.titleDescription} date={post.date} innerHtml={post.innerHtml} />
                 })}
             </div>
             <div class="rightcolumn">

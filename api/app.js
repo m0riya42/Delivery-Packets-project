@@ -7,7 +7,7 @@ var logger = require('morgan');
 var cors = require("cors");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// var blogRouter = require('./routes/blog');
+var blogRouter = require('./routes/blog');
 var testAPIRouter = require("./routes/testApi");//add as test
 var testDBRouter = require("./routes/testDB");//add as test
 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/usersInfo', usersRouter);
-// app.use('/blog', blogRouter);
+app.use('/blog', blogRouter);
 
 
 app.use("/testApi", testAPIRouter);//add as test

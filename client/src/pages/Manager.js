@@ -11,6 +11,7 @@ import Blog from '../components/Layout/Blog';
 import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
 import socketClient from "socket.io-client";
+import axios from 'axios';
 
 // const SERVER = "ws://127.0.0.1:9000";
 // const SERVER = "http://localhost:9000";
@@ -32,42 +33,56 @@ import socketClient from "socket.io-client";
 // });
 
 
+
+
 const Manager = ({ pagesHandler }) => {
   pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
-    leftPosts:
-      [{
-        innerHtml: ` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
-      <h4>עמותת עזרה לנזקקים</h4>`}, {
-        innerHtml: ` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`
-      }],
-    rightPosts: [{
-      title: "פתיחת שנה ביד לחבר", titleDescription: "חבילות לראש השנה", date: new Date(2020, 8, 25), text: `
-    <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
-    <p>בשעה טובה נפתח את פעילותנו במשלוח מיוחד לכבוד ראש השנה.</p>
-    <p ><strong>עובדים יקרים! </strong>יש לעדכן את שעות הפעילות בהם לא תוכלו לעבוד.</p>
-    <p><span style="color: #ff0000;"><strong>שנה טובה לכולנו!</strong></span></p>`, images: []
-    }, {
-      title: "מעבר כתובת", titleDescription: "שינוי כתובת העמותה", date: new Date(2020, 8, 31), text: `<p>&nbsp;</p>
-    <p>&nbsp;</p>
-    <p><img src="https://icon-library.com/images/position-icon/position-icon-8.jpg" width="184" height="184" /></p>
-    <p><strong>שימו לב!&nbsp;</strong>עברנו לכתובת חדשה:</p>
-    <p>&nbsp;בית הדפוס 7, גבעת שאול, ירושלים</p>
-    <p>&nbsp;</p>`}, {
-      title: 'שעות חלוקה בשבוע הקרוב', titleDescription: 'עדכון שעות', date: new Date(2020, 9, 4), text: `<p><img src="https://www.ynet.co.il/PicServer5/2019/04/11/9180259/917944801000100980651no.jpg" alt="היכן נתנדב השבוע?" width="343" height="213" /></p>
-  <p>בשבוע הקרוב החלוקות ייתקיימו בין השעות:</p>
-  <p>15:30-20:00</p>
-  <p>נסיעה טובה!</p>`}]
+      leftPosts:[{}],
+    //,     [{
+    //       innerHtml: ` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
+    //     <h4>עמותת עזרה לנזקקים</h4>`}, {
+    //       innerHtml: ` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`
+    //     }],
+      rightPosts: [{}]
+    //     title: "פתיחת שנה ביד לחבר", titleDescription: "חבילות לראש השנה", date: new Date(2020, 8, 25), text: `
+    //   <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
+    //   <p>בשעה טובה נפתח את פעילותנו במשלוח מיוחד לכבוד ראש השנה.</p>
+    //   <p ><strong>עובדים יקרים! </strong>יש לעדכן את שעות הפעילות בהם לא תוכלו לעבוד.</p>
+    //   <p><span style="color: #ff0000;"><strong>שנה טובה לכולנו!</strong></span></p>`, images: []
+    //   }, {
+    //     title: "מעבר כתובת", titleDescription: "שינוי כתובת העמותה", date: new Date(2020, 8, 31), text: `<p>&nbsp;</p>
+    //   <p>&nbsp;</p>
+    //   <p><img src="https://icon-library.com/images/position-icon/position-icon-8.jpg" width="184" height="184" /></p>
+    //   <p><strong>שימו לב!&nbsp;</strong>עברנו לכתובת חדשה:</p>
+    //   <p>&nbsp;בית הדפוס 7, גבעת שאול, ירושלים</p>
+    //   <p>&nbsp;</p>`}, {
+    //     title: 'שעות חלוקה בשבוע הקרוב', titleDescription: 'עדכון שעות', date: new Date(2020, 9, 4), text: `<p><img src="https://www.ynet.co.il/PicServer5/2019/04/11/9180259/917944801000100980651no.jpg" alt="היכן נתנדב השבוע?" width="343" height="213" /></p>
+    // <p>בשבוע הקרוב החלוקות ייתקיימו בין השעות:</p>
+    // <p>15:30-20:00</p>
+    // <p>נסיעה טובה!</p>`}]
   });
 
 
-  // useEffect(() => {
-  //get post from server
+  useEffect(() => {
+    let blogData = []
+    axios.post('http://localhost:9000/blog')
+      .then(res => {
+        //console.log(res.data);
+        blogData = res.data;
+        console.log(blogData);
 
+        updateListOfPosts(blogData);
+
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  // },[]
+  //get post from server
   // const serverReq= 
-  //     updateListOfPosts(user);
-  // }, [user]);
+  }, []);
 
 
   const openEditPost = () => {

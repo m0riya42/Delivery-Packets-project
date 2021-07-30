@@ -42,7 +42,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
         console.log(data);
         axios.post('http://localhost:9000/usersInfo/login', data)
             .then(res => {
-                debugger
+                //debugger
                 console.log(res);
                 if (res.status === 200) {
                     // setTimeout(
@@ -65,7 +65,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
         <div className="popup-box" style={{ display: inDisplay }}>
             <div className="container container-width boxSignIn" style={{ top: "30px" }}>
                 <div className="card login-card">
-                    <div className="row no-gutters" style={{ display: "flex", flexDirection: "row-reverse" }}>
+                    <div className="row no-gutters" style={{ display: "flex", flexDirection: "row-reverse", marginTop: "0px" }}>
                         <div className="col-md-5">
                             <img src="login.jpg" alt="login" className="login-card-img" />
                         </div>
