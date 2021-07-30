@@ -11,21 +11,23 @@ import { Checkbox } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
-import { MuiPickersUtilsProvider, KeyboardDatePicker  } from '@material-ui/pickers';
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import deLocale from "date-fns/locale/he";
 import axios from 'axios';
+import { Container } from '@material-ui/core';
+import MapCard from '../../components/Accessories/MapCard';
 
 
-var users = []
-    axios.post('http://localhost:9000/usersInfo/getUsers')
-    .then(res => {
-        //console.log(res.data);
-        users = res.data;
-        //console.log(users);
-    })
-    .catch(err => {
-        console.log(err);
-    })
+// var users = []
+// axios.post('http://localhost:9000/usersInfo/getUsers')
+//     .then(res => {
+//         //console.log(res.data);
+//         users = res.data;
+//         //console.log(users);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
 
 const useStyles = makeStyles({
     table: {
@@ -33,33 +35,84 @@ const useStyles = makeStyles({
     },
 });
 
+
 const Schedule = () => {
-    const classes = useStyles();
+     const classes = useStyles();
 
-    //const users = [{ id: '123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address: 'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+    // function createData(id, fullName, address) {
+    //     return { id, fullName, address };
+    // }
 
-    function createData(id, fullName, email, phone, address) {
-        return { id, fullName, email, phone, address };
-    }
+    // const rows = [];
 
-    const rows = [];
-
-    users.map((user) => {
-        rows.push(createData(user.id, user.fullName, user.email, user.phone, user.address))
-    })
+    // users.map((user) => {
+    //     rows.push(createData(user.id, user.fullName, user.address))
+    // })
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
 
-
+    let location = [
+        { title: "צפון", image: "/assets/images/map.jpg" },
+        { title: "דרום", image: "/assets/images/map.jpg" },
+        { title: "מרכז", image: "/assets/images/map.jpg" },
+        { title: "ירושלים", image: "/assets/images/map.jpg" },
+    ];
     return (
+
+        //     <div>
+        //         <MuiPickersUtilsProvider utils={DateFnsUtils} locale={deLocale}>
+        //             <Grid container justifyContent="space-around" >
+        //                 <KeyboardDatePicker 
+        //                     disableToolbar
+        //                     variant="inline"
+        //                     format="dd/MM/yyyy"
+        //                     margin="normal"
+        //                     id="date-picker-inline"
+        //                     //label="Date picker inline"
+        //                     value={selectedDate}
+        //                     onChange={handleDateChange}
+        //                     KeyboardButtonProps={{ 'aria-label': 'change date' }}
+        //                 />
+        //             </Grid>
+        //         </MuiPickersUtilsProvider>
+
+        //         <br></br><br></br>
+        //         <TableContainer component={Paper} style={{ margin: "auto", width: "80%" }}>
+        //             <Table className={classes.table} size="small" aria-label="a dense table">
+        //                 <TableHead>
+        //                     <TableRow style={{ background: "#3bb6b1" }}>
+        //                         <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right"></TableCell>
+        //                         <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">כתובת</TableCell>
+        //                         <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">שם מלא</TableCell>
+        //                         <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">תעודת זהות</TableCell>
+        //                     </TableRow>
+        //                 </TableHead>
+        //                 <TableBody>
+        //                     {rows.map((row) => (
+        //                         <TableRow key={row.name} style={{ height: "50px" }}>
+        //                             <TableCell align="right" padding="checkbox">
+        //                                 <Checkbox />
+        //                             </TableCell>
+        //                             <TableCell style={{ fontSize: "15px" }} align="right">{row.address}</TableCell>
+        //                             <TableCell style={{ fontSize: "15px" }} align="right">{row.fullName}</TableCell>
+        //                             <TableCell style={{ fontSize: "15px" }} align="right">{row.id}</TableCell>
+        //                         </TableRow>
+        //                     ))}
+        //                 </TableBody>
+        //             </Table>
+        //         </TableContainer>
+        //         <div style={{ background: "transparent" }}>
+        //             <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "196px", marginTop: "27px" }} />
+        //         </div>
+        //     </div >
 
         <div>
             <MuiPickersUtilsProvider utils={DateFnsUtils} locale={deLocale}>
                 <Grid container justifyContent="space-around" >
-                    <KeyboardDatePicker 
+                    <KeyboardDatePicker
                         disableToolbar
                         variant="inline"
                         format="dd/MM/yyyy"
@@ -72,41 +125,23 @@ const Schedule = () => {
                     />
                 </Grid>
             </MuiPickersUtilsProvider>
+            <br/><br/>
+            <Container>
+                <Grid container spacing={4} direction="row-reverse">
+                    {
+                        location.map((item) => {
+                            return <MapCard location={item} />
+                        })
+                    }
+                </Grid>
+            </Container>
 
-            <br></br><br></br>
-            <TableContainer component={Paper} style={{ margin: "auto", width: "80%" }}>
-                <Table className={classes.table} size="small" aria-label="a dense table">
-                    <TableHead>
-                        <TableRow style={{ background: "#3bb6b1" }}>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right"></TableCell>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">כתובת</TableCell>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">טלפון</TableCell>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">אימייל</TableCell>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">שם מלא</TableCell>
-                            <TableCell style={{ fontWeight: "bold", color: "white", fontSize: "15px" }} align="right">תעודת זהות</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.name} style={{ height: "50px" }}>
-                                <TableCell align="right" padding="checkbox">
-                                    <Checkbox />
-                                </TableCell>
-                                <TableCell style={{ fontSize: "15px" }} align="right">{row.address}</TableCell>
-                                <TableCell style={{ fontSize: "15px" }} align="right">{row.phone}</TableCell>
-                                <TableCell style={{ fontSize: "15px" }} align="right">{row.email}</TableCell>
-                                <TableCell style={{ fontSize: "15px" }} align="right">{row.fullName}</TableCell>
-                                <TableCell style={{ fontSize: "15px" }} align="right">{row.id}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+            {/* <div style={{ background: "transparent" }}>
+                <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px" }} />
+            </div> */}
 
-            </TableContainer>
-            <div style={{ background: "transparent" }}>
-                <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "196px", marginTop: "27px" }} />
-            </div>
         </div>
+
     );
 
 }
