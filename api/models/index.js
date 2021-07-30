@@ -15,7 +15,8 @@ console.log('Pending DB connection');
 
 require("./users")(db);
 require("./packages")(db);
-//require("./workSchedule")(db);
+require("./rightPosts")(db);
+require("./leftPosts")(db);
 
 module.exports = model => db.model(model);
 
