@@ -11,7 +11,7 @@ const Users = ({ users, handlers }) => {
             <Grid container spacing={4} direction="row-reverse">
                 {
                     users.map((user) => {
-                        return <UserCard user={user} handleEditUser={() => handlers.editUser(user)} handleChatToUser={handlers.openChat} handleNewUser={handlers.newUser} />
+                        return <UserCard user={user} handleEditUser={() => handlers.editUser(user)} handleChatToUser={() => handlers.openChat(user)} handleNewUser={handlers.newUser} />
                     })
                 }
             </Grid>

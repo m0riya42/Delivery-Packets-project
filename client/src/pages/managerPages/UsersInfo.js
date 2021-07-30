@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Users from '../../components/Accessories/Users';
 import EditUser from '../../components/Modals/EditUser';
 import SaveUser from '../../components/Modals/SaveUser';
-import Chat from '../../components/Modals/Chat';
+import Chat from '../../components/Modals/Chat/Chat';
 import axios from 'axios';
 
 var users = []
@@ -36,10 +36,18 @@ const UsersInfo = ({ pages }) => {
         closeHandleSave: () => {
             setSaveUserIsOpen(!saveUserIsOpen);
         },
-        openChat: () => {
+        openChat: (user) => {
             console.log('chat To User');
 
-            setChatIsOpen(!chatIsOpen)
+            //maybe to delete:
+            handlers.updateUserToEdit(user);
+
+            //
+            setChatIsOpen(true)
+        },
+        closeChat: () => {
+
+            setChatIsOpen(false)
         },
         updateUserToEdit: (user) => {
             setUserToEdit(user)
@@ -79,7 +87,7 @@ const UsersInfo = ({ pages }) => {
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat handleClose={handlers.openChat} display={chatIsOpen} />
+            <Chat handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.userName} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>
