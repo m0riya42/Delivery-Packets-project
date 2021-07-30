@@ -39,13 +39,13 @@ const Manager = ({ pagesHandler }) => {
   pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
-      leftPosts:[{}],
+    leftPosts: [{}],
     //,     [{
     //       innerHtml: ` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
     //     <h4>עמותת עזרה לנזקקים</h4>`}, {
     //       innerHtml: ` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`
     //     }],
-      rightPosts: [{}]
+    rightPosts: [{}]
     //     title: "פתיחת שנה ביד לחבר", titleDescription: "חבילות לראש השנה", date: new Date(2020, 8, 25), text: `
     //   <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
     //   <p>בשעה טובה נפתח את פעילותנו במשלוח מיוחד לכבוד ראש השנה.</p>
@@ -69,7 +69,6 @@ const Manager = ({ pagesHandler }) => {
     let blogData = []
     axios.post('http://localhost:9000/blog')
       .then(res => {
-        //console.log(res.data);
         blogData = res.data;
         console.log(blogData);
 
@@ -79,9 +78,9 @@ const Manager = ({ pagesHandler }) => {
       .catch(err => {
         console.log(err);
       })
-  // },[]
-  //get post from server
-  // const serverReq= 
+    // },[]
+    //get post from server?
+    // const serverReq= 
   }, []);
 
 
@@ -93,17 +92,27 @@ const Manager = ({ pagesHandler }) => {
   }
 
   const publishPost = (newPost) => {
+
+    console.log(newPost)
+    debugger
     //send to DB
+    const body = { rightPost: newPost }
+    axios.post('http://localhost:9000/blog/createRightPost', body)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      })
     //update view?
 
+    // updateListOfPosts(newList)
 
     // const newList = {
     //   ...listOfPosts, ...{
     //     rightPosts: newPost
     //   }
     // }
-    // updateListOfPosts(newList)
-    console.log(newPost)
   }
 
   return (

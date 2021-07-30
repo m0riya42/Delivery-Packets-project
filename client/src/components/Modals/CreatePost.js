@@ -22,16 +22,18 @@ const CreatePost = ({ handleClose, display, handleSave }) => {
     };
 
     const publishPost = (e) => {
-        console.log(window.getQuill().getLines())
-        // formRef.current.reportValidity()
-        const newPost = {
-            title: postInformation.title
-            , titleDescription: postInformation.subTitle
-            , date: new Date()
-            , text: document.getElementsByClassName('ql-editor')[0]
-        }
+        // console.log(window.getQuill().getLines())
+        const newPost = [
+            postInformation.title,
+            postInformation.subTitle,
+            new Date(),
+            document.getElementsByClassName('ql-editor')[0].innerHTML
+        ]
+
+
         handleSave(newPost)
         handleClose()
+        //earse the inputs
     }
 
 
