@@ -22,7 +22,9 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-var io = require('socket.io')(server);
+var io = require('socket.io')(server,{
+  cors:{origin: "*"}
+});
 // const io = require("socket.io")(9000, {
 //   wsEngine: require("eiows").Server
 // });
