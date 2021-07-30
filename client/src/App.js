@@ -9,9 +9,9 @@ import Footer from './components/Layout/Footer';
 import socketClient from "socket.io-client";
 // import io from "socket.io-client";
 
-// // var io = require('socket.io-client')
+// var io = require('socket.io-client')
 // const ENDPOINT = 'http://127.0.0.1:9000'
-// // var socket = io(ENDPOINT);
+// // // var socket = io(ENDPOINT);
 // var socket = io.connect(ENDPOINT);
 // socket.on('connect', function (socket) {
 //   console.log('Connected!');

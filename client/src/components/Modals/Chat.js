@@ -8,11 +8,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 const Chat = ({ handleClose, display, msgs, myIcon, userIcon }) => {
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
-    return (
+    return (<>  <div style=
+        {{ background: 'red', position: 'relative', bottom: '-108%', height: '37px' }}
+        id="chatButton"></div>
         <div className="popup-box" style={{ background: "transparent", display: inDisplay, position: 'absolute', zIndex: 1 }}>
 
             <div className="col-lg-3" style={{ display: inDisplay, bottom: "-30%" }}>
-                <div className="chatStyle chatStylebox box-primary direct-chat direct-chat-primary chatStyle" style={{ background: 'url(/assets/images/chat_pattern.png)', backgroundSize: '318px' }} >
+                <div className="chatStyle chatStylebox box-primary direct-chat direct-chat-primary chatStyle" style={{ background: 'url(/assets/images/chat_pattern.png)', backgroundSize: '318px', filter: 'drop-shadow(1px 1px 1px black)' }} >
                     <div className="box-header with-border" style={{ height: "40px" }}>
 
                         <div className="box-tools pull-right">
@@ -63,7 +65,7 @@ const Chat = ({ handleClose, display, msgs, myIcon, userIcon }) => {
                 </div>
             </div>
         </div>
-
+    </>
     )
 }
 
