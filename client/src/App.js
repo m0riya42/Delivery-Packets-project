@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/Home'
 import Manager from './pages/Manager';
+import Worker from './pages/Worker';
 import Preloder from './components/Layout/Preloader';
 import NavBar from './components/Layout/NavBar';
 import Footer from './components/Layout/Footer';
@@ -63,13 +64,15 @@ const App = () => {
   const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
 
-  const authenticateHandler = ({ type, userName }) => {
+  const authenticateHandler = ({ type, userName, user}) => {
     setAuth({ type, userName })
   }
   const setPagesHandler = (pages) => {
     setPages(pages)
   }
+
 
   useEffect(() => {
     //console.log(pages)
@@ -81,6 +84,7 @@ const App = () => {
   const onLoad = () => {
     if (auth) { //-------------->Manager/User
       auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
+      auth.type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
       //console.log(auth)
     }
     else {

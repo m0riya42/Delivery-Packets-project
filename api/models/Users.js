@@ -36,7 +36,7 @@ module.exports = db => {
     };
 
     schema.statics.REQUEST = async function () {
-        console.log('I am in REQUEST function');
+        //console.log('I am in REQUEST function');
         // no arguments - bring all at once
         const args = Array.from(arguments); // [...arguments]
         if (args.length === 0) {
@@ -50,7 +50,7 @@ module.exports = db => {
         let callback = arguments[arguments.length - 1];
         if (callback instanceof Function) {
             let asynch = callback.constructor.name === 'AsyncFunction';
-            console.log(`request: with ${asynch ? 'async' : 'sync'} callback`);
+            //console.log(`request: with ${asynch ? 'async' : 'sync'} callback`);
             args.pop();
             let cursor, user;
             try {
@@ -73,12 +73,12 @@ module.exports = db => {
 
         // request by id as a hexadecimal string
         if (args.length === 1 && typeof args[0] === "string") {
-            console.log("request: by ID");
+            //console.log("request: by ID");
             return this.findById(args[0]).select('-__v -_id').exec();
         }
 
         // There is no callback - bring requested at once
-        console.log(`request: without callback: ${JSON.stringify(args)}`)
+        //console.log(`request: without callback: ${JSON.stringify(args)}`)
         //console.log(await this.find(...args).exec());
         let cursor = await this.find(...args).select('-__v -_id').cursor();
         let result = [];

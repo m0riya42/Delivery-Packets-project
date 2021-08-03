@@ -7,24 +7,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 
-// async function loginUser(credentials) {
-//     console.log(credentials)
-//     // return fetch('http://localhost:9000/login', {
-//     //     method: 'Post',
-//     //     headers: {
-//     //         'Content-Type': 'application/json'
-//     //     },
-//     //     body: JSON.stringify(credentials)
-//     // })
-//     //     .then(data => {
-//     //         // data.json();
-//     //         console.log(data)
-//     //     })
-// }
-
-
-
-
 const SignIn = ({ handleClose, display, setToken, authenticate }) => {
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
