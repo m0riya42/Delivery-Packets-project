@@ -4,7 +4,7 @@ import './Manager.css'
 import UsersInfo from './managerPages/UsersInfo';
 //import { matchPath } from "react-router";
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
-import Schedule from './managerPages/Schedule';
+import Schedule from '../components/Accessories/Schedule';
 import Chart from './managerPages/Chart';
 import Maps from './managerPages/Maps';
 import Blog from '../components/Layout/Blog';
@@ -12,6 +12,7 @@ import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
 import socketClient from "socket.io-client";
 import axios from 'axios';
+import ScheduleInfo from './managerPages/ScheduleInfo';
 
 
 // var io = require('socket.io-client')
@@ -114,7 +115,7 @@ const Manager = ({ pagesHandler }) => {
           <UsersInfo />
         </Route>
         <Route path="/Schedule" >
-          <Schedule />
+          <ScheduleInfo />
         </Route>
         <Route path="/Charts" >
           <Chart />
@@ -124,9 +125,9 @@ const Manager = ({ pagesHandler }) => {
         </Route>
         <Route path="/ManagerHome" >
           <CreatePost handleClose={closeEditPost} display={isOpen} handleSave={publishPost} />
-          <div style={{ background: 'white' }}>
+          <div style={{ background: 'transparent' }}>
 
-            <Button onClick={openEditPost} variant="outlined" color="primary" style={{ right: '-87%', width: '159px', 'font-size': '23px', height: '61px', }}>
+            <Button onClick={openEditPost} variant="outlined" color="primary" style={{ background: 'white', right: '-87%', width: '159px', 'font-size': '23px', height: '61px', color: "black",border: '1px solid black'}}>
               פוסט חדש
             </Button>
           </div>

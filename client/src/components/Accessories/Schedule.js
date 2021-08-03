@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -15,7 +15,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import deLocale from "date-fns/locale/he";
 import axios from 'axios';
 import { Container } from '@material-ui/core';
-import MapCard from '../../components/Accessories/MapCard';
+import MapCard from './MapCard';
 
 
 // var users = []
@@ -36,8 +36,10 @@ const useStyles = makeStyles({
 });
 
 
-const Schedule = () => {
-     const classes = useStyles();
+const Schedule = ({handlers}) => {
+     //const classes = useStyles();
+
+
 
     // function createData(id, fullName, address) {
     //     return { id, fullName, address };
@@ -130,7 +132,7 @@ const Schedule = () => {
                 <Grid container spacing={4} direction="row-reverse">
                     {
                         location.map((item) => {
-                            return <MapCard location={item} />
+                            return <MapCard location={item} handleOpenTable={handlers.openTable} />
                         })
                     }
                 </Grid>

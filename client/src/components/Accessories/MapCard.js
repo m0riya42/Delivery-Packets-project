@@ -31,7 +31,8 @@ const useStyles = makeStyles({
         height: '150px', width: '150px', " margin-left": "28%", "margin-top": "6%"
     }
 });
-const MapCard = ({ location }) => {
+
+const MapCard = ({ location, handleOpenTable }) => {
 
     const classes = useStyles();
 
@@ -58,7 +59,7 @@ const MapCard = ({ location }) => {
                     {/* <Button size="large" color="primary" >
                         בחר מחלק
                     </Button> */}
-                    <input type="button" className="btn btn-primary px-4" value="בחר מחלק" style={{ background: "#3bb6b1", fontWeight: 'bold', marginRight: "20px" }} />
+                    <input type="button" className="btn btn-primary px-4" onClick={handleOpenTable} value="בחר מחלק" style={{ background: "#3bb6b1", fontWeight: 'bold', marginRight: "20px" }} />
                 </CardActions>
 
             </Card>

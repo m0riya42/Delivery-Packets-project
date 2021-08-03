@@ -17,7 +17,7 @@ axios.post('http://localhost:9000/usersInfo/getUsers')
     })
 
 
-const UsersInfo = ({ pages }) => {
+const UsersInfo = () => {
 
     const [editUserIsOpen, setEditUserIsOpen] = useState(false);
     const [chatIsOpen, setChatIsOpen] = useState(false);
