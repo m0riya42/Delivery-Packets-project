@@ -25,10 +25,6 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
     }, [user]);
     console.log(userInformation)
 
-    // const updateUser = () => {
-    //     console.log('update user')
-    //     return userInformation
-    // }
     const updateUser = () => {
         console.log('update user')
         console.log(userInformation)

@@ -53,9 +53,7 @@ const MapCard = ({ location, handleOpenTable }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
-                    {/* <Button size="large" color="primary" >
-                        בחר מחלק
-                    </Button> */}
+                    
                     <input type="button" className="btn btn-primary px-4" onClick={handleOpenTable} value="בחר מחלק" style={{ background: "#3bb6b1", fontWeight: 'bold', marginRight: "20px" }} />
                 </CardActions>
 

@@ -27,6 +27,12 @@ axios.post('http://localhost:9000/usersInfo/getUsers')
 
 
 
+    var cityDict = {
+        'צפון':['קריית-שמונה'],
+        'דרום':['אשדוד'],
+        'מרכז':['תל-אביב'],
+        'ירושלים':['ירושלים']
+    }
 
 
 const TableSchedule = ({ location, handleClose, display, handleSave }) => {
@@ -39,10 +45,18 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
 
     const rows = [];
 
+    let location2 = "ירושלים";
+    let cityList = cityDict[location2]
     users.map((user) => {
-        let city = user.address.split(' ')[0];
-        if ((user.type == 'עובד')){
-            rows.push(createData(user.id, user.fullName, user.address))
+        let usercity = user.address.split(' ')[0];
+        if (user.type == 'עובד') {
+            cityList.map((city) => {
+                console.log(city)
+                console.log(usercity)
+                if (usercity == city){
+                    rows.push(createData(user.id, user.fullName, user.address))
+                }
+            })
         }
     })
 
@@ -56,12 +70,12 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                 <div className="main-body">
                     <div className="row" style={{ display: "flex" }}>
                         <div className="col-lg-12">
-                            <div className="card" style={{ height: "400px" }}>
+                            <div className="card" style={{ height: "350px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
                                     </span>
-                                    <br />
+                                    <br /><br/>
                                     <TableContainer component={Paper} style={{ margin: "auto", width: "80%", boxShadow:" 0px 0px 0px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0px rgb(0 0 0 / 14%), 0px 0px 0px 0px rgb(0 0 0 / 12%)" }}>
                                         <Table className={classes.table} size="small" aria-label="a dense table">
                                             <TableHead>
@@ -93,14 +107,6 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                                 </div>
                             </div>
                         </div>
-
-
-                        {/* <div className="col-lg-8" dir="rtl">
-                            <div className="card">
-                                <div className="card-body row mb-3" dir="rtl">
-                                </div>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

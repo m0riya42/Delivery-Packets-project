@@ -7,13 +7,13 @@ import Schedule from '../../components/Accessories/Schedule';
 
 const ScheduleInfo = () => {
     const [tableIsOpen, setopenTable] = useState(false);
+    const [mapLocation, setmapLocation] = useState();
 
 
     const handlers = {
       
         openTable: () => {
-            console.log('Table');
-
+            //console.log('Table');
             setopenTable(true)
         },
         closeTable: () => {
@@ -26,7 +26,7 @@ const ScheduleInfo = () => {
 
     return (
         <>
-            <TableSchedule  display={tableIsOpen} handleClose={handlers.closeTable} ></TableSchedule>
+             <TableSchedule location={mapLocation} display={tableIsOpen} handleClose={handlers.closeTable} ></TableSchedule> 
             <Schedule handlers={handlers} ></Schedule>
 
         </>

@@ -94,7 +94,7 @@ router.post('/addUser', async function (req, res, next) {
     }
   });
   try {
-    users = await User.create(newuser);
+    await User.create(newuser);
     res.send(200);
   }
   catch (err) { console.log(`Failed: ${err}`) }
@@ -105,7 +105,7 @@ router.post('/updateUser', async function (req, res, next) {
   let user = req.body;
   console.log(user)
   try {
-    users = await User.UPDATEUSER(user);
+   await User.UPDATEUSER(user);
     res.send(200);
   }
   catch (err) { console.log(`Failed: ${err}`) }
