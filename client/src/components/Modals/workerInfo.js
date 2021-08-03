@@ -17,22 +17,22 @@ const WorkerInfo = ({ user, handleSave }) => {
     useEffect(() => {
         setValues(user);
     }, [user]);
-    console.log(userInformation)
+    //console.log(userInformation)
 
    
     const updateUser = () => {
         console.log('update user')
         console.log(userInformation)
        
-        axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
-            .then(res => {
-                console.log(res);
-                //window.location.reload()
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
+    //     axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
+    //         .then(res => {
+    //             console.log(res);
+    //             //window.location.reload()
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+     }
 
     const handleChange = (prop) => (event) => {
         console.log('on change')

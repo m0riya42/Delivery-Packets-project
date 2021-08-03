@@ -26,13 +26,6 @@ socket.on('connect', function (socket) {
 
 const Chat = ({ handleClose, display, msgs, senderIcon, reciverIcon, reciverName }) => {
 
-
-
-
-
-
-
-
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
     return (<>  <div style=

@@ -17,11 +17,11 @@ const Worker = ({ pagesHandler}) => {
     });
 
     const user= {
-        type: "עובד",
+        type: "מנהל",
         id: "208994535",
         fullName: "אלכס כהן",
         userName: "Alex",
-        password: "12121212", 
+        password: "$2b$10$oAGFqI9C4d8wr6CQnzyYwu6d.sr/KhJg18oNh4kZw4ioMa6Nb5ATC", 
         phone: "050-4736633",
         email: "alex@gmail.com", 
         address: "ירושלים עזה 18", 

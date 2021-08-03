@@ -16,7 +16,6 @@ router.post('/login', async function (req, res, next) {
   console.log("i am here")
   var userName = req.body.username;
   var password = req.body.password;
-
   // Inquire all the users at once and get it as an array
   let users = [];
   try {

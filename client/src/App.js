@@ -83,8 +83,13 @@ const App = () => {
 
   const onLoad = () => {
     if (auth) { //-------------->Manager/User
-      auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
-      auth.type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
+      if (auth.type == "manager"){
+        auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
+
+      }
+      if (auth.type == "worker"){
+        auth.type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
+      }
       //console.log(auth)
     }
     else {

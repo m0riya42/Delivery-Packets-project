@@ -71,12 +71,12 @@ const CreatePost = ({ handleClose, display, handleSave }) => {
 
     return (
         <modal className="popup-box" style={{ display: inDisplay }}>
-            <div className="container" style={{ marginTop: "50px" }}>
+            <div className="container" style={{ marginTop: "20px" }}>
                 <div className="main-body">
                     <div className="row" style={{ display: "flex" }}>
                         {/* closeIcon */}
                         <div className="col-lg-3">
-                            <div className="card" style={{ height: "707px" }}>
+                            <div className="card" style={{ height: "600px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
@@ -92,8 +92,8 @@ const CreatePost = ({ handleClose, display, handleSave }) => {
                         </div>
 
 
-                        <div className="col-lg-9" dir="rtl">
-                            <div className="card">
+                        <div className="col-lg-9" dir="rtl" >
+                            <div className="card" style={{height: "600px" }}>
                                 <div className="card-body row mb-3" dir="rtl">
                                     {/* <form ref={formRef}> */}
                                     <TextField fullWidth
@@ -116,14 +116,14 @@ const CreatePost = ({ handleClose, display, handleSave }) => {
                                         <div >
                                             <label for="about">טקסט</label>
                                             <input name="about" type="hidden" />
-                                            <div style={{ height: '265px' }} id="editor-container" />
+                                            <div style={{ height: '230px' }} id="editor-container" />
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div style={{ display: 'flex', width: '100%', 'justifyContent': 'center', 'alignItems': 'center', height: '148px' }} >
-                                    <Input type="button" className="btn btn-primary px-4" value="פרסם" style={{ background: "#3bb6b1", fontWeight: 'bold' }} onClick={publishPost} />
+                                    <Input type="button" className="btn btn-primary px-4" value="פרסם" style={{ background: "#3bb6b1", fontWeight: 'bold', width: "400px" }} onClick={publishPost} />
                                 </div>
                             </div>
                         </div>
