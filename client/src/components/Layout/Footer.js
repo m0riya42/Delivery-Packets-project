@@ -28,9 +28,9 @@ const Footer = () => {
                                     <li>-  <a href="https://www.facebook.com"><i className="fa fa-facebook"></i></a></li>
                                     <li><a href="https://www.twitter.com"><i className="fa fa-twitter"></i></a></li>
                                     <li><a href="https://www.linkedin.com/"><i className="fa fa-linkedin"></i></a></li>
-                                    {/* <li><a href=""><i className="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.google.co.il/"><i className="fa fa-google-plus"></i></a></li>
                                     <li><a href=""><i className="fa fa-behance"></i></a></li>
-                                    <li><a href=""><i className="fa fa-dribbble"></i></a>  - </li> */}
+                                    <li><a href=""><i className="fa fa-dribbble"></i></a>  - </li> 
                                 </ul>
 
                             </div>

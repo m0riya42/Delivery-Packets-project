@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import { useStyles } from './utils'
+import axios from 'axios';
 
 // import { create } from 'jss';
 // import rtl from 'jss-rtl';
@@ -24,9 +25,22 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
     }, [user]);
     console.log(userInformation)
 
+    // const updateUser = () => {
+    //     console.log('update user')
+    //     return userInformation
+    // }
     const updateUser = () => {
         console.log('update user')
-        return userInformation
+        console.log(userInformation)
+       
+        axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     const handleChange = (prop) => (event) => {
@@ -130,20 +144,8 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
 
                                     />
                                     <div style={{ display: 'flex', width: '100%', 'justify-content': 'center', 'align-items': 'center' }} >
-                                        <Input type="button" onClick={() => { console.log('save'); handleSave(updateUser()) }} className="btn btn-primary px-4" value="שמור שינויים" style={{ background: "#3bb6b1", fontWeight: 'bold' }} />
+                                        <Input type="button" onClick={() => { updateUser() }} className="btn btn-primary px-4" value="שמור שינויים" style={{ background: "#3bb6b1", fontWeight: 'bold' }} />
                                     </div>
-
-
-                                    {/* </FormControl> 
-                                    <FormControl fullWidth className={classes.margin}>
-                                        <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
-                                        <Input
-                                            id="standard-adornment-amount"
-                                            value={values.amount}
-                                            onChange={handleChange('amount')}
-                                            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                                        />
-                                    </FormControl> */}
                                 </div>
                             </div>
                         </div>

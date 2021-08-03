@@ -88,7 +88,15 @@ module.exports = db => {
         }
         return result;
     };
-    schema.statics.DELETE = async function (id) { return this.findByIdAndRemove(id).select('-__v -_id').exec(); };
+    schema.statics.DELETE = async function (userid) { 
+        console.log("in delete")
+       return this.findByIdAndRemove(id).select('-__v -_id').exec(); };
+
+    schema.statics.UPDATEUSER = async function (user) {
+        console.log("in update");
+        return this.findOneAndUpdate({id: user.id}, user);
+       
+    }
 
     // the schema is useless so far
     // we need to create a model using it

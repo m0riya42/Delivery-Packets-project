@@ -36,10 +36,10 @@ router.post('/login', async function (req, res, next) {
   bcrypt.compare(req.body.password, hashUser, function (err, result) {
     const userWithoutPass = lodash.omit(currentUser, ['password'])
     if (result) {
-      // console.log(userWithoutPass)
       const createToken = jwt.sign({ password }, 'jwtSecret', {
         expiresIn: 24 * 60 * 60 * 1000,
       })
+      //res.session.user = currentUser;
       res.send({
         token: createToken,
         message: "success",
@@ -47,7 +47,6 @@ router.post('/login', async function (req, res, next) {
       });
     }
     else {
-      // res.send({ message: 'Wrong username/password!' }).status(404);
       res.sendStatus(404);
     }
   });
@@ -73,5 +72,44 @@ router.post('/getUsers', async function (req, res, next) {
   res.send(users);
 })
 
+router.post('/addUser', async function (req, res, next) {
+  console.log("add user");
+  let user = req.body;
+  let newUser = {};
+  console.log(user)
+
+  await bcrypt.hash(user.password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
+    }
+    newuser = {
+      type: user.type,
+      id: user.id,
+      fullName: user.fullName,
+      userName: user.userName,
+      password: hash,
+      phone: user.phone,
+      email: user.email,
+      address: user.address,
+      image: user.image
+    }
+  });
+  try {
+    users = await User.create(newuser);
+    res.send(200);
+  }
+  catch (err) { console.log(`Failed: ${err}`) }
+})
+
+router.post('/updateUser', async function (req, res, next) {
+  console.log("update user");
+  let user = req.body;
+  console.log(user)
+  try {
+    users = await User.UPDATEUSER(user);
+    res.send(200);
+  }
+  catch (err) { console.log(`Failed: ${err}`) }
+})
 
 module.exports = router;

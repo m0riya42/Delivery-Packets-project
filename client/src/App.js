@@ -72,7 +72,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(pages)
+    //console.log(pages)
     setPages(pages)
   }, [pages,])
 
@@ -81,7 +81,7 @@ const App = () => {
   const onLoad = () => {
     if (auth) { //-------------->Manager/User
       auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
-      console.log(auth)
+      //console.log(auth)
     }
     else {
       setPagesHandler([{ ref: "#home", text: "עמוד הבית" }, { ref: "#features", text: "אודותינו" }, { ref: "#activity", text: "הפעילות שלנו" }, { ref: "#text", text: "השותפים שלנו" }, { ref: "#contact", text: "צרו קשר" }]

@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './EditUser.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import clsx from 'clsx';
-import Input from '@material-ui/core/Input';
-import TextField from '@material-ui/core/TextField';
 import { useStyles } from './utils'
 
 import Table from '@material-ui/core/Table';

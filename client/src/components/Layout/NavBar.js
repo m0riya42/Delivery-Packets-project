@@ -17,8 +17,11 @@ const NavBar = ({ pages }) => {
 
             <div className="container" style={{ display: 'block' }}>
                 <div className="attr-nav" style={{ float: "left" }}>
-                    <ul>
-                        <li className="search"><i className="fa fa-user"></i></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="log">
+                            <a href="#myModal" data-toggle="modal">
+                                <span class="fa fa-user"></span> </a>
+                        </li>
                     </ul>
                 </div>
 
