@@ -10,6 +10,7 @@ import axios from 'axios';
 
 
 
+
 const WorkerInfo = ({ user, handleSave }) => {
     const classes = useStyles();
     //console.log(user)
@@ -17,21 +18,18 @@ const WorkerInfo = ({ user, handleSave }) => {
     useEffect(() => {
         setValues(user);
     }, [user]);
-    //console.log(userInformation)
-
    
     const updateUser = () => {
         console.log('update user')
-        console.log(userInformation)
-       
-    //     axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
-    //         .then(res => {
-    //             console.log(res);
-    //             //window.location.reload()
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         })
+        console.log(userInformation)   
+        axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
+            .then(res => {
+                console.log(res);
+                window.location.reload()
+            })
+            .catch(err => {
+                console.log(err);
+            })
      }
 
     const handleChange = (prop) => (event) => {
@@ -129,7 +127,7 @@ const WorkerInfo = ({ user, handleSave }) => {
 
                                     />
                                     <div style={{ display: 'flex', width: '100%', 'justify-content': 'center', 'align-items': 'center' }} >
-                                        <Input type="button" className="btn btn-primary px-4" onClick = {updateUser()} value="שמור שינויים" style={{ background: "#3bb6b1", fontWeight: 'bold' }} />
+                                        <Input type="button" className="btn btn-primary px-4" onClick = {() => updateUser(userInformation)} value="שמור שינויים" style={{ background: "#3bb6b1", fontWeight: 'bold' }} />
                                     </div>
                                 </div>
                             </div>

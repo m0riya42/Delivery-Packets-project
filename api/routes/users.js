@@ -109,6 +109,6 @@ router.post('/updateUser', async function (req, res, next) {
     res.send(200);
   }
   catch (err) { console.log(`Failed: ${err}`) }
-})
+ })
 
 module.exports = router;
