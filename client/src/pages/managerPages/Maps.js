@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 // import { useEffect } from 'react';
 // import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 //import DateFnsUtils from '@date-io/date-fns';
 //import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-import ReactMapGL from "react-map-gl" 
+import ReactMapGL from "react-map-gl"
+//import Geocode from "react-geocode";
+import 'mapbox-gl/dist/mapbox-gl.css'
+import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import MapGL from 'react-map-gl'
+import Geocoder from 'react-map-gl-geocoder'
 
 
-
+const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'
 
 const Maps = () => {
 
@@ -20,9 +25,9 @@ const Maps = () => {
         latitude: 31.770809,
         longitude: 35.197460,
         zoom: 9,
-        width: "80vw", 
+        width: "80vw",
         height: "80vh",
-        
+
     });
 
     return (
@@ -44,15 +49,16 @@ const Maps = () => {
                 </Grid>
             </MuiPickersUtilsProvider>  */}
 
-            <div style={{marginLeft: "100px"}}>
-                <ReactMapGL {...viewport} 
-                mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
-                onViewportChange={(viewport) => {setViewport(viewport)}}
-                //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
-                mapStyle="mapbox://styles/mapbox/streets-v11"
+            <div style={{ marginLeft: "100px" }}>
+                <ReactMapGL {...viewport}
+                    mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
+                    onViewportChange={(viewport) => { setViewport(viewport) }}
+                    //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
+                    mapStyle="mapbox://styles/mapbox/streets-v11"
                 >
-
+                  
                 </ReactMapGL>
+
             </div>
         </div>
     );

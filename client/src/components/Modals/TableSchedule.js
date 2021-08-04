@@ -51,8 +51,8 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
         let usercity = user.address.split(' ')[0];
         if (user.type == 'עובד') {
             cityList.map((city) => {
-                console.log(city)
-                console.log(usercity)
+                //console.log(city)
+                //console.log(usercity)
                 if (usercity == city){
                     rows.push(createData(user.id, user.fullName, user.address))
                 }

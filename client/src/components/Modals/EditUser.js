@@ -18,16 +18,16 @@ import axios from 'axios';
 
 const EditUser = ({ user, handleClose, display, handleSave }) => {
     const classes = useStyles();
-    console.log(user)
+    //console.log(user)
     const [userInformation, setValues] = useState({});
     useEffect(() => {
         setValues(user);
     }, [user]);
-    console.log(userInformation)
+    //console.log(userInformation)
 
     const updateUser = () => {
         console.log('update user')
-        console.log(userInformation)
+        //console.log(userInformation)
        
         axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
             .then(res => {
