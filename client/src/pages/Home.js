@@ -5,7 +5,9 @@ import AboutSection from './HomeSections/AboutSection'
 import OurActivitiesSection from './HomeSections/OurActivitiesSection'
 import OurPartnersSection from './HomeSections/OurPartnersSection'
 import SignIn from '../components/Modals/SignIn'
-const Home = ({ authenticate }) => {
+import { Switch, Redirect } from 'react-router-dom'
+const Home = ({ authenticate, token }) => {
+    // const Home = ({ authenticate, token, isOpen, openSignInPopUp, closeSignInPopUp }) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const openSignInPopUp = () => {
@@ -15,8 +17,17 @@ const Home = ({ authenticate }) => {
         setIsOpen(false);
     }
 
+    // console.log(token, "is here?")
+    // console.log(closeSignInPopUp)
     return (<div>
         <div className="culmn">
+            {
+                (!token) ? (
+                    <Switch>
+                        <Redirect to="/" exact />
+                    </Switch>) : ""
+
+            }
             <SignIn handleClose={closeSignInPopUp} display={isOpen} authenticate={authenticate} />
             {/* setToken={setToken} /> */}
             <WelcomeSection />

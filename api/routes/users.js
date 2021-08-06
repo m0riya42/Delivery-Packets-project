@@ -12,10 +12,10 @@ const User = require('../models')("users");
 
 /* POST users listing. */
 router.post('/login', async function (req, res, next) {
+
+  let { username: userName, password } = req.body
   //the password here is visable and its wrong!
   console.log("i am here")
-  var userName = req.body.username;
-  var password = req.body.password;
   // Inquire all the users at once and get it as an array
   let users = [];
   try {
@@ -38,11 +38,18 @@ router.post('/login', async function (req, res, next) {
       const createToken = jwt.sign({ password }, 'jwtSecret', {
         expiresIn: 24 * 60 * 60 * 1000,
       })
+
+      res.cookie('token', createToken, { httpOnly: true }); //MAKE SURE IT'LL WORK
+
       //res.session.user = currentUser;
-      res.send({
-        token: createToken,
+      res.json({
+        token: {
+          "token": createToken,
+          "type": userWithoutPass.type === "מנהל" ? 'manager' : 'worker',
+          "userName": userWithoutPass.userName
+        },
         message: "success",
-        user: userWithoutPass
+        // user: userWithoutPass
       });
     }
     else {
@@ -105,10 +112,10 @@ router.post('/updateUser', async function (req, res, next) {
   let user = req.body;
   console.log(user)
   try {
-   await User.UPDATEUSER(user);
+    await User.UPDATEUSER(user);
     res.send(200);
   }
   catch (err) { console.log(`Failed: ${err}`) }
- })
+})
 
 module.exports = router;

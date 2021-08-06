@@ -13,7 +13,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
 
     const [usernameinfo, setUserName] = useState();
     const [passwordinfo, setPassword] = useState();
-
+    // axios.defaults.withCredentials = true;
     const handleSubmit = async e => {
         e.preventDefault();
 
@@ -27,11 +27,13 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
                 //debugger
                 console.log(res);
                 if (res.status === 200) {
+                    console.log('work')
                     // setTimeout(
                     // () => 
                     authenticate({
-                        type: res.data.user.type === "מנהל" ? 'manager' : 'worker', userName: res.data.user.userName, user: res.data.user
+                        token: res.data.token,
                     })
+                    //userName: res.data.user.userName, user: res.data.user,
                     // , 2000)
                 }
                 else {

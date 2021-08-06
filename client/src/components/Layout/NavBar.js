@@ -1,6 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-const NavBar = ({ pages }) => {
+const NavBar = ({ pages, userName, }) => {
+    const logOut = () => {
+
+        //maybe send message to the server
+
+
+        //earse Token from localStorage
+        localStorage.removeItem('token')
+        window.location.reload()
+
+
+    }
+
+
+
+
     return (
         <nav className="navbar navbar-default bootsnav navbar-fixed no-background white">
             {/* <div className="top-search">
@@ -17,10 +32,14 @@ const NavBar = ({ pages }) => {
 
             <div className="container" style={{ display: 'block' }}>
                 <div className="attr-nav" style={{ float: "left" }}>
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul className="nav navbar-nav navbar-right">
                         <li id="log">
                             <a href="#myModal" data-toggle="modal">
-                                <span class="fa fa-user"></span> </a>
+                                <span className="fa fa-user"></span> {userName ? userName : 'התחבר'}
+                                {
+                                    userName && <div onClick={logOut} style={{ display: 'inline' }}><span className="fa fa-sign-out" style={{ marginLeft: '22px' }}></span>התנתק</div>
+                                }
+                            </a>
                         </li>
                     </ul>
                 </div>

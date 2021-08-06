@@ -59,7 +59,7 @@ const Manager = ({ pagesHandler }) => {
   });
 
 
-  useEffect(() => {
+  const requestListOfPosts = () => {
     let blogData = []
     axios.post('http://localhost:9000/blog')
       .then(res => {
@@ -72,8 +72,10 @@ const Manager = ({ pagesHandler }) => {
       .catch(err => {
         console.log(err);
       })
-    // },[]
-    //get post from server?
+  }
+
+  useEffect(() => {
+    requestListOfPosts()
   }, []);
 
 
@@ -93,19 +95,14 @@ const Manager = ({ pagesHandler }) => {
     axios.post('http://localhost:9000/blog/createRightPost', body)
       .then(res => {
         console.log(res);
+
+        //update list 
+        requestListOfPosts()
       })
       .catch(err => {
         console.log(err);
       })
-    //update view?
 
-    // updateListOfPosts(newList)
-
-    // const newList = {
-    //   ...listOfPosts, ...{
-    //     rightPosts: newPost
-    //   }
-    // }
   }
 
   return (
@@ -127,7 +124,7 @@ const Manager = ({ pagesHandler }) => {
           <CreatePost handleClose={closeEditPost} display={isOpen} handleSave={publishPost} />
           <div style={{ background: 'transparent' }}>
 
-            <Button onClick={openEditPost} variant="outlined" color="primary" style={{ background: 'white', right: '-87%', width: '159px', 'font-size': '23px', height: '61px', color: "black",border: '1px solid black'}}>
+            <Button onClick={openEditPost} variant="outlined" color="primary" style={{ background: 'white', right: '-87%', width: '159px', 'font-size': '23px', height: '61px', color: "black", border: '1px solid black' }}>
               פוסט חדש
             </Button>
           </div>

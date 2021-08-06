@@ -19,55 +19,38 @@ import socketClient from "socket.io-client";
 // })
 
 const App = () => {
-  // const [name, setName] = useState('');
-  // const [room, setRoom] = useState('');
-  // const [users, setUsers] = useState('');
-  // const [message, setMessage] = useState('');
-  // const [messages, setMessages] = useState([]);
 
-
-  // useEffect(() => {
-  // const { name, room } = queryString.parse(location.search);
-
-  // socket = io(ENDPOINT);
-
-  // setRoom(room);
-  // setName(name)
-
-  //   socket.emit('join', { name, room }, (error) => {
-  //     if (error) {
-  //       alert(error);
-  //     }
-  //   });
-  // }, [ENDPOINT, location.search]);
-
-  // useEffect(() => {
-  //   socket.on('message', message => {
-  //     setMessages(messages => [...messages, message]);
-  //   });
-
-  //   socket.on("roomData", ({ users }) => {
-  //     setUsers(users);
-  //   });
-  // }, []);
-
-  // const sendMessage = (event) => {
-  //   event.preventDefault();
-
-  //   if (message) {
-  //     socket.emit('sendMessage', message, () => setMessage(''));
-  //   }
+  // const [isOpen, setIsOpen] = useState(false);
+  // const openSignInPopUp = () => {
+  //   setIsOpen(true);
+  //   console.log(isOpen)
+  // }
+  // const closeSignInPopUp = () => {
+  //   setIsOpen(false);
   // }
 
 
 
-  const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
+  const storedJwt = localStorage.getItem('token');
+  const [jwt, setJwt] = useState(storedJwt);
+  // const [jwt, setJwt] = useState(storedJwt || null);
+
+  // const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
-  const [userInfo, setUserInfo] = useState(null);
+  // const [userInfo, setUserInfo] = useState(null);
 
-  const authenticateHandler = ({ type, userName, user}) => {
-    setAuth({ type, userName })
+  const authenticateHandler = ({ type, userName, user, token }) => {
+    //save token
+    localStorage.setItem('token', JSON.stringify(token));
+    console.log(token)
+    console.log(jwt)
+    setJwt(JSON.stringify(token));
+    console.log(jwt)
+
+
+    //set Authentication
+    // setAuth({ type, userName, user })
   }
   const setPagesHandler = (pages) => {
     setPages(pages)
@@ -82,27 +65,51 @@ const App = () => {
 
 
   const onLoad = () => {
-    if (auth) { //-------------->Manager/User
-      if (auth.type == "manager"){
-        auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
+
+    if (jwt) { //-------------->Manager/User
+      const type = JSON.parse(jwt).type;
+      console.log('onLoad')
+      console.log(JSON.parse(jwt).type)
+      if (type === "manager") {
+        type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
 
       }
-      if (auth.type == "worker"){
-        auth.type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
+      else if (type === "worker") {
+        type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
       }
       //console.log(auth)
     }
     else {
       setPagesHandler([{ ref: "#home", text: "עמוד הבית" }, { ref: "#features", text: "אודותינו" }, { ref: "#activity", text: "הפעילות שלנו" }, { ref: "#text", text: "השותפים שלנו" }, { ref: "#contact", text: "צרו קשר" }]
       )
-      setReturnVal(<Home authenticate={authenticateHandler} />)
+      setReturnVal(<Home authenticate={authenticateHandler} token={jwt} />)
+      // setReturnVal(<Home authenticate={authenticateHandler} token={jwt} isOpen={isOpen} openSignInPopUp={openSignInPopUp} closeSignInPopUp={closeSignInPopUp} />)
     }
   }
-  useEffect(onLoad, [auth])
+  useEffect(onLoad, [jwt])
+  // const onLoad = () => {
+  //   if (auth) { //-------------->Manager/User
+  //     if (auth.type === "manager") {
+  //       auth.type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
+
+  //     }
+  //     else if (auth.type === "worker") {
+  //       auth.type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
+  //     }
+  //     //console.log(auth)
+  //   }
+  //   else {
+  //     setPagesHandler([{ ref: "#home", text: "עמוד הבית" }, { ref: "#features", text: "אודותינו" }, { ref: "#activity", text: "הפעילות שלנו" }, { ref: "#text", text: "השותפים שלנו" }, { ref: "#contact", text: "צרו קשר" }]
+  //     )
+  //     setReturnVal(<Home authenticate={authenticateHandler} />)
+  //   }
+  // }
+  // useEffect(onLoad, [auth])
+  // const type = JSON.parse(jwt).userName;
 
   return <Router>
     <Preloder />
-    <NavBar pages={pages} />
+    <NavBar pages={pages} userName={JSON.parse(jwt)?.userName} />
     {returnVal}
     <Footer />
   </Router>

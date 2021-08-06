@@ -23,6 +23,7 @@ router.post('/createRightPost', async function (req, res, next) {
     const rightPost = req.body.rightPost;
     try {
         await RightPosts.CREATE(rightPost);
+        res.sendStatus(200)
     }
     catch (err) { console.log(`Failed: ${err}`) }
     // res.sendStatus()

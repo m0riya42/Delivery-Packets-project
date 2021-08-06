@@ -87,6 +87,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                                         // style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0% !important' }}
                                         value={userInformation.id}
                                         onChange={handleChange('id')}
+                                        disabled
                                     />
                                     <TextField fullWidth
                                         label="שם מלא"

@@ -50,14 +50,14 @@ const Maps = () => {
             </MuiPickersUtilsProvider>  */}
 
             <div style={{ marginLeft: "100px" }}>
-                <ReactMapGL {...viewport}
+                {/* <ReactMapGL {...viewport}
                     mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
                     onViewportChange={(viewport) => { setViewport(viewport) }}
                     //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
                     mapStyle="mapbox://styles/mapbox/streets-v11"
                 >
                   
-                </ReactMapGL>
+                </ReactMapGL> */}
 
             </div>
         </div>
