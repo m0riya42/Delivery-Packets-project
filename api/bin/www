@@ -45,10 +45,11 @@ var io = require('socket.io')(server, {
 });
 io.on('connection', (socket) => { /* socket object may be used to send specific messages to the new connected client */
 
-  socket.on('message', ({ name, message }) => {
-    io.emit('message', { name, message })
+  socket.on('message', ({ name, message, date }) => {
+    io.emit('message', { name, message, date })
+    console.log({ name, message, date })
   })
-
+  // console.log(socket)
   // console.log(socket.id); // x8WIv7-mJelg7on_ALbx
 
   // console.log('new client connected'.green);

@@ -19,19 +19,19 @@ socket.on('connect', function (socket) {
 
 
 //get messages from the server and than use socket io to communicate
-const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ name: "אלכס כהן", message: "יש לי משימה בשבילך" }, { name: reciverName, message: "אוקי" }] }) => {
+const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ name: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { name: reciverName, message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
 
     const [chat, setChat] = useState(msgs);
 
-    socket.on('message', ({ name, message }) => {
-        // setChat([...chat, { name, message }])
-        console.log('update', name, message)
-    })
+    // socket.on('message', ({ name, message, date }) => {
+    //     // setChat([...chat, { name, message }])
+    //     console.log('update', name, message)
+    // })
     useEffect(() => {
         // console.log('now')
-        socket.on('message', ({ name, message }) => {
-            setChat([...chat, { name, message }])
-            console.log('update', name, message)
+        socket.on('message', ({ name, message, date }) => {
+            setChat([...chat, { name, message, date }])
+            console.log('update', name, message, date)
         })
     })
 
@@ -40,7 +40,7 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
         // setSenderText(senderText);
 
         //send text to the server
-        socket.emit('message', { name: senderName, message: senderText })
+        socket.emit('message', { name: senderName, message: senderText, date: new Date() })
         //update ui?
 
     }
@@ -67,8 +67,8 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
                     <div className="box-body">
                         <div className="direct-chat-messages" style={{ height: "300px" }}>
                             {
-                                chat.map(({ name, message }, index) => {
-                                    return name === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} />
+                                chat.map(({ name, message, date }, index) => {
+                                    return name === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
                                 })
                             }
 
