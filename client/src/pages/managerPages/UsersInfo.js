@@ -8,12 +8,9 @@ import axios from 'axios';
 var users = []
 axios.post('http://localhost:9000/usersInfo/getUsers')
     .then(res => {
-        //console.log(res.data);
         users = res.data;
-        //console.log(users);
     })
     .catch(err => {
-        console.log(err);
     })
 
 
@@ -37,7 +34,6 @@ const UsersInfo = () => {
             setSaveUserIsOpen(!saveUserIsOpen);
         },
         openChat: (user) => {
-            console.log('chat To User');
 
             //maybe to delete:
             handlers.updateUserToEdit(user);
@@ -57,7 +53,6 @@ const UsersInfo = () => {
             handlers.updateUserToEdit(user);
             //Send user information to the server to save it -DB
             users[0] = user
-            console.log(users)
 
 
             //clse window
@@ -82,12 +77,12 @@ const UsersInfo = () => {
         }
 
     }
-
+    console.log(userToEdit)
     return (
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.userName} />
+            <Chat handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>

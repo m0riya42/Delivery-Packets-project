@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Chat.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -17,14 +17,35 @@ socket.on('connect', function (socket) {
 })
 
 
-// const SERVER = "http://localhost:9000";
 
-// var socket = socketClient(SERVER);
-// socket.on('connection', () => {
-//     console.log(`I'm connected with the back-end`);
-// });
+//get messages from the server and than use socket io to communicate
+const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ name: "אלכס כהן", message: "יש לי משימה בשבילך" }, { name: reciverName, message: "אוקי" }] }) => {
 
-const Chat = ({ handleClose, display, msgs, senderIcon, reciverIcon, reciverName }) => {
+    const [chat, setChat] = useState(msgs);
+
+    socket.on('message', ({ name, message }) => {
+        // setChat([...chat, { name, message }])
+        console.log('update', name, message)
+    })
+    useEffect(() => {
+        // console.log('now')
+        socket.on('message', ({ name, message }) => {
+            setChat([...chat, { name, message }])
+            console.log('update', name, message)
+        })
+    })
+
+    const sendText = (senderText) => {
+        console.log(senderText)
+        // setSenderText(senderText);
+
+        //send text to the server
+        socket.emit('message', { name: senderName, message: senderText })
+        //update ui?
+
+    }
+
+
 
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
@@ -32,7 +53,7 @@ const Chat = ({ handleClose, display, msgs, senderIcon, reciverIcon, reciverName
         {/* <div style=
         {{ background: 'red', position: 'relative', bottom: '-108%', height: '37px' }}
         id="chatButton"></div> */}
-        <div className="popup-box" style={{ background: "transparent", display: inDisplay, position: 'realetive', zIndex: 1 }}>
+        <div className="popup-box" style={{ background: "transparent", display: inDisplay, position: 'realetive', height: "auto", top: "38%" }}>
             <div className="col-lg-3" style={{ display: inDisplay, bottom: "-30%" }}>
                 <div className="chatStyle chatStylebox box-primary direct-chat direct-chat-primary chatStyle" style={{ background: 'url(/assets/images/chat_pattern.png)', backgroundSize: '318px', filter: 'drop-shadow(1px 1px 1px black)' }} >
                     <div className="box-header with-border" style={{ height: "40px" }}>
@@ -41,17 +62,21 @@ const Chat = ({ handleClose, display, msgs, senderIcon, reciverIcon, reciverName
                             <span className="close-icon" onClick={handleClose} style={{ display: "contents", marginLeft: -"35px", marginTop: -"14px", color: 'rgb(87 96 91)' }}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </span>
-                            {/* <button type="button" className="btn btn-box-tool" data-widget="remove" onClick={handleClose}><i class="fa fa-times"></i></button> */}
                         </div>
                     </div>
                     <div className="box-body">
                         <div className="direct-chat-messages" style={{ height: "300px" }}>
-                            <SenderChat avatarImg={senderIcon} />
-                            {/* avatarImg, chatText  */}
-                            <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} />
-                            {/* reciverName, avatarImg, chatText */}
+                            {
+                                chat.map(({ name, message }, index) => {
+                                    return name === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} />
+                                })
+                            }
+
+
+                            {/* <SenderChat avatarImg={senderIcon} />
+                            <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} /> */}
                         </div>
-                        <SendButton />
+                        <SendButton sendText={sendText} />
                     </div>
                 </div>
             </div>

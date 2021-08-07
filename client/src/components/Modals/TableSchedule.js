@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditUser.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -27,16 +27,22 @@ axios.post('http://localhost:9000/usersInfo/getUsers')
 
 
 
-    var cityDict = {
-        'צפון':['קריית-שמונה'],
-        'דרום':['אשדוד'],
-        'מרכז':['תל-אביב'],
-        'ירושלים':['ירושלים']
-    }
+var cityDict = {
+    'צפון': ['קריית-שמונה'],
+    'דרום': ['אשדוד'],
+    'מרכז': ['תל-אביב'],
+    'ירושלים': ['ירושלים']
+}
 
 
 const TableSchedule = ({ location, handleClose, display, handleSave }) => {
     const classes = useStyles();
+
+    const [mapLocation, setMapLocation] = useState({});
+    useEffect(() => {
+        setMapLocation(location);
+        console.log(location)
+    }, [location]);
 
 
     function createData(id, fullName, address) {
@@ -53,7 +59,7 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
             cityList.map((city) => {
                 //console.log(city)
                 //console.log(usercity)
-                if (usercity == city){
+                if (usercity == city) {
                     rows.push(createData(user.id, user.fullName, user.address))
                 }
             })
@@ -75,8 +81,8 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
                                     </span>
-                                    <br /><br/>
-                                    <TableContainer component={Paper} style={{ margin: "auto", width: "80%", boxShadow:" 0px 0px 0px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0px rgb(0 0 0 / 14%), 0px 0px 0px 0px rgb(0 0 0 / 12%)" }}>
+                                    <br /><br />
+                                    <TableContainer component={Paper} style={{ margin: "auto", width: "80%", boxShadow: " 0px 0px 0px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0px rgb(0 0 0 / 14%), 0px 0px 0px 0px rgb(0 0 0 / 12%)" }}>
                                         <Table className={classes.table} size="small" aria-label="a dense table">
                                             <TableHead>
                                                 <TableRow style={{ background: "#3bb6b1" }}>
@@ -100,7 +106,7 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                                             </TableBody>
                                         </Table>
                                     </TableContainer>
-                                    <br/>
+                                    <br />
                                     <div style={{ background: "transparent" }}>
                                         <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "50px", marginTop: "27px" }} />
                                     </div>

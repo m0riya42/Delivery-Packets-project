@@ -10,10 +10,13 @@ import MapCard from './MapCard';
 
 
 
-const Schedule = ({handlers}) => {
-    
+const Schedule = ({ handlers }) => {
+
 
     const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const [locationToOpen, setLocation] = useState({});
+
+
     const handleDateChange = (date) => {
         setSelectedDate(date);
     };
@@ -42,12 +45,12 @@ const Schedule = ({handlers}) => {
                     />
                 </Grid>
             </MuiPickersUtilsProvider>
-            <br/><br/>
+            <br /><br />
             <Container>
                 <Grid container spacing={4} direction="row-reverse">
                     {
                         location.map((item) => {
-                            return <MapCard location={item} handleOpenTable={handlers.openTable} />
+                            return <MapCard location={item} handleOpenTable={() => handlers.openTable(item)} />
                         })
                     }
                 </Grid>

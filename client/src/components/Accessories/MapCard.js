@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -32,6 +32,17 @@ const useStyles = makeStyles({
 const MapCard = ({ location, handleOpenTable }) => {
 
     const classes = useStyles();
+    // const [specificLocation, setLocation] = useState({});
+    // useEffect(() => {
+    //     setLocation(location);
+    //     console.log(location)
+    // }, [location])
+
+    const onButtonClicked=()=>{
+        handleOpenTable();
+
+        
+    }
 
     return (
         <Grid item xs={12} sm={6} md={3} style={{ zIndex: 2 }} >
@@ -53,7 +64,7 @@ const MapCard = ({ location, handleOpenTable }) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
-                    
+
                     <input type="button" className="btn btn-primary px-4" onClick={handleOpenTable} value="בחר מחלק" style={{ background: "#3bb6b1", fontWeight: 'bold', marginRight: "20px" }} />
                 </CardActions>
 
