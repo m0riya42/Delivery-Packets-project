@@ -13,7 +13,9 @@ module.exports = db => {
         email: { type: String, unique: true },
         phone: { type: String, unique: true },
         address: { type: String, unique: true },
-        image: { type: String }
+        image: { type: String },
+        lat: { type: String},
+        lon: { type:String}
 
     }, { autoIndex: true });
 
@@ -30,7 +32,9 @@ module.exports = db => {
             email: user[5],
             phone: user[6],
             address: user[7],
-            image: user[8]
+            image: user[8],
+            lat: user[9],
+            lon: user[10]
         });
 
     };

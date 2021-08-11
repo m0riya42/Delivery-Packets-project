@@ -83,11 +83,29 @@ router.post('/addUser', async function (req, res, next) {
   let user = req.body;
   let newUser = {};
   console.log(user)
+  let lat = 0
+  let lon = 0
+  let israel = " ישראל";
+  let location = (israel + " "+user.address).replaceAll(' ', '%20');
 
   await bcrypt.hash(user.password, saltRounds, (err, hash) => {
     if (err) {
       console.log(err);
     }
+    
+    let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
+    //console.log(url);
+    axios.post(url)
+      .then(res => {
+         lat = res.data[0]['lat'];
+         lon = res.data[0]['lon'];
+        
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+
     newuser = {
       type: user.type,
       id: user.id,
@@ -97,7 +115,9 @@ router.post('/addUser', async function (req, res, next) {
       phone: user.phone,
       email: user.email,
       address: user.address,
-      image: user.image
+      image: user.image,
+      lat: lat,
+      lon: lon
     }
   });
   try {
@@ -106,6 +126,7 @@ router.post('/addUser', async function (req, res, next) {
   }
   catch (err) { console.log(`Failed: ${err}`) }
 })
+
 
 router.post('/updateUser', async function (req, res, next) {
   console.log("update user");

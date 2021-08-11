@@ -16,6 +16,29 @@ const Schedule = ({ handlers }) => {
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [locationToOpen, setLocation] = useState({});
 
+    const setDistribution = ()=>{
+        console.log('i am here');
+
+        let package_list = {};
+        axios.post('http://localhost:9000/packages/getPackages')
+        .then(res => {
+            package_list = res.data;
+            console.log(package_list);
+            axios.post('http://localhost:9000/workSchedule/setDistribution', package_list)
+            .then(res => {
+                console.log(res)
+    
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
+       
+    }
 
     const handleDateChange = (date) => {
         setSelectedDate(date);
@@ -57,7 +80,7 @@ const Schedule = ({ handlers }) => {
             </Container>
             <br />
             <div style={{ background: "transparent" }}>
-                <input type="button" className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px", borderColor: "transparent" }} />
+                <input type="button" onClick={()=>{setDistribution()}} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px", borderColor: "transparent" }} />
             </div>
 
         </div>
