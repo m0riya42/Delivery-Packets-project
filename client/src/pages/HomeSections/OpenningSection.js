@@ -1,7 +1,6 @@
 import React from 'react'
 import Input from '../../components/Accessories/Input';
 const OpenningSection = ({ signInPopUp }) => {
-    console.log(signInPopUp)
     return (
         <section id="about" className="about bg-yellow roomy-80" style={{ background: "#3bb6b1" }}>
             <div className="container">

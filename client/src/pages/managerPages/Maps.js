@@ -12,24 +12,26 @@ import MapGL from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 import axios from 'axios';
 
-
-const  getCoordinates =  async (location) =>  {
-    let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
-    //console.log(url);
-     axios.post(url)
-        .then(res => {
-            let lat = res.data[0]['lat'];
-            let lon = res.data[0]['lon'];
-            return lat, lon;
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
-
 var packages = [];
-var address = {};
-var israel = " ישראל";
+var lat_lon = [];
+
+// const getCoordinates = async (location, id) => {
+//     let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
+//     //console.log(url);
+//     axios.post(url)
+//         .then(res => {
+//             let lat = res.data[0]['lat'];
+//             let lon = res.data[0]['lon'];
+//             //console.log(lat) 
+//             address[id] = { 'lat': lat, 'lon': lon };
+//             //console.log(address)
+//         })
+//         .catch(err => {
+//             console.log(err);
+//         })
+// }
+
+
 
 
 
@@ -39,25 +41,19 @@ const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXk
 const Maps = () => {
 
 
-     useEffect(()=>{
-         console.log("hkjdhk")
+    useEffect(() => {
         axios.post('http://localhost:9000/packages/getPackages')
-        .then(res => {
-            packages = res.data;
-            //console.log(packages);
-            packages.map((item) => {
-                let full_address = israel + " " + item.address;
-                //console.log(full_address)
-                getCoordinates(full_address.replaceAll(' ','%20')).then((lat, lon)=>{
-
-                    address[item.id] = { 'lat': lat, 'lon': lon };
+            .then(res => {
+                packages = res.data;
+                packages.map((item) => {
+                   let temp = {'lat': item.lat,'lon': item.lon}
+                   lat_lon.push(temp)
                 })
+                console.log(lat_lon)
             })
-            console.log(address)
-        })
-        .catch(err => {
-        })
-   },[])
+            .catch(err => {
+            })
+    }, [])
 
     // const [selectedDate, setSelectedDate] = React.useState(new Date());
     // const handleDateChange = (date) => {
