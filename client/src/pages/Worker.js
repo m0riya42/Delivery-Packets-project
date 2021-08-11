@@ -7,43 +7,44 @@ import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 
 import Blog from '../components/Layout/Blog';
 import axios from 'axios';
 import WorkerInfo from '../components/Modals/workerInfo';
+import WorkerChat from '../components/Modals/WorkerChat/WorkerChat';
 
 
-const Worker = ({ pagesHandler}) => {
-    pagesHandler([{ ref: "/WorkerHome", text: "דף הבית" }, { ref: "/UserInfo", text: "פרטי עובד" }]);
+const Worker = ({ pagesHandler }) => {
+    pagesHandler([{ ref: "/WorkerHome", text: "דף הבית" }, { ref: "/UserInfo", text: "פרטי עובד" }, { ref: "/ContactManager", text: "פנייה למנהל" }]);
     const [listOfPosts, updateListOfPosts] = useState({
         leftPosts: [{}],
         rightPosts: [{}]
     });
 
-    const user= {
+    const user = {
         type: "מנהל",
         id: "208994535",
         fullName: "אלכס כהן",
         userName: "Alex",
-        password: "$2b$10$oAGFqI9C4d8wr6CQnzyYwu6d.sr/KhJg18oNh4kZw4ioMa6Nb5ATC", 
+        password: "$2b$10$oAGFqI9C4d8wr6CQnzyYwu6d.sr/KhJg18oNh4kZw4ioMa6Nb5ATC",
         phone: "050-4736633",
-        email: "alex@gmail.com", 
-        address: "ירושלים עזה 18", 
+        email: "alex@gmail.com",
+        address: "ירושלים עזה 18",
         image: "/assets/images/avatar4.png",
     }
 
     useEffect(() => {
         let blogData = []
         axios.post('http://localhost:9000/blog')
-          .then(res => {
-            blogData = res.data;
-            console.log(blogData);
-    
-            updateListOfPosts(blogData);
-    
-          })
-          .catch(err => {
-            console.log(err);
-          })
+            .then(res => {
+                blogData = res.data;
+                console.log(blogData);
+
+                updateListOfPosts(blogData);
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
         // },[]
         //get post from server?
-      }, []);
+    }, []);
 
 
     return (
@@ -55,6 +56,8 @@ const Worker = ({ pagesHandler}) => {
                 <Route path="/WorkerHome" >
                     <Blog listOfPosts={listOfPosts} />
                 </Route>
+                <Route path="/ContactManager" >
+                    <WorkerChat />                </Route>
                 <Redirect from="/" to="/WorkerHome" />
                 to: object
             </Switch>
