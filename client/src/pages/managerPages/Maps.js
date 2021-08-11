@@ -1,15 +1,16 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 // import { useEffect } from 'react';
 // import Grid from '@material-ui/core/Grid';
 import 'date-fns';
 // import DateFnsUtils from '@date-io/date-fns';
 // import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
-// import ReactMapGL from "react-map-gl"
-//import Geocode from "react-geocode";
+import ReactMapGL, { Marker } from "react-map-gl";
+// import Geocode from "react-geocode";
 import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import MapGL from 'react-map-gl'
-import Geocoder from 'react-map-gl-geocoder'
+// import MapGL from 'react-map-gl'
+// import Geocoder from 'react-map-gl-geocoder'
+import './map.css'
 import axios from 'axios';
 
 var packages = [];
@@ -46,8 +47,8 @@ const Maps = () => {
             .then(res => {
                 packages = res.data;
                 packages.map((item) => {
-                   let temp = {'lat': item.lat,'lon': item.lon}
-                   lat_lon.push(temp)
+                    let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                    lat_lon.push(temp)
                 })
                 console.log(lat_lon)
             })
@@ -90,17 +91,24 @@ const Maps = () => {
                 </Grid>
             </MuiPickersUtilsProvider>  */}
 
-            {/* <div style={{ marginLeft: "100px" }}>
+            <div style={{ marginLeft: "100px" }}>
                 <ReactMapGL {...viewport}
                     mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
                     onViewportChange={(viewport) => { setViewport(viewport) }}
                     //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
                     mapStyle="mapbox://styles/mapbox/streets-v11"
                 >
-                  
-                </ReactMapGL>  
+                    {lat_lon.map(item => (
 
-            </div>*/}
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                             <button className= 'marker-btn'>
+                                 <img src='/assets/images/check-mark-button-emoji.png' /> 
+                            </button> 
+                        </Marker>
+                    ))}
+                </ReactMapGL>
+
+            </div>
         </div>
     );
 
