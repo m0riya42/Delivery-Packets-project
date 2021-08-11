@@ -68,8 +68,8 @@ const App = () => {
 
     if (jwt) { //-------------->Manager/User
       const type = JSON.parse(jwt).type;
-      console.log('onLoad')
-      console.log(JSON.parse(jwt).type)
+      // console.log('onLoad')
+      // console.log(JSON.parse(jwt).type)
       if (type === "manager") {
         type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
 

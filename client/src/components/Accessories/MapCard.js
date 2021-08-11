@@ -32,11 +32,7 @@ const useStyles = makeStyles({
 const MapCard = ({ location, handleOpenTable }) => {
 
     const classes = useStyles();
-    // const [specificLocation, setLocation] = useState({});
-    // useEffect(() => {
-    //     setLocation(location);
-    //     console.log(location)
-    // }, [location])
+
 
     const onButtonClicked=()=>{
         handleOpenTable();

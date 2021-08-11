@@ -11,6 +11,7 @@ var blogRouter = require('./routes/blog');
 var testAPIRouter = require("./routes/testApi");//add as test
 var testDBRouter = require("./routes/testDB");//add as test
 var workScheduleRouter = require('./routes/workSchedule')
+var packagesRouter = require('./routes/packages')
 
 var app = express();
 
@@ -31,6 +32,8 @@ app.use('/', indexRouter);
 app.use('/usersInfo', usersRouter);
 app.use('/blog', blogRouter);
 app.use('/workSchedule', workScheduleRouter);
+app.use('/packages', packagesRouter);
+
 
 app.use("/testApi", testAPIRouter);//add as test
 app.use("/testDB", testDBRouter);//add as test
