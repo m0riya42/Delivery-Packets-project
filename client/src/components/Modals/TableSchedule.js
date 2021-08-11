@@ -71,22 +71,25 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
         })
     }
 
-
     const addSchedule = () => {
         var string_date = date.toLocaleString();
         var today = (string_date.split(',')[0]).replaceAll('.','/')
         console.log(today);
-        // const info = {
-        //     h:"h"
-        // }
-       
-        // axios.post('http://localhost:9000/workSchedule/addSchedule', info)
-        //     .then(res => {
-        //         console.log(res);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
+        let workerid = ''
+
+
+        const info = {
+            date: today,
+            id: workerid
+        }
+       console.log(info)
+        axios.post('http://localhost:9000/workSchedule/addSchedule', info)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     /**************************************************************** */
