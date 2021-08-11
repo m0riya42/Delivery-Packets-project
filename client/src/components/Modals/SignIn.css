@@ -89,15 +89,15 @@ body {
 
   .popup-box {
     position: fixed;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.5);
     width: 100%;
     height: 100vh;
-    top:11rem;
+    top:5rem;
     left: 0;
     z-index:5;
   }
    
-  .box {
+  .boxSignIn {
     position: relative;
     margin: 0 auto;
     padding: 20px;

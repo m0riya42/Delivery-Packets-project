@@ -1,35 +1,57 @@
 import React from 'react'
-const NavBar = () => {
+import { NavLink } from 'react-router-dom'
+const NavBar = ({ pages, userName, }) => {
+    const logOut = () => {
+
+        //maybe send message to the server
+
+
+        //earse Token from localStorage
+        localStorage.removeItem('token')
+        window.location.reload()
+
+
+    }
+
+
+
+
     return (
         <nav className="navbar navbar-default bootsnav navbar-fixed no-background white">
-            <div className="top-search">
-                <div className="container">
+            {/* <div className="top-search">
+                <div className="container" >
                     <div className="input-group">
                         <span className="input-group-addon"><i className="fa fa-search"></i></span>
                         <input type="text" className="form-control" placeholder="Search" />
                         <span className="input-group-addon close-search"><i className="fa fa-times"></i></span>
                     </div>
                 </div>
-            </div>
+            </div> */}
             {/* <!-- End Top Search --> */}
 
 
-            <div className="container">
-                <div className="attr-nav" style={{float: "left"}}>
-                    <ul>
-                        <li className="search"><a href="#"><i className="fa fa-search"></i></a></li>
+            <div className="container" style={{ display: 'block' }}>
+                <div className="attr-nav" style={{ float: "left" }}>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li id="log">
+                            <a href="#myModal" data-toggle="modal">
+                                <span className="fa fa-user"></span> {userName ? userName : 'התחבר'}
+                                {
+                                    userName && <div onClick={logOut} style={{ display: 'inline' }}><span className="fa fa-sign-out" style={{ marginLeft: '22px' }}></span>התנתק</div>
+                                }
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 {/* <!-- Start Header Navigation --> */}
-                <div className="navbar-header" style={{float: "right", margin_left: "36px"}}>
+                <div className="navbar-header" style={{ float: "right", margin_left: "36px" }}>
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i className="fa fa-bars"></i>
                     </button>
                     <a className="navbar-brand" href="#brand">
-                        
-                        <img src="assets/images/icon-removebg-preview.png" className="logo" alt="" />
-                        {/* <!--<img src="assets/images/footer-logo.png" className="logo logo-scrolled" alt="">--> */}
+
+                        <img src="/assets/images/iconYadToFriend3.svg" className="logo" alt="" width="93px" style={{ margin: '-4px' }} />
                     </a>
 
                 </div>
@@ -37,15 +59,18 @@ const NavBar = () => {
 
                 {/* <!-- navbar menu --> */}
                 <div className="collapse navbar-collapse" id="navbar-menu">
-                    <ul className="nav navbar-nav navbar-right" style={{"flex-direction": "row-reverse", display: "flex"}}>
-                        <li><a href="">          </a></li>
-                        <li><a href="#home">עמוד הבית</a></li>
-                        <li><a href="#features">אודותינו</a></li>
-                        <li><a href="#activity">הפעילות שלנו</a></li>
-                        <li><a href="#text">השותפים שלנו</a></li>
-                        {/* <li><a href="#test">Testimonial</a></li> */}
-                        <li><a href="#contact">צרו קשר</a></li>
+                    <ul className="nav navbar-nav navbar-right" style={{ "flexDirection": "row-reverse", display: "flex" }}>
+                        <li style={{ width: "20px" }} />
+                        {
+
+                            pages.map((page) => {
+                                let retVal;
+                                page.ref[0] === '#' ? retVal = (<li key={page.text}><a href={page.ref}>{page.text}</a></li>) : retVal = (<li ><NavLink to={page.ref}>{page.text}</NavLink></li>);
+                                return retVal
+                            })
+                        }
                     </ul>
+
                 </div>
             </div>
 

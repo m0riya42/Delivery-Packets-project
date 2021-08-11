@@ -1,42 +1,44 @@
 import React, { useState } from 'react'
-import Footer from '../components/Layout/Footer'
-import NavBar from '../components/Layout/NavBar'
-import Preloder from '../components/Layout/Preloader'
-import HomeSection from '../components/Layout/Sections/HomeSection'
-import AboutSection from '../components/Layout/Sections/AboutSection'
-import FeatureSection from '../components/Layout/Sections/FeatureSection'
-import TeamSkillsSection from '../components/Layout/Sections/TeamSkillsSection'
-import ChooseSection from '../components/Layout/Sections/ChooseSection'
-import PortfolioSection from '../components/Layout/Sections/PortfolioSection'
-import TextSection from '../components/Layout/Sections/TextSection'
+import WelcomeSection from './HomeSections/WelcomeSection'
+import OpenningSection from './HomeSections/OpenningSection'
+import AboutSection from './HomeSections/AboutSection'
+import OurActivitiesSection from './HomeSections/OurActivitiesSection'
+import OurPartnersSection from './HomeSections/OurPartnersSection'
 import SignIn from '../components/Modals/SignIn'
-const Home = () => {
+import { Switch, Redirect } from 'react-router-dom'
+const Home = ({ authenticate, token }) => {
+    // const Home = ({ authenticate, token, isOpen, openSignInPopUp, closeSignInPopUp }) => {
 
-    const [isOpen, setIsOpen] = useState(true);
-    const togglePopup = () => {
-        setIsOpen(!isOpen);
+    const [isOpen, setIsOpen] = useState(false);
+    const openSignInPopUp = () => {
+        setIsOpen(true);
     }
+    const closeSignInPopUp = () => {
+        setIsOpen(false);
+    }
+
+    // console.log(token, "is here?")
+    // console.log(closeSignInPopUp)
     return (<div>
-     {/*<Preloder />*/}   {/*the startup */}
         <div className="culmn">
-            <SignIn handleClose={togglePopup} display={isOpen} />
-            <NavBar />
-            <HomeSection />
-            <AboutSection handleClose={togglePopup} />
-            <FeatureSection />
-            {/* <TeamSkillsSection /> */}
-            <ChooseSection />
-            {/* <PortfolioSection /> */}
-            <TextSection />
-            <Footer />
+            {
+                (!token) ? (
+                    <Switch>
+                        <Redirect to="/" exact />
+                    </Switch>) : ""
 
-
+            }
+            <SignIn handleClose={closeSignInPopUp} display={isOpen} authenticate={authenticate} />
+            {/* setToken={setToken} /> */}
+            <WelcomeSection />
+            <OpenningSection signInPopUp={openSignInPopUp} />
+            <AboutSection />
+            <OurActivitiesSection />
+            <OurPartnersSection />
         </div>
     </div>
     )
-    // (
-    {/* <h2> Home works!</h2> */ }
-    // )
 }
+
 
 export default Home

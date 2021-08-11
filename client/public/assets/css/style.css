@@ -56,6 +56,17 @@ body {
 .page-content, 
 section { overflow: hidden; }
 
+
+/*fonts decleration*/
+
+@font-face {
+    font-family: "Rubik-Black";
+    src: url("./fonts/Rubik-Black.ttf");
+    }
+
+
+
+
 /*
     On Scroll Animations 
 ------------------------------------------*/
@@ -66,6 +77,8 @@ section { overflow: hidden; }
 /*
     Spacing & Alignment 
 ------------------------------------------*/
+
+
 
 .roomy-100 {
     padding-top: 100px;
@@ -894,7 +907,7 @@ Home Section style
 ==================*/
 
 .home{
-    background: url(../images/home-bg.jpg) no-repeat top center;
+    /* background: url(/assets/images/home-bg.jpg) no-repeat top center; */
     background-size: cover;
     position: relative;
     padding-top: 300px;

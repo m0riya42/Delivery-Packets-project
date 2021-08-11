@@ -2,7 +2,7 @@ import React from 'react'
 
 const Preloder = () => {
     return (
-        <div id="loading">
+        <div id="loading" style={{background:"rgb(59, 182, 177)"}}>
             <div id="loading-center">
                 <div id="loading-center-absolute">
                     <div className="object" id="object_one"></div>
@@ -16,3 +16,4 @@ const Preloder = () => {
 }
 
 export default Preloder
+
