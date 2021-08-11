@@ -13,13 +13,14 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Checkbox } from '@material-ui/core';
 import axios from 'axios';
+import setDate from 'date-fns/esm/fp/setDate/index.js';
 
 var users = []
 axios.post('http://localhost:9000/usersInfo/getUsers')
     .then(res => {
         //console.log(res.data);
         users = res.data;
-        console.log(users);
+        //console.log(users);
     })
     .catch(err => {
         console.log(err);
@@ -35,14 +36,20 @@ var cityDict = {
 }
 
 
-const TableSchedule = ({ location, handleClose, display, handleSave }) => {
+const TableSchedule = ({ location, date, handleClose, display, handleSave }) => {
     const classes = useStyles();
 
     const [mapLocation, setMapLocation] = useState({});
     useEffect(() => {
         setMapLocation(location);
-        console.log(location)
+        //console.log(location)
     }, [location]);
+
+    const [mapDate, setMapDate] = useState({});
+    useEffect(() => {
+        setMapDate(date);
+        //console.log(date)
+    }, [date]);
 
 
     function createData(id, fullName, address) {
@@ -50,21 +57,37 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
     }
 
     const rows = [];
+    let cityList = cityDict[location];
+    if (cityList) {
+        users.map((user) => {
+            let usercity = user.address.split(' ')[0];
+            if (user.type == 'עובד') {
+                cityList.map((city) => {
+                    if (usercity == city) {
+                        rows.push(createData(user.id, user.fullName, user.address))
+                    }
+                })
+            }
+        })
+    }
 
-    let location2 = "ירושלים";
-    let cityList = cityDict[location2]
-    users.map((user) => {
-        let usercity = user.address.split(' ')[0];
-        if (user.type == 'עובד') {
-            cityList.map((city) => {
-                //console.log(city)
-                //console.log(usercity)
-                if (usercity == city) {
-                    rows.push(createData(user.id, user.fullName, user.address))
-                }
-            })
-        }
-    })
+
+    const addSchedule = () => {
+        var string_date = date.toLocaleString();
+        var today = (string_date.split(',')[0]).replaceAll('.','/')
+        console.log(today);
+        // const info = {
+        //     h:"h"
+        // }
+       
+        // axios.post('http://localhost:9000/workSchedule/addSchedule', info)
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
+    }
 
     /**************************************************************** */
     let inDisplay;
@@ -96,7 +119,7 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                                                 {rows.map((row) => (
                                                     <TableRow key={row.name} style={{ height: "50px" }}>
                                                         <TableCell align="right" padding="checkbox">
-                                                            <Checkbox />
+                                                            <Checkbox style={{color: "#3bb6b1"}}/>
                                                         </TableCell>
                                                         <TableCell style={{ fontSize: "15px" }} align="right">{row.address}</TableCell>
                                                         <TableCell style={{ fontSize: "15px" }} align="right">{row.fullName}</TableCell>
@@ -108,7 +131,7 @@ const TableSchedule = ({ location, handleClose, display, handleSave }) => {
                                     </TableContainer>
                                     <br />
                                     <div style={{ background: "transparent" }}>
-                                        <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "50px", marginTop: "27px" }} />
+                                        <input type="button" onClick={()=>addSchedule()} className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "50px", marginTop: "27px" }} />
                                     </div>
                                 </div>
                             </div>

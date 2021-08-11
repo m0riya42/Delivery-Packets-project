@@ -17,6 +17,7 @@ require("./users")(db);
 require("./packages")(db);
 require("./rightPosts")(db);
 require("./leftPosts")(db);
+require("./workSchedule")(db);
 
 module.exports = model => db.model(model);
 

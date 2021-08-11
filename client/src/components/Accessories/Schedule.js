@@ -47,18 +47,18 @@ const Schedule = ({ handlers }) => {
             </MuiPickersUtilsProvider>
             <br /><br />
             <Container>
-                <Grid container spacing={4} direction="row-reverse">
+                <Grid container spacing={3} direction="row-reverse">
                     {
                         location.map((item) => {
-                            return <MapCard location={item} handleOpenTable={() => handlers.openTable(item)} />
+                            return <MapCard location={item} date={selectedDate} handleOpenTable={() => handlers.openTable(item, selectedDate)} />
                         })
                     }
                 </Grid>
             </Container>
-
-            {/* <div style={{ background: "transparent" }}>
-                <input type="button" className="btn btn-primary px-4" value="שמור לוז עבודה" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px" }} />
-            </div> */}
+            <br />
+            <div style={{ background: "transparent" }}>
+                <input type="button" className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px", borderColor: "transparent" }} />
+            </div>
 
         </div>
 
