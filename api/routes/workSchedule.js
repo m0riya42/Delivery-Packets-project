@@ -29,7 +29,7 @@ router.post('/getSchedule', async function (req, res, next) {
     console.log('i am in getSchedule')
     let date = req.body.date;
     let list_Schedule = [];
-    console.log(date)
+    //console.log(date)
     try {
         list_Schedule = await Schedule.REQUESTBYDATE(date);
         res.send(list_Schedule);

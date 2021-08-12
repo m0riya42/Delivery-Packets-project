@@ -41,7 +41,6 @@ const Maps = () => {
         axios.post('http://localhost:9000/packages/getPackages')
             .then(res => {
                 packages = res.data;
-                date = '11/8/2021'
                 axios.post('http://localhost:9000/workSchedule/getSchedule', info)
                     .then(res => {
                         schedule = res.data;

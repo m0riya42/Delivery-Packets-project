@@ -8,15 +8,20 @@ import Blog from '../components/Layout/Blog';
 import axios from 'axios';
 import WorkerInfo from '../components/Modals/workerInfo';
 import WorkerChat from '../components/Modals/WorkerChat/WorkerChat';
+import WorkerMap from './workerPages/WorkerMap';
+import PackageTable from './workerPages/PackageTable';
+
+
+
 
 
 const Worker = ({ pagesHandler, user }) => {
-    pagesHandler([{ ref: "/WorkerHome", text: "דף הבית" }, { ref: "/UserInfo", text: "פרטי עובד" }, { ref: "/ContactManager", text: "פנייה למנהל" }]);
+    pagesHandler([{ ref: "/WorkerHome", text: "דף הבית" }, { ref: "/UserInfo", text: "פרטי עובד" }, { ref: "/ContactManager", text: "פנייה למנהל" }, { ref: "/WorkerPackage", text: "חבילות" }, { ref: "/WorkerMap", text: "מפה" }]);
     const [listOfPosts, updateListOfPosts] = useState({
         leftPosts: [{}],
         rightPosts: [{}]
     });
-    console.log(user)
+    //console.log(user)
     // const user2 = {
     //     type: "מנהל",
     //     id: "208994535",
@@ -55,6 +60,12 @@ const Worker = ({ pagesHandler, user }) => {
                 </Route>
                 <Route path="/WorkerHome" >
                     <Blog listOfPosts={listOfPosts} />
+                </Route>
+                <Route path="/WorkerMap" >
+                    <WorkerMap id={user.id} />
+                </Route>
+                <Route path="/WorkerPackage" >
+                    <PackageTable user={user.id} />
                 </Route>
                 <Route path="/ContactManager" >
                     <WorkerChat />                </Route>
