@@ -12,6 +12,12 @@ const NavBar = ({ pages, userName, }) => {
 
 
     }
+    const logIn = () => {
+
+        //Open SignIn Box
+        window.openSingInBox()
+
+    }
 
 
 
@@ -34,8 +40,8 @@ const NavBar = ({ pages, userName, }) => {
                 <div className="attr-nav" style={{ float: "left" }}>
                     <ul className="nav navbar-nav navbar-right">
                         <li id="log">
-                            <a href="#myModal" data-toggle="modal">
-                                <span className="fa fa-user"></span> {userName ? userName : 'התחבר'}
+                            <a href="#myModal" data-toggle="modal" onClick={!userName && logIn}>
+                                <span className="fa fa-user" ></span> {userName ? userName : 'התחבר'}
                                 {
                                     userName && <div onClick={logOut} style={{ display: 'inline' }}><span className="fa fa-sign-out" style={{ marginLeft: '22px' }}></span>התנתק</div>
                                 }

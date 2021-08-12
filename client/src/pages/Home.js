@@ -17,6 +17,8 @@ const Home = ({ authenticate, token }) => {
         setIsOpen(false);
     }
 
+    window.openSingInBox = openSignInPopUp;
+
     // console.log(token, "is here?")
     // console.log(closeSignInPopUp)
     return (<div>
