@@ -2,15 +2,17 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 const NavBar = ({ pages, userName, }) => {
     const logOut = () => {
-
-        //maybe send message to the server
+        //maybe send message to the server??
 
 
         //earse Token from localStorage
         localStorage.removeItem('token')
         window.location.reload()
+    }
 
-
+    const logIn = () => {
+        //Open SignIn Box
+        window.openSingInBox()
     }
 
 
@@ -34,8 +36,8 @@ const NavBar = ({ pages, userName, }) => {
                 <div className="attr-nav" style={{ float: "left" }}>
                     <ul className="nav navbar-nav navbar-right">
                         <li id="log">
-                            <a href="#myModal" data-toggle="modal">
-                                <span className="fa fa-user"></span> {userName ? userName : 'התחבר'}
+                            <a href="#myModal" data-toggle="modal" onClick={!userName && logIn}>
+                                <span className="fa fa-user" ></span> {userName ? userName : 'התחבר'}
                                 {
                                     userName && <div onClick={logOut} style={{ display: 'inline' }}><span className="fa fa-sign-out" style={{ marginLeft: '22px' }}></span>התנתק</div>
                                 }
@@ -49,7 +51,7 @@ const NavBar = ({ pages, userName, }) => {
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i className="fa fa-bars"></i>
                     </button>
-                    <a className="navbar-brand" href="#brand">
+                    <a className="navbar-brand" href="/">
 
                         <img src="/assets/images/iconYadToFriend3.svg" className="logo" alt="" width="93px" style={{ margin: '-4px' }} />
                     </a>
