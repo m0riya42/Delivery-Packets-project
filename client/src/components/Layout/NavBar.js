@@ -2,21 +2,17 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 const NavBar = ({ pages, userName, }) => {
     const logOut = () => {
-
-        //maybe send message to the server
+        //maybe send message to the server??
 
 
         //earse Token from localStorage
         localStorage.removeItem('token')
         window.location.reload()
-
-
     }
-    const logIn = () => {
 
+    const logIn = () => {
         //Open SignIn Box
         window.openSingInBox()
-
     }
 
 
