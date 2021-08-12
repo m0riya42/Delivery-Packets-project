@@ -49,7 +49,7 @@ const NavBar = ({ pages, userName, }) => {
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                         <i className="fa fa-bars"></i>
                     </button>
-                    <a className="navbar-brand" href="#brand">
+                    <a className="navbar-brand" href="/">
 
                         <img src="/assets/images/iconYadToFriend3.svg" className="logo" alt="" width="93px" style={{ margin: '-4px' }} />
                     </a>

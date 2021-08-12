@@ -2,7 +2,7 @@ import React from 'react'
 import Input from '../../components/Accessories/Input';
 const OpenningSection = ({ signInPopUp }) => {
     return (
-        <section id="about" className="about bg-yellow roomy-80" style={{ background: "#3bb6b1" }}>
+        <section id="about" className="about bg-yellow roomy-80" style={{ background: "#3bb6b1",filter: ' drop-shadow(1px 4px 9px #aad3df)' }}>
             <div className="container">
                 <div className="row">
                     <div className="col-sm-12">
