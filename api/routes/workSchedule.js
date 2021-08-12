@@ -25,6 +25,18 @@ router.post('/addSchedule', async function (req, res, next) {
     catch (err) { console.log(`Failed: ${err}`) }
 }),
 
+router.post('/getSchedule', async function (req, res, next) {
+    console.log('i am in getSchedule')
+    let date = req.body.date;
+    let list_Schedule = [];
+    console.log(date)
+    try {
+        list_Schedule = await Schedule.REQUESTBYDATE(date);
+        res.send(list_Schedule);
+    }
+    catch (err) { console.log(`Failed: ${err}`) }
+}),
+
 
     router.post('/setDistribution', async function (req, res, next) {
         console.log('i am in setDistribution')

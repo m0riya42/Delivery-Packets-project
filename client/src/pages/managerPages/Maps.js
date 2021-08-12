@@ -14,122 +14,203 @@ import './map.css'
 import axios from 'axios';
 
 var packages = [];
-var lat_lon_f = [];
-var lat_lon_t = [];
-// const getCoordinates = async (location, id) => {
-//     let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
-//     //console.log(url);
-//     axios.post(url)
-//         .then(res => {
-//             let lat = res.data[0]['lat'];
-//             let lon = res.data[0]['lon'];
-//             //console.log(lat) 
-//             address[id] = { 'lat': lat, 'lon': lon };
-//             //console.log(address)
-//         })
-//         .catch(err => {
-//             console.log(err);
-//         })
-// }
+var schedule = [];
+var lat_lon_fB = [];
+var lat_lon_tB = [];
+var lat_lon_fR = [];
+var lat_lon_tR = [];
+var lat_lon_fW = [];
+var lat_lon_tW = [];
+var lat_lon_fP = [];
+var lat_lon_tP = [];
 
+var date = new Date();
+let string_date = date.toLocaleString();
+let final_date = (string_date.split(',')[0]).replaceAll('.', '/')
 
-
-
+let info={
+date: final_date
+}
 
 const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'
 
 
 const Maps = () => {
 
-
     useEffect(() => {
         axios.post('http://localhost:9000/packages/getPackages')
             .then(res => {
                 packages = res.data;
-                packages.map((item) => {
-                    if(item.packageArrived === true){
-                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon)}
-                        lat_lon_t.push(temp)
-                    }
-                    else{
-                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon)}
-                        lat_lon_f.push(temp)
-                    }
-                    
+                date = '11/8/2021'
+                axios.post('http://localhost:9000/workSchedule/getSchedule', info)
+                    .then(res => {
+                        schedule = res.data;
+                        let user = schedule[0];
+                        user.packages.map((item_user) => {
+                            packages.map((item) => {
+                                if (item.id == item_user) {
+                                    if (item.packageArrived === true) {
+
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_tB.push(temp)
+                                    }
+                                    else {
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_fB.push(temp)
+                                    }
+                                }
+                            })
+                        })
+                        user = schedule[1];
+                        user.packages.map((item_user) => {
+                            packages.map((item) => {
+                                if (item.id == item_user) {
+                                    if (item.packageArrived === true) {
+
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_tR.push(temp)
+                                    }
+                                    else {
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_fR.push(temp)
+                                    }
+                                }
+                            })
+                        })
+                        user = schedule[2];
+                        user.packages.map((item_user) => {
+                            packages.map((item) => {
+                                if (item.id == item_user) {
+                                    if (item.packageArrived === true) {
+
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_tW.push(temp)
+                                    }
+                                    else {
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_fW.push(temp)
+                                    }
+                                }
+                            })
+                        })
+                        user = schedule[3];
+                        user.packages.map((item_user) => {
+                            packages.map((item) => {
+                                if (item.id == item_user) {
+                                    if (item.packageArrived === true) {
+
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_tP.push(temp)
+                                    }
+                                    else {
+                                        let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }
+                                        lat_lon_fP.push(temp)
+                                    }
+                                }
+                            })
+                        })
+                    })
+
+                    .catch(err => {
+                    })
                 })
-                console.log(lat_lon_f)
-                console.log(lat_lon_t)
+            }, [])
+        
 
-            })
-            .catch(err => {
-            })
-    }, [])
+        // const [selectedDate, setSelectedDate] = React.useState(new Date());
+        // const handleDateChange = (date) => {
+        //     setSelectedDate(date);
+        // };
 
-    // const [selectedDate, setSelectedDate] = React.useState(new Date());
-    // const handleDateChange = (date) => {
-    //     setSelectedDate(date);
-    // };
+        const [viewport, setViewport] = useState({
+            latitude: 31.770809,
+            longitude: 35.197460,
+            zoom: 9,
+            width: "80vw",
+            height: "80vh",
 
-    const [viewport, setViewport] = useState({
-        latitude: 31.770809,
-        longitude: 35.197460,
-        zoom: 9,
-        width: "80vw",
-        height: "80vh",
-
-    });
+        });
 
 
 
-    return (
+        return (
 
-        <div>
-            {/* <MuiPickersUtilsProvider utils={DateFnsUtils} >
-                <Grid container justifyContent="space-around">
-                    <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        //format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        //label="Date picker inline"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{ 'aria-label': 'change date' }}
-                    />
-                </Grid>
-            </MuiPickersUtilsProvider>  */}
+            <div>
 
-            <div style={{ marginLeft: "100px" }}>
-                <ReactMapGL {...viewport}
-                    mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
-                    onViewportChange={(viewport) => { setViewport(viewport) }}
-                    //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
-                    mapStyle="mapbox://styles/mapbox/streets-v11"
-                >
-                    {lat_lon_f.map(item => (
-                        
-                    <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                        <button className='marker-btn'>
-                            <img src='/assets/images/cancel.png' />
-                        </button>
-                    </Marker>
-                    ))}
-                     {lat_lon_t.map(item => (
-                        
-                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                            <button className='marker-btn'>
-                               <img src='/assets/images/check-mark-button-emoji.png' />
-                            </button>
-                        </Marker>
+                <div style={{ marginLeft: "100px" }}>
+                    <ReactMapGL {...viewport}
+                        mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
+                        onViewportChange={(viewport) => { setViewport(viewport) }}
+                        //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
+                        mapStyle="mapbox://styles/mapbox/streets-v11"
+                    >
+                        {lat_lon_fB.map(item => (
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/n_blue.png' />
+                                </button>
+                            </Marker>
                         ))}
-                </ReactMapGL>
+                        {lat_lon_tB.map(item => (
 
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/red.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                        {lat_lon_fR.map(item => (
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/n_red.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                        {lat_lon_tR.map(item => (
+
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/red.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                         {lat_lon_fW.map(item => (
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/n_green.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                        {lat_lon_tW.map(item => (
+
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/green.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                         {lat_lon_fP.map(item => (
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/n_purple.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                        {lat_lon_tP.map(item => (
+
+                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                                <button className='marker-btn'>
+                                    <img src='/assets/images/purple.png' />
+                                </button>
+                            </Marker>
+                        ))}
+                    </ReactMapGL>
+
+                </div>
             </div>
-        </div>
-    );
+        );
 
-}
+    }
 export default Maps;
 
 

@@ -72,8 +72,8 @@ module.exports = db => {
     };
 
     schema.statics.REQUESTBYDATE = async function (date) {
-        //console.log("in REQUESTBYDATE");
-        return this.find({ 'date': date })
+        console.log("in REQUESTBYDATE");
+        return this.find({'date': date })
 
     }
 

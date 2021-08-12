@@ -85,7 +85,7 @@ const Schedule = ({ handlers }) => {
             </Container>
             <br />
             <div style={{ background: "transparent" }}>
-                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px", borderColor: "transparent" }} />
+                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "870px", marginTop: "27px", borderColor: "transparent" }} />
             </div>
 
         </div>

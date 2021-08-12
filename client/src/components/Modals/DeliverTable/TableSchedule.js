@@ -74,8 +74,7 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
             var string_date = date.toLocaleString();
             var today = (string_date.split(',')[0]).replaceAll('.', '/')
             console.log(today);
-            let workerid = ''
-
+            let workerid = deliversList[0]
 
             const info = {
                 date: today,
