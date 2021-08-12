@@ -3,15 +3,15 @@ const mongo = require("mongoose");
 
 module.exports = db => {
     let schema = new mongo.Schema({
-        date: {type: String , required: true},
-        id: {type: String,  required: true},
-        packages: {type: Array, required: false }
-         
+        date: { type: String, required: true },
+        id: { type: String, required: true },
+        packages: { type: Array, required: false }
 
-    },{ autoIndex: true });
+
+    }, { autoIndex: true });
 
     schema.statics.CREATE = async function (package) {
-        console.log("create \n");
+        //console.log("create \n");
         return this.create({
             date: package[0],
             id: package[1],
@@ -21,11 +21,11 @@ module.exports = db => {
     };
 
     schema.statics.REQUEST = async function () {
-        
+
         const args = Array.from(arguments); // [...arguments]
         if (args.length === 0) {
             return this.find({}, (err, res) => { }).select('-__v -_id').exec();
-           
+
         }
 
         // perhaps last argument is a callback for every single document
@@ -70,15 +70,29 @@ module.exports = db => {
         }
         return result;
     };
-  
+
+    schema.statics.REQUESTBYDATE = async function (date) {
+        //console.log("in REQUESTBYDATE");
+        return this.find({ 'date': date })
+
+    }
 
     schema.statics.UPDATEPACKAGE = async function (package) {
         console.log("in update");
-        return this.findOneAndUpdate({id: user.id}, user);
-       
+        // let updateDocument = {
+        //     $addToSet: {
+        //         packages: package.packages
+        //     },
+        //     new: true
+        // };
+        let package_list=[package.date, package.id,package.packages];
+        await this.findOneAndRemove({ id: package.id });
+        this.CREATE(package_list)
+        //return this.({ id: package.id }, updateDocument);
+
     }
 
-    
+
     db.model('workSchedule', schema);
 
 };
