@@ -49,7 +49,7 @@ router.post('/login', async function (req, res, next) {
           "userName": userWithoutPass.userName
         },
         message: "success",
-        // user: userWithoutPass
+        user: currentUser
       });
     }
     else {

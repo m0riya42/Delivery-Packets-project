@@ -38,16 +38,18 @@ const App = () => {
   // const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
-  // const [userInfo, setUserInfo] = useState(null);
+  const [userInfo, setUserInfo] = useState();
 
-  const authenticateHandler = ({ type, userName, user, token }) => {
+  const authenticateHandler = ({ user, token }) => {
+    setUserInfo(user);
+    console.log(userInfo)
     //save token
     localStorage.setItem('token', JSON.stringify(token));
     console.log(token)
     console.log(jwt)
     setJwt(JSON.stringify(token));
     console.log(jwt)
-
+    
 
     //set Authentication
     // setAuth({ type, userName, user })
@@ -75,7 +77,7 @@ const App = () => {
 
       }
       else if (type === "worker") {
-        type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Worker /></>)
+        type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} user={userInfo}/></>) : setReturnVal(<><Worker /></>)
       }
       //console.log(auth)
     }
