@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'date-fns';
-import TableSchedule from '../../components/Modals/TableSchedule';
+import TableSchedule from '../../components/Modals/DeliverTable/TableSchedule';
 import Schedule from '../../components/Accessories/Schedule';
 
 
@@ -13,10 +13,8 @@ const ScheduleInfo = () => {
 
     const handlers = {
 
-        openTable: (location,date) => {
-            //console.log('Table');
+        openTable: (location, date) => {
             setopenTable(true);
-
             handlers.updateLocationToOpen(location);
             handlers.updateDateToOpen(date);
         },
@@ -26,11 +24,9 @@ const ScheduleInfo = () => {
         },
         updateLocationToOpen: (location, date) => {
             setMapLocation(location);
-            // console.log(location)
         },
         updateDateToOpen: (date) => {
             setMapDate(date);
-            // console.log(location)
         }
 
 
@@ -39,9 +35,8 @@ const ScheduleInfo = () => {
 
     return (
         <>
-            <TableSchedule location={mapLocation.title} date ={mapDate} display={tableIsOpen} handleClose={handlers.closeTable} ></TableSchedule>
+            <TableSchedule location={mapLocation.title} date={mapDate} display={tableIsOpen} handleClose={handlers.closeTable} ></TableSchedule>
             <Schedule handlers={handlers} ></Schedule>
-
         </>
     );
 
