@@ -15,6 +15,16 @@ router.post('/getPackages', async function (req, res, next) {
 
     res.send(packages);
 })
+router.post('/updatePackage', async function (req, res, next) {
+    console.log("update package");
+    let package = req.body;
+    console.log(package)
+    try {
+        await Packages.UPDATE(package);
+        res.send(200);
+    }
+    catch (err) { console.log(`Failed: ${err}`) }
+})
 
 
 module.exports = router;

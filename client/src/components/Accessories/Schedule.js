@@ -16,28 +16,33 @@ const Schedule = ({ handlers }) => {
     const [selectedDate, setSelectedDate] = React.useState(new Date());
     const [locationToOpen, setLocation] = useState({});
 
-    const setDistribution = ()=>{
+    const setDistribution = () => {
         console.log('i am here');
 
         let package_list = {};
         axios.post('http://localhost:9000/packages/getPackages')
-        .then(res => {
-            package_list = res.data;
-            console.log(package_list);
-            axios.post('http://localhost:9000/workSchedule/setDistribution', package_list)
             .then(res => {
-                console.log(res)
-    
+                package_list = res.data;
+                var string_date = selectedDate.toLocaleString();
+                var today = (string_date.split(',')[0]).replaceAll('.', '/')
+                let info = {
+                    package_list: package_list,
+                    date: today
+            }
+                axios.post('http://localhost:9000/workSchedule/setDistribution', info)
+                .then(res => {
+                    console.log(res)
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
             })
             .catch(err => {
                 console.log(err)
             })
-        })
-        .catch(err => {
-            console.log(err)
-        })
 
-       
+
     }
 
     const handleDateChange = (date) => {
@@ -80,7 +85,7 @@ const Schedule = ({ handlers }) => {
             </Container>
             <br />
             <div style={{ background: "transparent" }}>
-                <input type="button" onClick={()=>{setDistribution()}} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "800px", marginTop: "27px", borderColor: "transparent" }} />
+                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "870px", marginTop: "27px", borderColor: "transparent" }} />
             </div>
 
         </div>

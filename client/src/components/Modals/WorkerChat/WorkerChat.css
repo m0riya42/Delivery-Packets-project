@@ -179,6 +179,7 @@ background: rgb(123 208 105 / 8%);
 	color: #fff;
 	padding: 5px 10px 5px 12px;
 	width: 100%;
+	overflow-wrap: anywhere;
 }
 
 .outgoing_msg {

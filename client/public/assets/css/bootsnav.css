@@ -9,6 +9,16 @@ Last update : 2016-06-11
 
 ============================================================== */
 
+
+li a{
+    color: black !important
+}
+
+
+
+
+
+
 /* MEGAMENU STYLE
 =================================*/
 nav.bootsnav .dropdown.megamenu-fw {

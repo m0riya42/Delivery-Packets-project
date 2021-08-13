@@ -10,7 +10,11 @@ const WelcomeSection = () => {
                             <div className="hello">
                                 <div className="slid_item">
                                     <div className="home_text ">
-                                        <h1 className="text-yellow">ברוכים הבאים</h1>
+                                        {/* <h1 className="text-yellow">ברוכים הבאים</h1> */}
+                                        <h1 className="text-yellow">
+                                            <p>ברוכים הבאים</p><br />
+                                            <p>ליד לחבר</p>
+                                        </h1>
                                         <h3 className="text-white text-uppercase"> </h3>
                                     </div>
                                 </div>
