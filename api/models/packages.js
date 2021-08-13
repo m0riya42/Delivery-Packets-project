@@ -4,18 +4,18 @@ const mongo = require("mongoose");
 module.exports = db => {
     // create a schema
     let schema = new mongo.Schema({
-        Active: {type: Boolean, default: true, required: true},
-        id: {type: String, unique: true, required: true},
-        fullName: {type: String, unique: true},
+        Active: { type: Boolean, default: true, required: true },
+        id: { type: String, unique: true, required: true },
+        fullName: { type: String, unique: true },
         email: { type: String, unique: true },
         phone: { type: String, unique: true },
-        address: {type: String, unique: true, required: true},
-        packageArrived: {type: Boolean, default: false, required: true},
-        
+        address: { type: String, unique: true, required: true },
+        packageArrived: { type: Boolean, default: false, required: true },
+
     }, { autoIndex: true });
 
     //db.model('packages', schema);
-    
+
 
 
     schema.statics.CREATE = async function (package) {
@@ -91,7 +91,16 @@ module.exports = db => {
     };
     schema.statics.DELETE = async function (id) { return this.findByIdAndRemove(id).exec(); };
 
-        // the schema is useless so far
+
+
+
+    schema.statics.UPDATE = async function (package) { return this.findOneAndUpdate({ id: package.id }, package).exec(); };
+
+
+
+
+
+    // the schema is useless so far
     // we need to create a model using it
     // db.model('User', schema, 'User'); // (model, schema, collection)
     db.model('packages', schema); // if model name === collection name
