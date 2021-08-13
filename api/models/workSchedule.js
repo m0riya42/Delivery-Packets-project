@@ -79,14 +79,8 @@ module.exports = db => {
 
     schema.statics.UPDATEPACKAGE = async function (package) {
         console.log("in update");
-        // let updateDocument = {
-        //     $addToSet: {
-        //         packages: package.packages
-        //     },
-        //     new: true
-        // };
         let package_list=[package.date, package.id,package.packages];
-        await this.findOneAndRemove({ id: package.id });
+        await this.findOneAndRemove({ id: package.id , date: package.date});
         this.CREATE(package_list)
         //return this.({ id: package.id }, updateDocument);
 
