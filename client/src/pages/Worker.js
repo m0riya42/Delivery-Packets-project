@@ -21,7 +21,7 @@ const Worker = ({ pagesHandler, user }) => {
         leftPosts: [{}],
         rightPosts: [{}]
     });
-    console.log(user)
+    //console.log(user)
 
 
     useEffect(() => {

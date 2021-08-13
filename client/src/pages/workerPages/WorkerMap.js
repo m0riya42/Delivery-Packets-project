@@ -21,7 +21,7 @@ let info = {
     date: final_date
 }
 
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'
+//const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'
 
 
 const WorkerMap = (id) => {
@@ -34,15 +34,15 @@ const WorkerMap = (id) => {
                     .then(res => {
                         schedule = res.data;
                         console.log(schedule)
-                        schedule.map((user_p) => {
+                        schedule.forEach((user_p) => {
                             if (user_p.id === id.id) {
                                 user = user_p;
                             }
                         })
                         console.log(user)
-                        user.packages.map((item_user) => {
-                            packages.map((item) => {
-                                if (item.id == item_user) {
+                        user.packages.forEach((item_user) => {
+                            packages.forEach((item) => {
+                                if (item.id === item_user) {
                                     if (item.packageArrived === true) {
 
                                         let temp = { 'id': item.id, 'lat': parseFloat(item.lat), 'lon': parseFloat(item.lon) }

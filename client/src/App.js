@@ -7,7 +7,7 @@ import Worker from './pages/Worker';
 import Preloder from './components/Layout/Preloader';
 import NavBar from './components/Layout/NavBar';
 import Footer from './components/Layout/Footer';
-import socketClient from "socket.io-client";
+// import socketClient from "socket.io-client";
 import axios from 'axios';
 
 // import io from "socket.io-client";
@@ -40,7 +40,6 @@ const App = () => {
   // const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
-  const [userInfo, setUserInfo] = useState();
 
   const authenticateHandler = ({ token }) => {
 
