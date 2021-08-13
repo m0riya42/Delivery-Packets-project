@@ -101,19 +101,29 @@ router.post('/getSchedule', async function (req, res, next) {
                     latitude: g3[0][1],
                     longitude: g3[0][2]
                 }
+                // console.log(p_g0);
+                // console.log(p_g1);
+                // console.log(p_g2);
+                // console.log(p_g3);
                 const promises = await today_schedule.map(async (item) => {
                     let id = item.id;
                     let user = await User.REQUESTBYID(id);
+                    //console.log(user.address)
                     let end = {
                         latitude: user.lat,
                         longitude: user.lon
                     }
-                    d_g0.push(haversine(startg0, end, { unit: 'meter' }));
-                    d_g1.push(haversine(startg1, end, { unit: 'meter' }));
-                    d_g2.push(haversine(startg2, end, { unit: 'meter' }));
-                    d_g3.push(haversine(startg3, end, { unit: 'meter' }));
+                    d_g0.push(haversine(startg0, end, { unit: 'mile' }));
+                    d_g1.push(haversine(startg1, end, { unit: 'mile' }));
+                    d_g2.push(haversine(startg2, end, { unit: 'mile' }));
+                    d_g3.push(haversine(startg3, end, { unit: 'mile' }));
                 });
                 await Promise.all(promises)
+                // console.log(d_g0);
+                // console.log(d_g1);
+                // console.log(d_g2);
+                // console.log(d_g3);
+
                 g0_min = d_g0.indexOf(Math.min(...d_g0));
                 g1_min = d_g1.indexOf(Math.min(...d_g1));
                 g2_min = d_g2.indexOf(Math.min(...d_g2));
@@ -131,6 +141,7 @@ router.post('/getSchedule', async function (req, res, next) {
                         date: date,
                         packages: p_g0
                     }
+                    //console.log(s0);
                     await Schedule.UPDATEPACKAGE(s0)
                     let s1 = {
                         id: today_schedule[g1_min].id,
@@ -138,18 +149,21 @@ router.post('/getSchedule', async function (req, res, next) {
                         packages: p_g1
                     }
                     await Schedule.UPDATEPACKAGE(s1)
+                    //console.log(s1)
                     let s2 = {
                         id: today_schedule[g2_min].id,
                         date: date,
                         packages: p_g2
                     }
-                    await Schedule.UPDATEPACKAGE(s2)
+                   await Schedule.UPDATEPACKAGE(s2)
+                   //console.log(s2)
                     let s3 = {
                         id: today_schedule[g3_min].id,
                         date: date,
                         packages: p_g3
                     }
-                    await Schedule.UPDATEPACKAGE(s3)
+                    //console.log(s3)
+                   await Schedule.UPDATEPACKAGE(s3)
                 }
 
             }
