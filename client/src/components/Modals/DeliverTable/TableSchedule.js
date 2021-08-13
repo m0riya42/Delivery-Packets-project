@@ -6,7 +6,7 @@ import { useStyles } from '../utils'
 import axios from 'axios';
 import DeliversTabel from './DeliversTabel';
 import { without } from 'lodash'
-import $ from 'jquery'
+// import $ from 'jquery'
 
 var users = []
 axios.post('http://localhost:9000/usersInfo/getUsers')
@@ -45,10 +45,10 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
     const rows = [];
     let cityList = cityDict[location];
     if (cityList) {
-        users.map((user) => {
+        users.forEach((user) => {
             let usercity = user.address.split(' ')[0];
             if (user.type == 'עובד') {
-                cityList.map((city) => {
+                cityList.forEach((city) => {
                     if (usercity == city) {
                         rows.push(createData(user.id, user.fullName, user.address))
                     }
@@ -74,8 +74,7 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
             var string_date = date.toLocaleString();
             var today = (string_date.split(',')[0]).replaceAll('.', '/')
             console.log(today);
-            let workerid = ''
-
+            let workerid = deliversList[0]
 
             const info = {
                 date: today,

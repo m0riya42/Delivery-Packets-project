@@ -101,6 +101,16 @@ module.exports = db => {
         return this.findOneAndUpdate({id: user.id}, user);
        
     }
+    schema.statics.REQUESTBYID = async function (id) {
+        //console.log("in REQUESTBTID");
+        return this.findOne({'id': id});
+       
+    }
+    schema.statics.REQUESTBYNAME = async function (name) {
+        //console.log("in REQUESTBTID");
+        return this.findOne({'userName': name});
+       
+    }
 
     // the schema is useless so far
     // we need to create a model using it
