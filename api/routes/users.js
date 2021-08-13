@@ -49,7 +49,7 @@ router.post('/login', async function (req, res, next) {
           "userName": userWithoutPass.userName
         },
         message: "success",
-        user: currentUser
+        //user: currentUser
       });
     }
     else {
@@ -67,7 +67,7 @@ router.post('/login', async function (req, res, next) {
 })
 
 router.post('/getUsers', async function (req, res, next) {
-  console.log("give me users");
+ // console.log("give me users");
   let users = [];
   try {
     users = await User.REQUEST();
@@ -135,6 +135,19 @@ router.post('/updateUser', async function (req, res, next) {
   try {
     await User.UPDATEUSER(user);
     res.send(200);
+  }
+  catch (err) { console.log(`Failed: ${err}`) }
+})
+
+router.post('/getUserByName', async function (req, res, next) {
+  console.log("getUserByName");
+  let name = req.body.name;
+  console.log(name);
+
+  let user ={};
+  try {
+    user = await User.REQUESTBYNAME(name);
+    res.send(user);
   }
   catch (err) { console.log(`Failed: ${err}`) }
 })

@@ -8,6 +8,8 @@ import Preloder from './components/Layout/Preloader';
 import NavBar from './components/Layout/NavBar';
 import Footer from './components/Layout/Footer';
 import socketClient from "socket.io-client";
+import axios from 'axios';
+
 // import io from "socket.io-client";
 
 // var io = require('socket.io-client')
@@ -40,17 +42,18 @@ const App = () => {
   const [returnVal, setReturnVal] = useState(null);
   const [userInfo, setUserInfo] = useState();
 
-  const authenticateHandler = ({ user, token }) => {
-    setUserInfo(user);
-    console.log(userInfo)
+  const authenticateHandler = ({ token }) => {
+
+
     //save token
     localStorage.setItem('token', JSON.stringify(token));
     console.log(token)
     console.log(jwt)
     setJwt(JSON.stringify(token));
     console.log(jwt)
-    
 
+    // setUserInfo(user);
+    // console.log(userInfo)
     //set Authentication
     // setAuth({ type, userName, user })
   }
@@ -70,14 +73,21 @@ const App = () => {
 
     if (jwt) { //-------------->Manager/User
       const type = JSON.parse(jwt).type;
-      // console.log('onLoad')
+      //console.log('onLoad')
       // console.log(JSON.parse(jwt).type)
       if (type === "manager") {
         type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
 
       }
       else if (type === "worker") {
-        type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} user={userInfo}/></>) : setReturnVal(<><Worker /></>)
+        let user = {};
+        let info = {name: JSON.parse(jwt).userName}
+        axios.post('http://localhost:9000/usersInfo/getUserByName', info)
+          .then(res => {
+            user = res.data;
+            type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} user={user} /></>) : setReturnVal(<><Worker /></>)
+
+          })
       }
       //console.log(auth)
     }

@@ -21,18 +21,8 @@ const Worker = ({ pagesHandler, user }) => {
         leftPosts: [{}],
         rightPosts: [{}]
     });
-    //console.log(user)
-    // const user2 = {
-    //     type: "מנהל",
-    //     id: "208994535",
-    //     fullName: "אלכס כהן",
-    //     userName: "Alex",
-    //     password: "$2b$10$oAGFqI9C4d8wr6CQnzyYwu6d.sr/KhJg18oNh4kZw4ioMa6Nb5ATC",
-    //     phone: "050-4736633",
-    //     email: "alex@gmail.com",
-    //     address: "ירושלים עזה 18",
-    //     image: "/assets/images/avatar4.png",
-    // }
+    console.log(user)
+
 
     useEffect(() => {
         let blogData = []

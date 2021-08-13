@@ -31,7 +31,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
                     // setTimeout(
                     // () => 
                     authenticate({
-                        token: res.data.token, user: res.data.user
+                        token: res.data.token
                     })
                     //userName: res.data.user.userName, user: res.data.user,
                     // , 2000)
