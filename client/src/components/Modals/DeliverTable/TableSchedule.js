@@ -107,7 +107,7 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
                 <div className="main-body">
                     <div className="row" style={{ display: "flex" }}>
                         <div className="col-lg-12">
-                            <div className="card" style={{ height: "350px" }}>
+                            <div className="card" style={{ height: "375px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />

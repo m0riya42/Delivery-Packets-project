@@ -26,19 +26,30 @@ const SaveUser = ({ handleClose, display, handleSave }) => {
     const saveUser = () => {
         console.log('save user')
         //let newUser = [usertypeinfo, useridinfo, userfullnameinfo, usernameinfo, userpasswordinfo, userphoneinfo, useremailinfo, useraddrssinfo, '']
-        let newUser ={
-            type: usertypeinfo,
-            id: useridinfo,
-            fullName: userfullnameinfo,
-            userName: usernameinfo,
-            password: userpasswordinfo,
-            phone: userphoneinfo,
-            email: useremailinfo,
-            address: useraddrssinfo,
-            image: "/assets/images/avatar00.png"
-
-        }
-        axios.post('http://localhost:9000/usersInfo/addUser', newUser)
+      
+        let israel = " ישראל";
+        let location = (israel + " "+useraddrssinfo).replaceAll(' ', '%20');
+        let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
+        console.log(url);
+     
+        axios.post(url)
+          .then(res => {
+            let lat_r = res.data[0]['lat'];
+            let lon_r = res.data[0]['lon'];
+            let newUser ={
+                type: usertypeinfo,
+                id: useridinfo,
+                fullName: userfullnameinfo,
+                userName: usernameinfo,
+                password: userpasswordinfo,
+                phone: userphoneinfo,
+                email: useremailinfo,
+                address: useraddrssinfo,
+                image: "/assets/images/avatar00.png",
+                lat: lat_r,
+                lon: lon_r 
+            }
+             axios.post('http://localhost:9000/usersInfo/addUser', newUser)
             .then(res => {
                 console.log(res);
                 window.location.reload()
@@ -46,6 +57,11 @@ const SaveUser = ({ handleClose, display, handleSave }) => {
             .catch(err => {
                 console.log(err);
             })
+            
+          })
+          .catch(err => {
+            console.log(err);
+          })
     }
 
 

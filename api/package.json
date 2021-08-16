@@ -8,6 +8,7 @@
     "createDB": "node createDB.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "bcrypt": "^5.0.1",
     "bootstrap": "^5.0.2",
