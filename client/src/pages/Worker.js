@@ -5,11 +5,11 @@ import UsersInfo from './managerPages/UsersInfo';
 //import { matchPath } from "react-router";
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import Blog from '../components/Layout/Blog';
-import axios from 'axios';
 import WorkerInfo from '../components/Modals/workerInfo';
 import WorkerChat from '../components/Modals/WorkerChat/WorkerChat';
 import WorkerMap from './workerPages/WorkerMap';
 import PackageTable from './workerPages/PackageTable';
+import { serverGetBlogData } from '../axios_requests'
 
 
 
@@ -26,11 +26,10 @@ const Worker = ({ pagesHandler, user }) => {
 
     useEffect(() => {
         let blogData = []
-        axios.post('http://localhost:9000/blog')
-            .then(res => {
-                blogData = res.data;
+        serverGetBlogData()
+            .then(data => {
+                blogData = data;
                 console.log(blogData);
-
                 updateListOfPosts(blogData);
 
             })

@@ -1,30 +1,27 @@
 import React, { useState } from 'react'
 import $ from 'jquery'
 import './WorkerChat.css'
-import axios from 'axios';
+import { serverGetUsersData } from '../../../axios_requests'
 
 import ManagerBoxName from './ManagerBoxName'
 import ChatWithManager from './ChatWithManager'
 
 
-var users = []
-axios.post('http://localhost:9000/usersInfo/getUsers')
-    .then(res => {
-
-        let array = res.data
-        array.forEach(user => {
-            if (user.type === "מנהל") users.push(user)
-        })
-
+var usersList = []
+serverGetUsersData().then((users) => {
+    users.forEach(user => {
+        if (user.type === "מנהל") {
+            usersList.push(user)
+        }
     })
-    .catch(err => {
-    })
+}).catch(err => {
+})
 
 const WorkerChat = () => {
 
     const [ManagerSelected, setChoosenManager] = useState({})
 
-    console.log(users)
+    console.log(usersList)
 
     return <>
         <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1>
@@ -37,7 +34,7 @@ const WorkerChat = () => {
                         {/* List of Managers */}
 
                         {
-                            users.map(user => <ManagerBoxName isActive={false} user={user} setChoosenManager={setChoosenManager} />)
+                            usersList.map(user => <ManagerBoxName isActive={false} user={user} setChoosenManager={setChoosenManager} />)
                         }
 
                     </div>

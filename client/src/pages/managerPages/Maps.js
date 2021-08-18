@@ -11,7 +11,7 @@ import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 // import MapGL from 'react-map-gl'
 // import Geocoder from 'react-map-gl-geocoder'
 import './map.css'
-import axios from 'axios';
+import { serverGetPackages, serverGetWorkSchedule } from '../../axios_requests';
 
 var packages = [];
 var schedule = [];
@@ -28,8 +28,8 @@ var date = new Date();
 let string_date = date.toLocaleString();
 let final_date = (string_date.split(',')[0]).replaceAll('.', '/')
 
-let info={
-date: final_date
+let info = {
+    date: final_date
 }
 
 //const MAPBOX_TOKEN = 'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'
@@ -38,12 +38,10 @@ date: final_date
 const Maps = () => {
 
     useEffect(() => {
-        axios.post('http://localhost:9000/packages/getPackages')
-            .then(res => {
-                packages = res.data;
-                axios.post('http://localhost:9000/workSchedule/getSchedule', info)
-                    .then(res => {
-                        schedule = res.data;
+        serverGetPackages()
+            .then(packages => {
+                serverGetWorkSchedule(info)
+                    .then(schedule => {
                         let user = schedule[0];
                         user.packages.map((item_user) => {
                             packages.map((item) => {
@@ -112,104 +110,104 @@ const Maps = () => {
 
                     .catch(err => {
                     })
-                })
-            }, [])
-        
-
-        // const [selectedDate, setSelectedDate] = React.useState(new Date());
-        // const handleDateChange = (date) => {
-        //     setSelectedDate(date);
-        // };
-
-        const [viewport, setViewport] = useState({
-            latitude: 31.770809,
-            longitude: 35.197460,
-            zoom: 9,
-            width: "80vw",
-            height: "80vh",
-
-        });
+            })
+    }, [])
 
 
+    // const [selectedDate, setSelectedDate] = React.useState(new Date());
+    // const handleDateChange = (date) => {
+    //     setSelectedDate(date);
+    // };
 
-        return (
+    const [viewport, setViewport] = useState({
+        latitude: 31.770809,
+        longitude: 35.197460,
+        zoom: 9,
+        width: "80vw",
+        height: "80vh",
 
-            <div>
+    });
 
-                <div style={{ marginLeft: "100px" }}>
-                    <ReactMapGL {...viewport}
-                        mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
-                        onViewportChange={(viewport) => { setViewport(viewport) }}
-                        //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
-                        mapStyle="mapbox://styles/mapbox/streets-v11"
-                    >
-                        {lat_lon_fB.map(item => (
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/n_blue.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                        {lat_lon_tB.map(item => (
 
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/red.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                        {lat_lon_fR.map(item => (
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/n_red.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                        {lat_lon_tR.map(item => (
 
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/red.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                         {lat_lon_fW.map(item => (
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/n_green.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                        {lat_lon_tW.map(item => (
+    return (
 
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/green.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                         {lat_lon_fP.map(item => (
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/n_purple.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                        {lat_lon_tP.map(item => (
+        <div>
 
-                            <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
-                                <button className='marker-btn'>
-                                    <img src='/assets/images/purple.png' />
-                                </button>
-                            </Marker>
-                        ))}
-                    </ReactMapGL>
+            <div style={{ marginLeft: "100px" }}>
+                <ReactMapGL {...viewport}
+                    mapboxApiAccessToken={'pk.eyJ1Ijoic2hpcm1vcml5YSIsImEiOiJja3JnYmJnZG0xNjBnMnBvZXkwNXd0cTI3In0.vOf4FC-jyEslysGuFIhsSA'}
+                    onViewportChange={(viewport) => { setViewport(viewport) }}
+                    //mapStyle="mapbox://styles/shirmoriya/ckrksccrh23t417qro4j7tkyi"
+                    mapStyle="mapbox://styles/mapbox/streets-v11"
+                >
+                    {lat_lon_fB.map(item => (
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/n_blue.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_tB.map(item => (
 
-                </div>
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/red.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_fR.map(item => (
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/n_red.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_tR.map(item => (
+
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/red.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_fW.map(item => (
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/n_green.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_tW.map(item => (
+
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/green.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_fP.map(item => (
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/n_purple.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                    {lat_lon_tP.map(item => (
+
+                        <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
+                            <button className='marker-btn'>
+                                <img src='/assets/images/purple.png' />
+                            </button>
+                        </Marker>
+                    ))}
+                </ReactMapGL>
+
             </div>
-        );
+        </div>
+    );
 
-    }
+}
 export default Maps;
 
 

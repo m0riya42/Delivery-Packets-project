@@ -1,14 +1,8 @@
 
 import React, { useEffect, useState } from 'react';
-// import Table from '@material-ui/core/Table';
-// import TableBody from '@material-ui/core/TableBody';
-// import TableCell from '@material-ui/core/TableCell';
-// import TableContainer from '@material-ui/core/TableContainer';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-// import Paper from '@material-ui/core/Paper';
-import axios from 'axios';
 import PackagesTabel from '../../components/Modals/PackagesTabel/PackagesTabel';
+import { serverGetPackages, serverGetWorkSchedule } from '../../axios_requests'
+
 
 
 var packages_list = [];
@@ -35,12 +29,10 @@ const PackageTable = (user) => {
 
     useEffect(() => {
         let rows = [];
-        axios.post('http://localhost:9000/packages/getPackages')
-            .then(res => {
-                packages_list = res.data;
-                axios.post('http://localhost:9000/workSchedule/getSchedule', info)
-                    .then(res => {
-                        schedule = res.data;
+        serverGetPackages()
+            .then(packages_list => {
+                serverGetWorkSchedule(info)
+                    .then(schedule => {
                         console.log(schedule)
                         schedule.forEach((user_p) => {
                             if (user_p.id === user.user) {
@@ -49,7 +41,7 @@ const PackageTable = (user) => {
                         });
                         console.log(my_user)
                         if (my_user) {
-                            my_user.packages.forEach((packeage_id) => {
+                            my_user.packages?.forEach((packeage_id) => {
                                 packages_list.forEach((item) => {
                                     if (item.id === packeage_id) {
                                         rows.push(createData(item.id, item.fullName, item.email, item.phone, item.address, item.packageArrived))

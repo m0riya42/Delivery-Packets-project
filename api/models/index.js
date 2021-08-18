@@ -1,7 +1,7 @@
 const mongo = require("mongoose");
 
 
-let URI="mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority"
+let URI = "mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority"
 let db = mongo.createConnection();
 (async () => {
     try {
@@ -17,6 +17,7 @@ require("./users")(db);
 require("./packages")(db);
 require("./rightPosts")(db);
 require("./leftPosts")(db);
+require("./chatMsg")(db);
 require("./workSchedule")(db);
 
 module.exports = model => db.model(model);

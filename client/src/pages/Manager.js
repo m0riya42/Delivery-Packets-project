@@ -11,8 +11,9 @@ import Blog from '../components/Layout/Blog';
 import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
 import socketClient from "socket.io-client";
-import axios from 'axios';
 import ScheduleInfo from './managerPages/ScheduleInfo';
+
+import { serverGetBlogData, serverCreateRightPost } from '../axios_requests'
 
 
 // var io = require('socket.io-client')
@@ -61,17 +62,13 @@ const Manager = ({ pagesHandler }) => {
 
   const requestListOfPosts = () => {
     let blogData = []
-    axios.post('http://localhost:9000/blog')
-      .then(res => {
-        blogData = res.data;
+    serverGetBlogData()
+      .then(data => {
+        blogData = data;
         console.log(blogData);
-
         updateListOfPosts(blogData);
-
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
@@ -92,16 +89,13 @@ const Manager = ({ pagesHandler }) => {
     debugger
     //send to DB
     const body = { rightPost: newPost }
-    axios.post('http://localhost:9000/blog/createRightPost', body)
+    serverCreateRightPost(body)
       .then(res => {
         console.log(res);
-
         //update list 
         requestListOfPosts()
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => console.log(err))
 
   }
 

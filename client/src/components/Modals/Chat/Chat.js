@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './Chat.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-// import axios from 'axios';
-// import socketClient from "socket.io-client";
 import ReciverChat from './ReciverChat';
 import SenderChat from './SenderChat'
 import SendButton from './SendButton';
@@ -35,9 +33,9 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
     const sendText = (senderText) => {
         console.log(senderText)
         // setSenderText(senderText);//, to
-        socket.emit("private message", { from: senderName, message: senderText, date: new Date(), to: reciverName });
+        // socket.emit("private message", { from: senderName, message: senderText, date: new Date(), to: reciverName });
 
-        // onSendMessage({ from: senderName, message: senderText, to: reciverName })
+        onSendMessage({ from: senderName, message: senderText, to: reciverName })
         //send text to the server
         // socket.emit('message', { name: senderName, message: senderText, date: new Date() })
         //update ui?

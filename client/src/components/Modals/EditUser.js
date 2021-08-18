@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 import { useStyles } from './utils'
-import axios from 'axios';
+import { serverUpdateUserData } from '../../axios_requests'
 
 // import { create } from 'jss';
 // import rtl from 'jss-rtl';
@@ -27,16 +27,11 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
 
     const updateUser = () => {
         console.log('update user')
-        //console.log(userInformation)
-       
-        axios.post('http://localhost:9000/usersInfo/updateUser', userInformation)
-            .then(res => {
-                console.log(res);
-                window.location.reload()
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        serverUpdateUserData(userInformation).then(data => {
+            console.log(data);
+            window.location.reload()
+        })
+            .catch(err => console.log(err))
     }
 
     const handleChange = (prop) => (event) => {

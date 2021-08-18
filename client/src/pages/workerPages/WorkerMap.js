@@ -5,7 +5,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
 import './map.css'
-import axios from 'axios';
+import { serverGetPackages, serverGetWorkSchedule } from '../../axios_requests';
 
 var packages = [];
 var schedule = [];
@@ -25,14 +25,12 @@ let info = {
 
 
 const WorkerMap = (id) => {
-    
+
     useEffect(() => {
-        axios.post('http://localhost:9000/packages/getPackages')
-            .then(res => {
-                packages = res.data;
-                axios.post('http://localhost:9000/workSchedule/getSchedule', info)
-                    .then(res => {
-                        schedule = res.data;
+        serverGetPackages()
+            .then(packages => {
+                serverGetWorkSchedule(info)
+                    .then(schedule => {
                         console.log(schedule)
                         schedule.forEach((user_p) => {
                             if (user_p.id === id.id) {

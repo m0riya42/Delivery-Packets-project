@@ -1,5 +1,4 @@
-
-
+import { v4 as uuidv4 } from 'uuid';
 var io = require('socket.io-client')
 const ENDPOINT = 'http://127.0.0.1:9000'
 export const socket = io(ENDPOINT, { autoConnect: false });
@@ -33,11 +32,14 @@ export const connectToSocketIo = () => {
 
 
 export const onSendMessage = ({ from, message, date = new Date(), to, handler }) => {
-    socket.emit("private message", { from, message, date, to });
-    console.log("private message", { from, message, date, to });
-    handler?.({ from, message, date, to })
+
+    const uId = uuidv4()
+    socket.emit("private message", { from, message, date, to, uId });
+    console.log("private message", { from, message, date, to, uId });
+    handler?.({ from, message, date, to, uId })
     //send to db (:?)
 }
+
 export const onGetMessage = ({ handler }) => {
     // socket.on("private message", ({ from, message, date, to }) => {
     //     handler?.({ from, message, date, to })

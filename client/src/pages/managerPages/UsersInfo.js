@@ -3,14 +3,12 @@ import Users from '../../components/Accessories/Users';
 import EditUser from '../../components/Modals/EditUser';
 import SaveUser from '../../components/Modals/SaveUser';
 import Chat from '../../components/Modals/Chat/Chat';
-import axios from 'axios';
+import { serverGetUsersData } from '../../axios_requests'
 
-var users = []
-axios.post('http://localhost:9000/usersInfo/getUsers')
-    .then(res => {
-        users = res.data;
-    })
-    .catch(err => {
+let users;
+serverGetUsersData()
+    .then(data => {
+        users = data;
     })
 
 

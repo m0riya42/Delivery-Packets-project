@@ -4,9 +4,9 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import deLocale from "date-fns/locale/he";
-import axios from 'axios';
 import { Container } from '@material-ui/core';
 import MapCard from './MapCard';
+import { serverGetPackages, serverSetScheduleDistribution } from '../../axios_requests'
 
 
 
@@ -19,28 +19,18 @@ const Schedule = ({ handlers }) => {
     const setDistribution = () => {
         console.log('i am here');
 
-        let package_list = {};
-        axios.post('http://localhost:9000/packages/getPackages')
-            .then(res => {
-                package_list = res.data;
+        serverGetPackages()
+            .then(package_list => {
                 var string_date = selectedDate.toLocaleString();
                 var today = (string_date.split(',')[0]).replaceAll('.', '/')
                 let info = {
                     package_list: package_list,
                     date: today
-            }
-                axios.post('http://localhost:9000/workSchedule/setDistribution', info)
-                .then(res => {
-                    console.log(res)
-
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+                }
+                serverSetScheduleDistribution(info)
+                    .then(res => console.log(res)).catch(err => console.log(err))
             })
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => console.log(err))
 
 
     }

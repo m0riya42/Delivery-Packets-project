@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Switch from '@material-ui/core/Switch';
-import axios from 'axios';
-
+import { serverUpdatePackage } from '../../../axios_requests'
 // import { withStyles } from '@material-ui/core/styles';
 // import { cyan } from '@material-ui/core/colors';
 
@@ -36,7 +35,7 @@ const PackageRow = ({ packageToSend }) => {
 
         console.log(updatedPackage)
         //updatePackage
-        axios.post('http://localhost:9000/packages/updatePackage', updatedPackage)
+        serverUpdatePackage(updatedPackage)
             .then(res => {
                 console.log(res);
                 window.location.reload()
