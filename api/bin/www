@@ -86,9 +86,9 @@ io.on('connection', (socket) => { /* socket object may be used to send specific 
   //   console.log({ name, message, date })
   // })
 
-  socket.on("private message", ({ from, message, date, to }) => {
-    console.log('private msg: ', { from, message, date, to });
-    socket.emit("private message", { from, message, date, to });
+  socket.on("private message", ({ from, to, msg, date, uId }) => {
+    console.log('private msg: ', { from, to, msg, date, uId });
+    socket.emit("private message", { from, to, msg, date, uId });
     // socket.to(to).emit("private message", {
     //   message, date,
     //   from, to

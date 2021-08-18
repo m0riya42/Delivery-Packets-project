@@ -30,6 +30,7 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
                     authenticate({
                         token: res.data.token
                     })
+                    window.scrollTo(0, 0);
                 }
                 else {
                     alert('Wrong username/password ')

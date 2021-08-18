@@ -51,7 +51,7 @@ import { serverGetBlogData, serverCreateRightPost } from '../axios_requests'
 
 
 
-const Manager = ({ pagesHandler }) => {
+const Manager = ({ pagesHandler, user }) => {
   pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
@@ -103,7 +103,7 @@ const Manager = ({ pagesHandler }) => {
     <div id="managerContainer" style={{ height: "fitContent", "paddingBottom": "106px", "paddingTop": "106px", background: "url(/assets/images/a0010.jpg)" }}>
       <Switch>
         <Route path="/Users" >
-          <UsersInfo />
+          <UsersInfo user={user} />
         </Route>
         <Route path="/Schedule" >
           <ScheduleInfo />

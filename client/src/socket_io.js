@@ -2,9 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 var io = require('socket.io-client')
 const ENDPOINT = 'http://127.0.0.1:9000'
 export const socket = io(ENDPOINT, { autoConnect: false });
-socket.onAny((event, ...args) => {
-    console.log(event, args)
-})
+// socket.onAny((event, ...args) => {
+//     console.log(event, args)
+// })
 socket.on('connect', function (socket) {
     console.log('Connected CLIENT!');
 })
@@ -25,43 +25,41 @@ socket.on("users", (users) => {
 
 
 export const connectToSocketIo = () => {
-    const username = localStorage['token'] && JSON.parse(localStorage['token']).userName
+    const username = window.name
     socket.auth = { username }
     socket.connect();
 }
 
 
-export const onSendMessage = ({ from, message, date = new Date(), to, handler }) => {
-
-    const uId = uuidv4()
-    socket.emit("private message", { from, message, date, to, uId });
-    console.log("private message", { from, message, date, to, uId });
-    handler?.({ from, message, date, to, uId })
+export const onSendMessage = ({ from, to, msg, date = new Date(), uId = uuidv4(), handler }) => {
+    socket.emit("private message", { from, to, msg, date, uId });
+    console.log("private message", from, to, msg, date, uId);
+    handler?.({ from, msg, date, to, uId })
     //send to db (:?)
 }
 
-export const onGetMessage = ({ handler }) => {
-    // socket.on("private message", ({ from, message, date, to }) => {
-    //     handler?.({ from, message, date, to })
-    //     console.log('update', from, message, date, to)
-    // });
-    socket.on("private message", ({ from, message, date, to }) => {
-        handler?.({ from, message, date, to })
-        //     console.log('update', from, message, date, to)
-        // for (let i = 0; i < this.users.length; i++) {
-        //   const user = this.users[i];
-        //   if (user.userID === from) {
-        //     user.messages.push({
-        //       content,
-        //       fromSelf: false,
-        //     });
-        //     if (user !== this.selectedUser) {
-        //       user.hasNewMessages = true;
-        //     }
-        //     break;
-        //   }
-        // }
-    });
+// export const onGetMessage = ({ handler }) => {
+//     // socket.on("private message", ({ from, message, date, to }) => {
+//     //     handler?.({ from, message, date, to })
+//     //     console.log('update', from, message, date, to)
+//     // });
+//     socket.on("private message", ({ from, message, date, to }) => {
+//         handler?.({ from, message, date, to })
+//         //     console.log('update', from, message, date, to)
+//         // for (let i = 0; i < this.users.length; i++) {
+//         //   const user = this.users[i];
+//         //   if (user.userID === from) {
+//         //     user.messages.push({
+//         //       content,
+//         //       fromSelf: false,
+//         //     });
+//         //     if (user !== this.selectedUser) {
+//         //       user.hasNewMessages = true;
+//         //     }
+//         //     break;
+//         //   }
+//         // }
+//     });
 
-}
+// }
 // var socket = io.connect(ENDPOINT);

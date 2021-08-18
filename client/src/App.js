@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, createContext, useMemo } from "react"
 import { BrowserRouter as Router } from 'react-router-dom'
 import Home from './pages/Home'
 import Manager from './pages/Manager';
@@ -13,6 +13,7 @@ import { serverGetUserChatMsgs, serverGetUserByNameData } from './axios_requests
 // localStorage['token'] && connectToSocketIo()
 
 connectToSocketIo()
+export const ChatMessages = createContext(null)
 
 const App = () => {
 
@@ -21,8 +22,7 @@ const App = () => {
   const [jwt, setJwt] = useState(storedJwt);
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
-  const [chatMsgs, setChatMsgs] = useState([])
-
+  // const [chatMsgs, setChatMsgs] = useState([])
   const authenticateHandler = ({ token }) => {
 
 
@@ -37,7 +37,12 @@ const App = () => {
     // connectToSocketIo()
 
     //GET USER MESSAGES
-    serverGetUserChatMsgs({ userName: token.userName, handler: setChatMsgs }).then((data) => setChatMsgs(data))
+    // serverGetUserChatMsgs({ userName: token.userName, handler: setChatMsgs }).then((data) => {
+    //   //  export createContext(chatMsgs)
+    //   setChatMsgs(data)
+
+
+    // })
 
   }
   const setPagesHandler = (pages) => {
@@ -53,17 +58,20 @@ const App = () => {
 
   const onLoad = () => {
     if (jwt) { //-------------->Manager/User
+      window.name = JSON.parse(jwt).userName;
       const type = JSON.parse(jwt).type;
-      if (type === "manager") {
-        type === "manager" ? setReturnVal(<><Manager pagesHandler={setPagesHandler} /></>) : setReturnVal(<><Manager /></>)
+      serverGetUserByNameData({ name: window.name }).then(user => {
+        if (type === "manager") {
+          setReturnVal(<><Manager pagesHandler={setPagesHandler} user={user} /></>)
+          // : setReturnVal(<><Manager /></>)
 
-      }
-      else if (type === "worker") {
-        let name = JSON.parse(jwt).userName;
-        serverGetUserByNameData({ name }).then(user => {
-          type === "worker" ? setReturnVal(<><Worker pagesHandler={setPagesHandler} user={user} /></>) : setReturnVal(<><Worker /></>)
-        })
-      }
+        }
+        else if (type === "worker") {
+          setReturnVal(<><Worker pagesHandler={setPagesHandler} user={user} /></>)
+          //  : setReturnVal(<><Worker /></>)
+        }
+
+      })
     }
     else {
       setPagesHandler([{ ref: "#home", text: "עמוד הבית" }, { ref: "#features", text: "אודותינו" }, { ref: "#activity", text: "הפעילות שלנו" }, { ref: "#text", text: "השותפים שלנו" }, { ref: "#contact", text: "צרו קשר" }]
@@ -73,10 +81,14 @@ const App = () => {
   }
   useEffect(onLoad, [jwt])
 
+  // const providerValue = useMemo(() => ({ chatMsgs, setChatMsgs }), [chatMsgs, setChatMsgs])
   return <Router>
     <Preloder />
     <NavBar pages={pages} userName={JSON.parse(jwt)?.userName} />
+    {/* <ChatMessages.Provider value={providerValue}> */}
+
     {returnVal}
+    {/* </ChatMessages.Provider> */}
     <Footer />
   </Router>
 }

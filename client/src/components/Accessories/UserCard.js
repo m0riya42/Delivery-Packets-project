@@ -31,8 +31,8 @@ const useStyles = makeStyles({
 });
 const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => {
 
-    const classes = useStyles();
 
+    const classes = useStyles();
     return (
         <Grid item xs={12} sm={6} md={4} style={{ zIndex: 2 }}>
             <Card className={classes.cardRoot} >
@@ -60,15 +60,14 @@ const UserCard = ({ user, handleEditUser, handleChatToUser, handleNewUser }) => 
                 </CardActionArea>
                 <CardActions className={classes.cardFooter} >
 
-                    {/* <Button size="large" color="primary">
-                        <i class="fa fa-user-times" style={{fontSize: '25px', color: "#3bb6b1"}}></i>
-                    </Button> */}
                     <Button size="large" color="primary" onClick={handleNewUser}>
                         <i class="fa fa-user-plus" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
                     </Button>
-                    <Button size="large" color="primary" onClick={handleChatToUser}>
-                        <i class="fa fa-comments" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
-                    </Button>
+                    {
+                        window.name !== user.userName ? <Button size="large" color="primary" onClick={handleChatToUser}>
+                            <i class="fa fa-comments" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
+                        </Button> : <></>
+                    }
                     <Button size="small" color="primary" onClick={handleEditUser}>
                         <i class="fa fa-pencil" style={{ fontSize: '25px', color: "#3bb6b1" }}></i>
                     </Button>

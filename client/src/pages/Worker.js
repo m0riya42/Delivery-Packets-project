@@ -6,7 +6,7 @@ import UsersInfo from './managerPages/UsersInfo';
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import Blog from '../components/Layout/Blog';
 import WorkerInfo from '../components/Modals/workerInfo';
-import WorkerChat from '../components/Modals/WorkerChat/WorkerChat';
+import WorkerChat from '../pages/WorkerChat/WorkerChat';
 import WorkerMap from './workerPages/WorkerMap';
 import PackageTable from './workerPages/PackageTable';
 import { serverGetBlogData } from '../axios_requests'
@@ -57,7 +57,7 @@ const Worker = ({ pagesHandler, user }) => {
                     <PackageTable user={user.id} />
                 </Route>
                 <Route path="/ContactManager" >
-                    <WorkerChat />                </Route>
+                    <WorkerChat user={user} />                </Route>
                 <Redirect from="/" to="/WorkerHome" />
                 to: object
             </Switch>

@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Users from '../../components/Accessories/Users';
 import EditUser from '../../components/Modals/EditUser';
 import SaveUser from '../../components/Modals/SaveUser';
-import Chat from '../../components/Modals/Chat/Chat';
-import { serverGetUsersData } from '../../axios_requests'
+import Chat from '../../components/Modals/ManagerChat/Chat';
+import { serverGetUsersData, serverGetUserChatMsgs } from '../../axios_requests'
+import { getChatMsgsOfUser } from '../../utils'
+// import { , serverGetUserByNameData } from './axios_requests'
+
+import { ChatMessages } from '../../App'
 
 let users;
 serverGetUsersData()
@@ -12,14 +16,40 @@ serverGetUsersData()
     })
 
 
-const UsersInfo = () => {
-
+const UsersInfo = ({ user }) => {
+    // const  chatMsgs, setChatMsgs } = useContext(ChatMessages)
+    const [chatMsgs, setChatMsgs] = useState([])
     const [editUserIsOpen, setEditUserIsOpen] = useState(false);
     const [chatIsOpen, setChatIsOpen] = useState(false);
     const [userToEdit, setUserToEdit] = useState({});
     const [saveUserIsOpen, setSaveUserIsOpen] = useState(false);
+    const [specificChatMsgs, setSpecificChatMsgs] = useState([])
+    console.log('IF SAVED')
+    console.log(chatMsgs)
 
-    //const users = [{id:'123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address:'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+    useEffect(() => {
+        serverGetUserChatMsgs({ userName: window.name }).then((data) => {
+            setChatMsgs(data)
+        })
+    }, [])
+
+    const updatChatUserList = (user) => {
+        const currentUser = user ? user : userToEdit
+        // console.log(currentUser)
+        setSpecificChatMsgs(
+            getChatMsgsOfUser({ chatMsgs, currentUser }))
+        // chatMsgs.reduce((newList, chatMsg) => {
+        //     // console.log(currentUser.fullName)
+        //     if (chatMsg.to === currentUser.fullName || chatMsg.from === currentUser.fullName)
+        //         newList.push(chatMsg)
+        //     return newList
+        // }, []))
+    }
+
+    useEffect(() => {
+        updatChatUserList()
+        console.log('updated list: ', specificChatMsgs)
+    }, [chatMsgs])
 
 
 
@@ -35,8 +65,9 @@ const UsersInfo = () => {
 
             //maybe to delete:
             handlers.updateUserToEdit(user);
-
-            //
+            // console.log(chatMsgs)
+            // specificChatMsgs, setSpecificChatMsgs
+            updatChatUserList(user)
             setChatIsOpen(true)
         },
         closeChat: () => {
@@ -72,6 +103,10 @@ const UsersInfo = () => {
             //Show User Information
             //handlers.updateUserToEdit();
 
+        },
+        handleNewMsg: (msg) => {
+            setChatMsgs([...chatMsgs, msg])
+
         }
 
     }
@@ -80,7 +115,7 @@ const UsersInfo = () => {
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} />
+            <Chat senderName={user.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>

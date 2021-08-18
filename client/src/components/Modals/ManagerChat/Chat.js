@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import './Chat.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
@@ -6,39 +6,33 @@ import ReciverChat from './ReciverChat';
 import SenderChat from './SenderChat'
 import SendButton from './SendButton';
 import { socket, onSendMessage } from '../../../socket_io'
+import { ChatMessages } from '../../../App'
 
 
 //get messages from the server and than use socket io to communicate
-const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ from: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { from: reciverName, message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
-
-    const [chat, setChat] = useState(msgs);
-
-    // socket.on('message', ({ name, message, date }) => {
-    //     // setChat([...chat, { name, message }])
-    //     console.log('update', name, message)
-    // })
+const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg }) => {
+    // const { chatMsgs, setChatMsgs } = useContext(ChatMessages)
+    // console.log('IF SAVED MESSAGES')
+    // console.log(msgs)
+    // console.log(chatMsgs)
+    const [chat, setChat] = useState([]);
     useEffect(() => {
-        // console.log('now')
+        setChat(msgs)
+    }, [msgs])
 
-        // socket.on('message', ({ name, message, date }) => {
-        socket.on("private message", ({ from, message, date, to }) => {
-            // if (to===senderName){
-
-            setChat([...chat, { from, message, date }])
-            console.log('update', from, message, date, to)
-            // }
+    useEffect(() => {
+        socket.on("private message", ({ from, to, msg, date, uId }) => {
+            // setChatMsgs()
+            // setChat([...chat, { from, to, msg, date, uId }])
+            handleNewMsg({ from, to, msg, date, uId }) //to make sure only the right messages will be here
+            // setChatMsgs([...chatMsgs, { from, to, msg, date, uId }])
+            console.log('update', from, to, msg, date, uId)
         })
     })
 
     const sendText = (senderText) => {
         console.log(senderText)
-        // setSenderText(senderText);//, to
-        // socket.emit("private message", { from: senderName, message: senderText, date: new Date(), to: reciverName });
-
-        onSendMessage({ from: senderName, message: senderText, to: reciverName })
-        //send text to the server
-        // socket.emit('message', { name: senderName, message: senderText, date: new Date() })
-        //update ui?
+        onSendMessage({ from: senderName, msg: senderText, to: reciverName })
 
     }
 
@@ -64,8 +58,8 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
                     <div className="box-body">
                         <div className="direct-chat-messages" style={{ height: "300px" }}>
                             {
-                                chat.map(({ from, message, date }, index) => {
-                                    return from === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
+                                chat?.map(({ from, to, msg, date, uId }, index) => {
+                                    return from !== reciverName ? <SenderChat avatarImg={senderIcon} chatText={msg} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} />
                                 })
                             }
 

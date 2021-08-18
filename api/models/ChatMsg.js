@@ -6,7 +6,7 @@ module.exports = db => {
     let schema = new mongo.Schema({
         from: { type: String, required: true },
         to: { type: String, required: true },
-        message: { type: String, required: true },
+        msg: { type: String, required: true },
         date: { type: Date, required: true },
         uId: { type: String, required: true },
     }, { autoIndex: true });
@@ -17,7 +17,7 @@ module.exports = db => {
         return this.create({
             from: chatMsg[0],
             to: chatMsg[1],
-            message: chatMsg[2],
+            msg: chatMsg[2],
             date: chatMsg[3],
             uId: chatMsg[4],
         });
