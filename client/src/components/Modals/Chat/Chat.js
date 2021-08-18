@@ -7,19 +7,11 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import ReciverChat from './ReciverChat';
 import SenderChat from './SenderChat'
 import SendButton from './SendButton';
-
-
-var io = require('socket.io-client')
-const ENDPOINT = 'http://127.0.0.1:9000'
-var socket = io.connect(ENDPOINT);
-socket.on('connect', function (socket) {
-    console.log('Connected!');
-})
-
+import { socket, onSendMessage } from '../../../socket_io'
 
 
 //get messages from the server and than use socket io to communicate
-const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ name: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { name: reciverName, message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
+const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon, reciverIcon, reciverName, msgs = [{ from: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { from: reciverName, message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
 
     const [chat, setChat] = useState(msgs);
 
@@ -29,18 +21,25 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
     // })
     useEffect(() => {
         // console.log('now')
-        socket.on('message', ({ name, message, date }) => {
-            setChat([...chat, { name, message, date }])
-            console.log('update', name, message, date)
+
+        // socket.on('message', ({ name, message, date }) => {
+        socket.on("private message", ({ from, message, date, to }) => {
+            // if (to===senderName){
+
+            setChat([...chat, { from, message, date }])
+            console.log('update', from, message, date, to)
+            // }
         })
     })
 
     const sendText = (senderText) => {
         console.log(senderText)
-        // setSenderText(senderText);
+        // setSenderText(senderText);//, to
+        socket.emit("private message", { from: senderName, message: senderText, date: new Date(), to: reciverName });
 
+        // onSendMessage({ from: senderName, message: senderText, to: reciverName })
         //send text to the server
-        socket.emit('message', { name: senderName, message: senderText, date: new Date() })
+        // socket.emit('message', { name: senderName, message: senderText, date: new Date() })
         //update ui?
 
     }
@@ -67,8 +66,8 @@ const Chat = ({ handleClose, display, senderName = 'אלכס כהן', senderIcon
                     <div className="box-body">
                         <div className="direct-chat-messages" style={{ height: "300px" }}>
                             {
-                                chat.map(({ name, message, date }, index) => {
-                                    return name === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
+                                chat.map(({ from, message, date }, index) => {
+                                    return from === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
                                 })
                             }
 

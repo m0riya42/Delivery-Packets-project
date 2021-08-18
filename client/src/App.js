@@ -9,34 +9,17 @@ import NavBar from './components/Layout/NavBar';
 import Footer from './components/Layout/Footer';
 // import socketClient from "socket.io-client";
 import axios from 'axios';
+import { connectToSocketIo, socket } from './socket_io'
+// localStorage['token'] && connectToSocketIo()
 
-// import io from "socket.io-client";
-
-// var io = require('socket.io-client')
-// const ENDPOINT = 'http://127.0.0.1:9000'
-// // // var socket = io(ENDPOINT);
-// var socket = io.connect(ENDPOINT);
-// socket.on('connect', function (socket) {
-//   console.log('Connected!');
-// })
+connectToSocketIo()
 
 const App = () => {
-
-  // const [isOpen, setIsOpen] = useState(false);
-  // const openSignInPopUp = () => {
-  //   setIsOpen(true);
-  //   console.log(isOpen)
-  // }
-  // const closeSignInPopUp = () => {
-  //   setIsOpen(false);
-  // }
-
 
 
   const storedJwt = localStorage.getItem('token');
   const [jwt, setJwt] = useState(storedJwt);
   // const [jwt, setJwt] = useState(storedJwt || null);
-
   // const [auth, setAuth] = useState(null); // IF WE CHANGE THIS INITIAL VALUE WE GET DIFFERENT PAGES
   const [pages, setPages] = useState([]);
   const [returnVal, setReturnVal] = useState(null);
@@ -50,6 +33,14 @@ const App = () => {
     console.log(jwt)
     setJwt(JSON.stringify(token));
     console.log(jwt)
+
+
+
+    //CONNECT TO SOCKET IO
+    // connectToSocketIo()
+
+
+
 
     // setUserInfo(user);
     // console.log(userInfo)
@@ -80,7 +71,7 @@ const App = () => {
       }
       else if (type === "worker") {
         let user = {};
-        let info = {name: JSON.parse(jwt).userName}
+        let info = { name: JSON.parse(jwt).userName }
         axios.post('http://localhost:9000/usersInfo/getUserByName', info)
           .then(res => {
             user = res.data;

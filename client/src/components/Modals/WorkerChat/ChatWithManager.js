@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react'
 import SenderChat from './SenderChat'
 import ReciverChat from './ReciverChat'
 import SendButton from './SendButton'
+import { onSendMessage, socket } from '../../../socket_io'
 
-var io = require('socket.io-client')
-const ENDPOINT = 'http://127.0.0.1:9000'
-var socket = io.connect(ENDPOINT);
-socket.on('connect', function (socket) {
-    console.log('Connected!');
-})
+// var io = require('socket.io-client')
+// const ENDPOINT = 'http://127.0.0.1:9000'
+// var socket = io.connect(ENDPOINT);
+// socket.on('connect', function (socket) {
+//     console.log('Connected!');
+// })
 
 
-const ChatWithManager = ({ senderName = "טל מרום ישראל", senderIcon, reciverIcon, reciverName, msgs = [{ name: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { name: "טל מרום ישראל", message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
+const ChatWithManager = ({ senderName = "טל מרום ישראל", senderIcon, reciverIcon, reciverName, msgs = [{ from: "אלכס כהן", message: "יש לי משימה בשבילך", date: new Date(2020, 8, 15) }, { from: "טל מרום ישראל", message: "אוקי", date: new Date(2020, 8, 16) }] }) => {
 
 
 
@@ -19,19 +20,25 @@ const ChatWithManager = ({ senderName = "טל מרום ישראל", senderIcon, 
 
 
     useEffect(() => {
-        socket.on('message', ({ name, message, date }) => {
-            setChat([...chat, { name, message, date }])
-            console.log('update', name, message, date)
+        socket.on("private message", ({ from, message, date, to }) => {
+            // if (to===senderName){
+
+            console.log([...chat, { from, message, date }])
+            setChat([...chat, { from, message, date }])
+            console.log('update', from, message, date, to)
+            // }
         })
+        // socket.on('message', ({ name, message, date }) => {
+        //     setChat([...chat, { name, message, date }])
+        //     console.log('update', name, message, date)
+        // })
     })
 
     const sendText = (senderText) => {
         console.log(senderText)
-        // setSenderText(senderText);
-
         //send text to the server
-        socket.emit('message', { name: senderName, message: senderText, date: new Date() })
-        //update ui?
+        onSendMessage({ from: senderName, message: senderText, to: reciverName })
+
 
     }
 
@@ -45,8 +52,8 @@ const ChatWithManager = ({ senderName = "טל מרום ישראל", senderIcon, 
         <div class="msg_history" >
             {/* msgs.map */}
             {
-                chat.map(({ name, message, date }, index) => {
-                    return name === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
+                chat.map(({ from, message, date }, index) => {
+                    return from === senderName ? <SenderChat avatarImg={senderIcon} chatText={message} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={message} date={date} />
                 })
             }
         </div>
