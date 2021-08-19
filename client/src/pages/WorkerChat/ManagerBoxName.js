@@ -1,16 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const ManagerBoxName = ({ isActive, user, setChoosenManager }) => {
+const ManagerBoxName = ({ isActive, user, setChoosenManager, managerSelected }) => {
+    const [clickTarget, setClickTarget] = useState(isActive)
 
-    // console.log(user)
+    useEffect(() => {
+        if (user === managerSelected)
+            setClickTarget(true)
+        clickTarget && setClickTarget(false)
+    }, [managerSelected])
 
 
     const onClickManagerUser = (e) => {
-        e.target.classList.add('active_chat')
-        console.log(e.target)
         setChoosenManager(user)
     }
-    return <div id="ManagerUser" onClick={onClickManagerUser} class={`chat_list ${isActive ? 'active_chat' : ''} `}>
+    return <div id="ManagerUser" onClick={onClickManagerUser} class={`${clickTarget ? 'active_chat' : ''} `}>
         <div class="chat_people" style={{ display: 'flex', flexDirection: ' row-reverse', textAlign: 'right' }}>
             <div class="chat_img"> <img src={user.image} alt="sunil" /></div>
             <div class="chat_ib"><h5>{user.fullName} <span class="chat_date" style={{ float: 'left' }}>Dec 25</span></h5>

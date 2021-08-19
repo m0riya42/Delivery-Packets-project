@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('api:server');
 var http = require('http');
 const User = require('../models')("users");
+const ChatMSG = require('../models')("chatMsg");
 
 //const PORT = 8080;
 
@@ -67,33 +68,15 @@ const io = require('socket.io')(server, {
 // });
 io.on('connection', (socket) => { /* socket object may be used to send specific messages to the new connected client */
   const CONNECTED_USERS = [];
-  // // //list of connected users
-  // for (let [id, socket] of io.of("/").sockets) {
-  //   const username = socket.username;
-  //   //if not include push new user-------------------------------
 
-  //   // console.log(POSSIBLE_USERS)
-  //   POSSIBLE_USERS && POSSIBLE_USERS[username] && CONNECTED_USERS.push({
-  //     userID: id,
-  //     username,
-  //     fullName: POSSIBLE_USERS[socket.username]
-  //   });
-  //   console.log(CONNECTED_USERS)
-  // }
-
-  // socket.on('message', ({ name, message, date }) => {
-  //   io.emit('message', { name, message, date })
-  //   console.log({ name, message, date })
-  // })
-
-  socket.on("private message", ({ from, to, msg, date, uId }) => {
+  socket.on("private_message", ({ from, to, msg, date, uId }) => {
     console.log('private msg: ', { from, to, msg, date, uId });
-    socket.emit("private message", { from, to, msg, date, uId });
+    io.emit("private_message", { from, to, msg, date, uId });
+    ChatMSG.CREATE([from, to, msg, date, uId])
     // socket.to(to).emit("private message", {
     //   message, date,
     //   from, to
     // });
-
 
   })
 })

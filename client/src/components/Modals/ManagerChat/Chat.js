@@ -21,7 +21,7 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
     }, [msgs])
 
     useEffect(() => {
-        socket.on("private message", ({ from, to, msg, date, uId }) => {
+        socket.on("private_message", ({ from, to, msg, date, uId }) => {
             // setChatMsgs()
             // setChat([...chat, { from, to, msg, date, uId }])
             handleNewMsg({ from, to, msg, date, uId }) //to make sure only the right messages will be here
@@ -33,7 +33,6 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
     const sendText = (senderText) => {
         console.log(senderText)
         onSendMessage({ from: senderName, msg: senderText, to: reciverName })
-
     }
 
 

@@ -1,10 +1,8 @@
-export const getChatMsgsOfUser = ({ chatMsgs, currentUser }) => {
+export const getChatMsgsOfUser = ({ chatMsgs, currentUser, connectedUser }) => {
     return chatMsgs.reduce((newList, msg) => {
-        if ((msg.to === currentUser.fullName) || (msg.from === currentUser.fullName)) {
+        if ((msg.to === currentUser.fullName && msg.from === connectedUser.fullName) || (msg.from === currentUser.fullName && msg.to === connectedUser.fullName)) {
             newList.push(msg)
-            console.log(msg)
         }
         return newList
     }, [])
-    // return []
 }

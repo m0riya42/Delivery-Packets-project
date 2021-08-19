@@ -16,7 +16,7 @@ serverGetUsersData()
     })
 
 
-const UsersInfo = ({ user }) => {
+const UsersInfo = ({ user: connectedUser }) => {
     // const  chatMsgs, setChatMsgs } = useContext(ChatMessages)
     const [chatMsgs, setChatMsgs] = useState([])
     const [editUserIsOpen, setEditUserIsOpen] = useState(false);
@@ -37,7 +37,7 @@ const UsersInfo = ({ user }) => {
         const currentUser = user ? user : userToEdit
         // console.log(currentUser)
         setSpecificChatMsgs(
-            getChatMsgsOfUser({ chatMsgs, currentUser }))
+            getChatMsgsOfUser({ chatMsgs, currentUser, connectedUser }))
         // chatMsgs.reduce((newList, chatMsg) => {
         //     // console.log(currentUser.fullName)
         //     if (chatMsg.to === currentUser.fullName || chatMsg.from === currentUser.fullName)
@@ -115,7 +115,7 @@ const UsersInfo = ({ user }) => {
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat senderName={user.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
+            <Chat senderName={connectedUser.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>

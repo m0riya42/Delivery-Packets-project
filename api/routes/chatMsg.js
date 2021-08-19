@@ -18,6 +18,8 @@ User.REQUEST().then(list => {
     console.log('******************************')
     console.log(POSSIBLE_USERS)
 }).catch((msg) => { })
+
+
 router.post('/getUserMsg', async function (req, res, next) {
     console.log("I AM AT get CHAT MESSAGE")
 

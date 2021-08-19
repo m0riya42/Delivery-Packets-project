@@ -81,6 +81,16 @@ module.exports = db => {
         console.log("in REQUEST_BY_USER");
         return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
     }
+    schema.statics.DELETE_MSG = async function (uId) {
+        this.findOneAndRemove({ uId }, function (err, data) {
+            if (!err) {
+                console.log("Deleted");
+            }
+        });
+
+        console.log("in REQUEST_BY_USER");
+        return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
+    }
 
     db.model('chatMsg', schema);
     console.log("chatMsg model created");

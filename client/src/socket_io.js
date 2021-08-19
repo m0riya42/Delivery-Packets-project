@@ -32,8 +32,8 @@ export const connectToSocketIo = () => {
 
 
 export const onSendMessage = ({ from, to, msg, date = new Date(), uId = uuidv4(), handler }) => {
-    socket.emit("private message", { from, to, msg, date, uId });
-    console.log("private message", from, to, msg, date, uId);
+    socket.emit("private_message", { from, to, msg, date, uId });
+    console.log("private_message", from, to, msg, date, uId);
     handler?.({ from, msg, date, to, uId })
     //send to db (:?)
 }

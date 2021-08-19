@@ -17,10 +17,11 @@ serverGetUsersData().then((users) => {
 }).catch(err => {
 })
 
-const WorkerChat = ({ user }) => {
+const WorkerChat = ({ user: connectedUser }) => {
     const [chatMsgs, setChatMsgs] = useState([])
-    const [ManagerSelected, setChoosenManager] = useState({})
+    const [managerSelected, setChoosenManager] = useState({})
     const [specificChatMsgs, setSpecificChatMsgs] = useState([])
+    // const [activeUser, setActiveUser]= useState({})
 
 
     useEffect(() => {
@@ -31,20 +32,23 @@ const WorkerChat = ({ user }) => {
     }, [])
 
     const updatChatUserList = (user) => {
-        const currentUser = user ? user : ManagerSelected
+        const currentUser = user ? user : managerSelected
+        console.log('in setSpecificChatMsgs')
         setSpecificChatMsgs(
-            getChatMsgsOfUser({ chatMsgs, currentUser }))
+            getChatMsgsOfUser({ chatMsgs, currentUser, connectedUser }))
 
     }
 
     useEffect(() => {
+        console.log('in update right list')
         updatChatUserList()
-        console.log('updated list: ', specificChatMsgs)
+        // console.log('updated list: ', specificChatMsgs)
     }, [chatMsgs])
 
 
     const handlers = {
         handleNewMsg: (msg) => {
+            console.log(msg)
             setChatMsgs([...chatMsgs, msg])
 
         },
@@ -53,7 +57,7 @@ const WorkerChat = ({ user }) => {
             updatChatUserList(user)
         }
     }
-    console.log(usersList)
+    // console.log(usersList)
 
     return <>
         <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1>
@@ -66,12 +70,12 @@ const WorkerChat = ({ user }) => {
                         {/* List of Managers */}
 
                         {
-                            usersList.map(user => <ManagerBoxName isActive={false} user={user} setChoosenManager={handlers.handleClickOnUser} />)
+                            usersList.map(user => <ManagerBoxName isActive={false} user={user} setChoosenManager={handlers.handleClickOnUser} managerSelected={managerSelected} />)
                         }
 
                     </div>
                 </div>
-                <ChatWithManager senderName={user.fullName} reciverIcon={ManagerSelected.image} reciverName={ManagerSelected.fullName} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
+                <ChatWithManager senderName={connectedUser.fullName} reciverIcon={managerSelected.image} reciverName={managerSelected.fullName} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
             </div>
         </div>
     </>

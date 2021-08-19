@@ -107,16 +107,19 @@
 	clear: both;
 }
 
-.chat_list {
+/* .chat_list {
+	
+} */
+#ManagerUser  {
 	border-bottom: 1px solid #ddd;
 	margin: 0;
 	padding: 18px 16px 10px;
-    
-}
-.chat_list :hover{
-    cursor: pointer;
-background: rgb(123 208 105 / 8%);
-}
+  }
+#ManagerUser:hover  {
+	padding: 18px 16px 10px;
+	cursor: pointer;
+  background: rgb(123 208 105 / 8%);
+  }
 
 .inbox_chat {
 	height: 550px;
@@ -172,6 +175,7 @@ background: rgb(123 208 105 / 8%);
 }
 
 .sent_msg p {
+	direction: rtl;
 	background:#2EC365;
 	border-radius: 12px 15px 15px 0;
 	font-size: 14px;
