@@ -10,7 +10,7 @@ const AboutSection = () => {
                     <div className="main_features fix roomy-70">
 
                         <div className="col-md-5">
-                            <div className="features_item">
+                            <div className="features_item"  style={{marginTop: "-30px"}}>
                                 <div className="head_title">
                                     <h2 className="text-uppercase" style={{ borderColor: "#6ea0dd", borderLeftWidth: "10px" }}> <strong>אודותינו</strong></h2>
                                 </div>
@@ -31,15 +31,15 @@ const AboutSection = () => {
                                 <div className="features_item2 text-center">
                                     <div className="divider_horizontal"></div>
                                     <div className="divider_vertical"></div>
-                                    <div className="col-xs-6">
+                                    <div className="col-xs-6 ">
                                         <div className="features_item_text">
-                                            <img src="/assets/images/food.JPG" alt="" className="img-circle" />
+                                            <img src="/assets/images/food.JPG" alt="" className="img-circle" style={{marginTop: "-10px"}}/>
                                             {/* <p className="m-top-20">מזון</p> */}
                                         </div>
                                     </div>
                                     <div className="col-xs-6">
                                         <div className="features_item_text">
-                                            <img src="/assets/images/rsz_center.jpg" alt="" className="img-circle" />
+                                            <img src="/assets/images/rsz_center.jpg" alt="" className="img-circle" style={{marginTop: "-15px"}}/>
                                             {/* <p className="m-top-20">תרופות</p> */}
                                         </div>
                                     </div>

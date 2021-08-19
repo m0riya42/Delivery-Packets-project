@@ -7,9 +7,9 @@ const OurActivitiesSection = () => {
             <div className="container">
                 <div className="row">
                     <div className="main_choose">
-                        <div className="col-md-6">
+                        <div className="col-md-4" style={{marginRight: "50px"}}>
                             <div className="choose_mac" style={{ background: "transparent", width: "700px", margin: "0px -50px 0px" }}>
-                                <div className="choose_slide">
+                                <div className="choose_slide"  style={{marginRight: "400px"}}>
                                     <div className="choose_item">
                                         <img src="/assets/images/rsz_hands-2847508_1920.jpg" alt="" style={{ marginLeft: "0px" }} />
                                     </div>
@@ -33,8 +33,8 @@ const OurActivitiesSection = () => {
                         </div>
                         {/* <!-- End off col-md-6 --> */}
 
-                        <div className="col-md-5 col-md-offset-1">
-                            <div className="choose_content sm-m-top-40" style={{ margin: "0px 50px 0px" }}>
+                        <div className="col-md-5 col-md-offset-2">
+                            <div className="choose_content sm-m-top-40" style={{ margin: "-40px 60px 0px" , width: "800px"}}>
                                 <div className="head_title">
                                     <h2 className="text-uppercase" style={{ borderColor: "#9586d7", borderLeftWidth: "10px" }}>הפעילות <strong>שלנו</strong></h2>
                                 </div>
