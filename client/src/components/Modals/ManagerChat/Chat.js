@@ -10,11 +10,7 @@ import { ChatMessages } from '../../../App'
 
 
 //get messages from the server and than use socket io to communicate
-const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg }) => {
-    // const { chatMsgs, setChatMsgs } = useContext(ChatMessages)
-    // console.log('IF SAVED MESSAGES')
-    // console.log(msgs)
-    // console.log(chatMsgs)
+const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg, handleDeleteMsg }) => {
     const [chat, setChat] = useState([]);
     useEffect(() => {
         setChat(msgs)
@@ -22,12 +18,17 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
 
     useEffect(() => {
         socket.on("private_message", ({ from, to, msg, date, uId }) => {
-            // setChatMsgs()
-            // setChat([...chat, { from, to, msg, date, uId }])
             handleNewMsg({ from, to, msg, date, uId }) //to make sure only the right messages will be here
-            // setChatMsgs([...chatMsgs, { from, to, msg, date, uId }])
             console.log('update', from, to, msg, date, uId)
         })
+
+        socket.on("delete_msg", () => {
+            handleDeleteMsg()
+            console.log('delete msg')
+            //ask for msgs again
+            
+        })
+
     })
 
     const sendText = (senderText) => {
@@ -40,9 +41,6 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
     let inDisplay;
     display ? inDisplay = 'block' : inDisplay = 'none';
     return (<>
-        {/* <div style=
-        {{ background: 'red', position: 'relative', bottom: '-108%', height: '37px' }}
-        id="chatButton"></div> */}
         <div className="popup-box" style={{ background: "transparent", display: inDisplay, position: 'realetive', height: "auto", top: "38%" }}>
             <div className="col-lg-3" style={{ display: inDisplay, bottom: "-30%" }}>
                 <div className="chatStyle chatStylebox box-primary direct-chat direct-chat-primary chatStyle" style={{ background: 'url(/assets/images/chat_pattern.png)', backgroundSize: '318px', filter: 'drop-shadow(1px 1px 1px black)' }} >
@@ -62,9 +60,6 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
                                 })
                             }
 
-
-                            {/* <SenderChat avatarImg={senderIcon} />
-                            <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} /> */}
                         </div>
                         <SendButton sendText={sendText} />
                     </div>

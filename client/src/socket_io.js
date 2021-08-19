@@ -35,8 +35,13 @@ export const onSendMessage = ({ from, to, msg, date = new Date(), uId = uuidv4()
     socket.emit("private_message", { from, to, msg, date, uId });
     console.log("private_message", from, to, msg, date, uId);
     handler?.({ from, msg, date, to, uId })
-    //send to db (:?)
 }
+//send to db (:?)
+export const serverDeleteChatAlert = () => {
+    socket.emit("delete_msg", {});
+}
+
+
 
 // export const onGetMessage = ({ handler }) => {
 //     // socket.on("private message", ({ from, message, date, to }) => {

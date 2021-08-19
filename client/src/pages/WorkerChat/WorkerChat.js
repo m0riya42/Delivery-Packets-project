@@ -6,6 +6,7 @@ import { getChatMsgsOfUser } from '../../utils'
 import ManagerBoxName from './ManagerBoxName'
 import ChatWithManager from './ChatWithManager'
 import { serverDeleteMsg } from '../../axios_requests'
+import { serverDeleteChatAlert, socket } from '../../socket_io'
 
 
 
@@ -25,12 +26,26 @@ const WorkerChat = ({ user: connectedUser }) => {
     const [specificChatMsgs, setSpecificChatMsgs] = useState([])
     // const [activeUser, setActiveUser]= useState({})
 
-
-    useEffect(() => {
+    const requestForMsgs = () => {
         serverGetUserChatMsgs({ userName: window.name }).then((data) => {
             setChatMsgs(data)
             console.log(data)
         })
+
+    }
+
+    useEffect(() => {
+        socket.on("delete_msg", () => {
+            //ask for msgs again
+            requestForMsgs()
+        })
+    })
+    useEffect(() => {
+        requestForMsgs()
+        // serverGetUserChatMsgs({ userName: window.name }).then((data) => {
+        //     setChatMsgs(data)
+        //     console.log(data)
+        // })
     }, [])
 
     const updatChatUserList = (user) => {
@@ -63,6 +78,7 @@ const WorkerChat = ({ user: connectedUser }) => {
                 console.log(msgs)
                 setChatMsgs(msgs)
             })
+            serverDeleteChatAlert();
         }
     }
     // console.log(usersList)

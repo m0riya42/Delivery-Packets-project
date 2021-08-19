@@ -79,6 +79,10 @@ io.on('connection', (socket) => { /* socket object may be used to send specific 
     // });
 
   })
+  socket.on("delete_msg", ({ }) => {
+    console.log('delete_msg');
+    io.emit("delete_msg");
+  })
 })
 
 

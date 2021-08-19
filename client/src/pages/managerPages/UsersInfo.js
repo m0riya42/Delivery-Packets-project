@@ -26,24 +26,25 @@ const UsersInfo = ({ user: connectedUser }) => {
     const [specificChatMsgs, setSpecificChatMsgs] = useState([])
     console.log('IF SAVED')
     console.log(chatMsgs)
-
-    useEffect(() => {
+    const requestForMsgs = () => {
         serverGetUserChatMsgs({ userName: window.name }).then((data) => {
             setChatMsgs(data)
+            console.log(data)
         })
+
+    }
+    useEffect(() => {
+        requestForMsgs()
+        // serverGetUserChatMsgs({ userName: window.name }).then((data) => {
+        //     setChatMsgs(data)
+        // })
     }, [])
 
     const updatChatUserList = (user) => {
         const currentUser = user ? user : userToEdit
-        // console.log(currentUser)
         setSpecificChatMsgs(
             getChatMsgsOfUser({ chatMsgs, currentUser, connectedUser }))
-        // chatMsgs.reduce((newList, chatMsg) => {
-        //     // console.log(currentUser.fullName)
-        //     if (chatMsg.to === currentUser.fullName || chatMsg.from === currentUser.fullName)
-        //         newList.push(chatMsg)
-        //     return newList
-        // }, []))
+
     }
 
     useEffect(() => {
@@ -107,6 +108,9 @@ const UsersInfo = ({ user: connectedUser }) => {
         handleNewMsg: (msg) => {
             setChatMsgs([...chatMsgs, msg])
 
+        },
+        handleDeleteMsg: () => {
+            requestForMsgs()
         }
 
     }
@@ -115,7 +119,7 @@ const UsersInfo = ({ user: connectedUser }) => {
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat senderName={connectedUser.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
+            <Chat handleDeleteMsg={handlers.handleDeleteMsg} senderName={connectedUser.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>
