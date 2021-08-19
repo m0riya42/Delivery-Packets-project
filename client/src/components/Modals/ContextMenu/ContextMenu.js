@@ -22,6 +22,7 @@ const ContextMenu = ({ initialState, handleClick, state, setState, handleDelMsg,
         window.getSelection().removeAllRanges();// to deselect 
         handleClose()
     }
+    
     return <>
         <Menu
             onContextMenu={(e) => {

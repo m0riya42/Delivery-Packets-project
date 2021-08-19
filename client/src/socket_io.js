@@ -40,6 +40,10 @@ export const onSendMessage = ({ from, to, msg, date = new Date(), uId = uuidv4()
 export const serverDeleteChatAlert = () => {
     socket.emit("delete_msg", {});
 }
+export const sendGeneralMessage = (msg) => {
+    socket.emit("private_message", { from: 'צוות יד לחבר', to: '*', msg, date: new Date(), uId: uuidv4() });
+
+}
 
 
 
