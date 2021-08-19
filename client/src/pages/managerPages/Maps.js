@@ -152,7 +152,7 @@ const Maps = () => {
 
                         <Marker key={item.id} latitude={item.lat} longitude={item.lon}>
                             <button className='marker-btn'>
-                                <img src='/assets/images/red.png' />
+                                <img src='/assets/images/blue.png' />
                             </button>
                         </Marker>
                     ))}
