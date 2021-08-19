@@ -5,6 +5,8 @@ import { serverGetUsersData, serverGetUserChatMsgs } from '../../axios_requests'
 import { getChatMsgsOfUser } from '../../utils'
 import ManagerBoxName from './ManagerBoxName'
 import ChatWithManager from './ChatWithManager'
+import { serverDeleteMsg } from '../../axios_requests'
+
 
 
 var usersList = []
@@ -55,18 +57,22 @@ const WorkerChat = ({ user: connectedUser }) => {
         handleClickOnUser: (user) => {
             setChoosenManager(user)
             updatChatUserList(user)
+        },
+        handleDeleteMsg: (uId) => {
+            serverDeleteMsg({ userName: window.name, uId, }).then((msgs) => {
+                console.log(msgs)
+                setChatMsgs(msgs)
+            })
         }
     }
     // console.log(usersList)
 
     return <>
-        <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1>
-        <div class="messaging">
+        {/* <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1> */}
+        <div class="messaging" onContextMenu={(e) => e.preventDefault()}>
             <div class="inbox_msg" style={{ display: 'flex', flexDirection: ' row-reverse' }}>
                 <div class="inbox_people">
                     <div class="inbox_chat scroll">
-
-
                         {/* List of Managers */}
 
                         {
@@ -75,7 +81,7 @@ const WorkerChat = ({ user: connectedUser }) => {
 
                     </div>
                 </div>
-                <ChatWithManager senderName={connectedUser.fullName} reciverIcon={managerSelected.image} reciverName={managerSelected.fullName} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
+                <ChatWithManager handleDeleteMsg={handlers.handleDeleteMsg} senderIcon={connectedUser.image} senderName={connectedUser.fullName} reciverIcon={managerSelected.image} reciverName={managerSelected.fullName} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
             </div>
         </div>
     </>

@@ -29,7 +29,6 @@
 	display: inline-block;
 	text-align: right;
 	width: 60%;
-	padding:
 }
 
 .headind_srch {
@@ -139,6 +138,19 @@
 	width: 100%;
 }
 
+.outgoing_msg_img {
+	display: inline-block;
+	width: 6%;
+	margin-top: -20px;
+	position: absolute;
+	right: 0%;
+	
+}
+
+.outgoing_msg_img img {
+	width: 100%;
+}
+
 .received_msg {
 	display: inline-block;
 	padding: 0 0 0 10px;
@@ -172,6 +184,7 @@
 	float: left;
 	padding: 30px 15px 0 25px;
 	width:70%;
+	height: 611px;
 }
 
 .sent_msg p {

@@ -24,15 +24,16 @@ export default function DefaultPieChart(props) {
                 fontFamily:
                     '"Nunito Sans", -apple-system, Helvetica, Arial, sans-serif',
                 fontSize: '4px',
+                marginTop: "-50px"
             }}
             viewBoxSize={[150, 150]}
-            center={[75, 30]}
+            center={[73, 30]}
             data={data}
-            radius={25}
+            radius={20}
             // radius={PieChart.defaultProps.radius - 6}
             lineWidth={60}
             segmentsStyle={{ transition: 'stroke .3s', cursor: 'pointer' }}
-            segmentsShift={(index) => (index === selected ? 4 : 1)}
+            segmentsShift={(index) => (index === selected ? 1 : 1)}
             animate
             label={({ dataEntry }) => Math.round(dataEntry.percentage) + '%'}
             labelPosition={100 - lineWidth / 2}
