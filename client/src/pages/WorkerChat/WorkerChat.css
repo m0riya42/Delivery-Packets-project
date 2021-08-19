@@ -29,7 +29,6 @@
 	display: inline-block;
 	text-align: right;
 	width: 60%;
-	padding:
 }
 
 .headind_srch {
@@ -182,6 +181,7 @@ background: rgb(123 208 105 / 8%);
 	float: left;
 	padding: 30px 15px 0 25px;
 	width:70%;
+	height: 611px;
 }
 
 .sent_msg p {

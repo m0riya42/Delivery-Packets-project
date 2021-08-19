@@ -56,7 +56,7 @@ const WorkerChat = ({ user }) => {
     console.log(usersList)
 
     return <>
-        <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1>
+        {/* <h1 style={{ textAlign: 'center', background: 'white' }}>יצירת קשר עם מנהל</h1> */}
         <div class="messaging">
             <div class="inbox_msg" style={{ display: 'flex', flexDirection: ' row-reverse' }}>
                 <div class="inbox_people">
