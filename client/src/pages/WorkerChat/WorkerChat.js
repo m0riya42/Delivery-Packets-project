@@ -71,7 +71,7 @@ const WorkerChat = ({ user }) => {
 
                     </div>
                 </div>
-                <ChatWithManager senderName={user.fullName} reciverIcon={ManagerSelected.image} reciverName={ManagerSelected.fullName} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
+                <ChatWithManager senderName={user.fullName} reciverIcon={ManagerSelected.image} reciverName={ManagerSelected.fullName} senderIcon={user.image} msgs={specificChatMsgs} handleNewMsg={handlers.handleNewMsg} />
             </div>
         </div>
     </>

@@ -136,6 +136,19 @@ background: rgb(123 208 105 / 8%);
 	width: 100%;
 }
 
+.outgoing_msg_img {
+	display: inline-block;
+	width: 6%;
+	margin-top: -20px;
+	position: absolute;
+	right: 0%;
+	
+}
+
+.outgoing_msg_img img {
+	width: 100%;
+}
+
 .received_msg {
 	display: inline-block;
 	padding: 0 0 0 10px;
