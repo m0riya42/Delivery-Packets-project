@@ -10,9 +10,7 @@ export const serverLogIn = (data) => {
     return axios.post('http://localhost:9000/usersInfo/login', data)
 }
 
-export const serverGetUserChatMsgs = ({ userName, handler }) => {
-    return axios.post('http://localhost:9000/chatMsg/getUserMsg', { userName }).then(res => res.data)
-}
+
 
 export const serverGetUserByNameData = ({ name }) => {
     return axios.post('http://localhost:9000/usersInfo/getUserByName', { name }).then(res => res.data)
@@ -65,9 +63,20 @@ export const serverGetWorkSchedule = (info) => {
 
 
 /********************************************** */
+/*                CHAT REQUESTS                 */
+/********************************************** */
+export const serverDeleteMsg = ({ uId, userName }) => {
+    return axios.post('http://localhost:9000/chatMsg/deleteMsg', { uId, userName }).then(res => res.data)
+    // .then(() => serverGetUserChatMsgs({ userName }))
+}
+
+export const serverGetUserChatMsgs = ({ userName, handler }) => {
+    return axios.post('http://localhost:9000/chatMsg/getUserMsg', { userName }).then(res => res.data)
+}
+
+/********************************************** */
 /*                BLOG REQUESTS                 */
 /********************************************** */
-
 
 export const serverGetBlogData = () => {
     return axios.post('http://localhost:9000/blog').then(res => res.data)

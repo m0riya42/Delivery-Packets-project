@@ -1,5 +1,6 @@
 const mongo = require("mongoose");
 
+mongo.set('useFindAndModify', false);
 
 let URI = "mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority"
 let db = mongo.createConnection();

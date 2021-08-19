@@ -31,17 +31,48 @@ router.post('/getUserMsg', async function (req, res, next) {
 
     }
 })
-// router.post('/createRightPost', async function (req, res, next) {
-//     console.log("----I AM AT POST CREATE RIGHT POST---")
-//     const rightPost = req.body.rightPost;
-//     try {
-//         await RightPosts.CREATE(rightPost);
-//         res.sendStatus(200)
-//     }
-//     catch (err) { console.log(`Failed: ${err}`) }
-//     // res.sendStatus()
-//     // res.send)(blogInfo);
-// });
+
+const datesAreOnSameDay = (first, second = new Date()) =>
+    first.getFullYear() === second.getFullYear() &&
+    first.getMonth() === second.getMonth() &&
+    first.getDate() === second.getDate();
+
+const isDeletable = ({ uId, userName }) => {
+    console.log('is deletable')
+    const user = POSSIBLE_USERS[userName]
+    return ChatMSG.GET_MSG({ uId }).then(msg => {
+
+        console.log('find msg')
+        if (datesAreOnSameDay(new Date(msg.date)) && (user === msg.from))
+            return true
+
+        return false
+
+    }
+
+    )
+}
+router.post('/deleteMsg', async function (req, res, next) {
+    // console.log(req.body)
+    const uId = req.body.uId;
+    const userName = req.body.userName;
+
+    // if (isDeletable({ uId, userName })) {
+
+    isDeletable({ uId, userName }).then(isDel => isDel && ChatMSG.DELETE_MSG(uId)
+    )
+        .then(() => ChatMSG.REQUEST_BY_USER(POSSIBLE_USERS[userName])).then(msgs => {
+
+            console.log(msgs)
+            res.send(msgs)
+        }).catch(err => console.log(`Failed: ${err}`))
+
+
+    // && ChatMSG.DELETE_MSG(uId).then(() => {
+    //     console.log("****delete msg")
+    // })
+
+})
 
 module.exports = router;
 

@@ -82,14 +82,29 @@ module.exports = db => {
         return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
     }
     schema.statics.DELETE_MSG = async function (uId) {
-        this.findOneAndRemove({ uId }, function (err, data) {
+        // this.findOneAndRemove({ uId }, function (err, data) {
+        console.log(uId)
+        return this.findOneAndDelete({ 'uId': uId }, function (err, data) {
+            // console.log(data)
             if (!err) {
                 console.log("Deleted");
             }
         });
 
         console.log("in REQUEST_BY_USER");
-        return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
+        // return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
+    }
+    schema.statics.GET_MSG = async function ({ uId }) {
+        // this.findOneAndRemove({ uId }, function (err, data) {
+        // console.log(uId)
+        return this.findOne({ 'uId': uId })
+        //.select('from date').then(date => console.log(data))
+        // this.find({ uId }, ['first', 'last'], function (err, docs) {
+        //     cosnole.log(docs)
+        // })
+
+        // console.log("in REQUEST_BY_USER");
+        // return this.find({ $or: [{ 'to': user }, { 'to': '*' }, { 'from': user }] }).select('-__v -_id')
     }
 
     db.model('chatMsg', schema);
