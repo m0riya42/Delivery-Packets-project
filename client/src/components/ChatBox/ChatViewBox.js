@@ -3,6 +3,7 @@ import SenderChat from './SenderChat'
 import ReciverChat from './ReciverChat'
 import SendButton from './SendButton'
 import { onSendMessage, socket } from '../../socket_io'
+import CrewMsg from './CrewMsg'
 
 const ChatViewBox = ({ senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg, handleDeleteMsg }) => {
 
@@ -10,6 +11,7 @@ const ChatViewBox = ({ senderName, senderIcon, reciverIcon, reciverName, msgs, h
     const [chat, setChat] = useState([]);
     useEffect(() => {
         setChat(msgs)
+        console.log(msgs)
     }, [msgs])
 
     useEffect(() => {
@@ -40,7 +42,10 @@ const ChatViewBox = ({ senderName, senderIcon, reciverIcon, reciverName, msgs, h
             {/* msgs.map */}
             {
                 chat?.map(({ from, to, msg, date, uId }, index) => {
-                    return from !== reciverName ? <SenderChat initialState={initialState} uId={uId} avatarImg={senderIcon} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} /> : <ReciverChat uId={uId} initialState={initialState} avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} />
+                    // if(to==='*'){
+                    return from === 'צוות יד לחבר' ? <CrewMsg handleDeleteMsg={handleDeleteMsg} initialState={initialState} chatText={msg} date={date} uId={uId} /> :
+                        // }
+                        from !== reciverName ? <SenderChat initialState={initialState} uId={uId} avatarImg={senderIcon} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} /> : <ReciverChat uId={uId} initialState={initialState} avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} />
                 })
             }
         </div>
