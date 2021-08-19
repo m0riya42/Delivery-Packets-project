@@ -6,7 +6,7 @@ import UsersInfo from './managerPages/UsersInfo';
 import { BrowserRouter as Router, Route, Redirect, Switch, useRouteMatch } from 'react-router-dom'
 import Blog from '../components/Layout/Blog';
 import WorkerInfo from '../components/Modals/workerInfo';
-import WorkerChat from '../pages/WorkerChat/WorkerChat';
+import WorkerChat from './workerPages/WorkerChat';
 import WorkerMap from './workerPages/WorkerMap';
 import PackageTable from './workerPages/PackageTable';
 import { serverGetBlogData } from '../axios_requests'

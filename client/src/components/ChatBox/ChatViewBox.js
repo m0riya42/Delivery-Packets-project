@@ -4,7 +4,7 @@ import ReciverChat from './ReciverChat'
 import SendButton from './SendButton'
 import { onSendMessage, socket } from '../../socket_io'
 
-const ChatWithManager = ({ senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg, handleDeleteMsg }) => {
+const ChatViewBox = ({ senderName, senderIcon, reciverIcon, reciverName, msgs, handleNewMsg, handleDeleteMsg }) => {
 
 
     const [chat, setChat] = useState([]);
@@ -51,4 +51,4 @@ const ChatWithManager = ({ senderName, senderIcon, reciverIcon, reciverName, msg
 }
 
 
-export default ChatWithManager
+export default ChatViewBox

@@ -10,49 +10,18 @@ import Maps from './managerPages/Maps';
 import Blog from '../components/Layout/Blog';
 import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
-import socketClient from "socket.io-client";
 import ScheduleInfo from './managerPages/ScheduleInfo';
+import ManagerChat from './managerPages/ManagerChat';
 
 import { serverGetBlogData, serverCreateRightPost } from '../axios_requests'
 
 
-// var io = require('socket.io-client')
-// const ENDPOINT = 'http://127.0.0.1:9000'
-// // // var socket = io(ENDPOINT);
-// var socket = io.connect(ENDPOINT);
-// socket.on('connect', function (socket) {
-//   console.log('Connected!');
-// })
-
-
-
-
-// const SERVER = "ws://127.0.0.1:9000";
-// const SERVER = "http://localhost:9000";
-// var socket = socketClient(SERVER);
-// socket.on('connect', () => {
-//   console.log(`I'm connected with the back-end`);
-// });
-
-
-// var io = require('socket.io-client')
-// var socket = io.connect('http://localhost:9000', { reconnect: true, rejectUnauthorized: false, allowEIO3: true });
-// socket.on('connect', function (socket) {
-//   console.log('Connected!');
-// });
-
-// const io = require('socket.io-client');
-// const socket = io.connect('http://localhost:9000');
-
-// socket.on('connect', () => {
-//   console.log('Successfully connected!');
-// });
 
 
 
 
 const Manager = ({ pagesHandler, user }) => {
-  pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
+  pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/ContactUsers", text: "צ'אט" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
     leftPosts: [{}],
@@ -107,6 +76,9 @@ const Manager = ({ pagesHandler, user }) => {
         </Route>
         <Route path="/Schedule" >
           <ScheduleInfo />
+        </Route>
+        <Route path="/ContactUsers" >
+          <ManagerChat user={user} />
         </Route>
         <Route path="/Charts" >
           <Chart />

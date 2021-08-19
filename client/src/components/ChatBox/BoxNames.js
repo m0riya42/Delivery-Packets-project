@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const ManagerBoxName = ({ isActive, user, setChoosenManager, managerSelected }) => {
+const BoxNames = ({ isActive, user, setChoosenManager, managerSelected }) => {
     const [clickTarget, setClickTarget] = useState(isActive)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const ManagerBoxName = ({ isActive, user, setChoosenManager, managerSelected }) 
     return <div id="ManagerUser" onClick={onClickManagerUser} class={`${clickTarget ? 'active_chat' : ''} `}>
         <div class="chat_people" style={{ display: 'flex', flexDirection: ' row-reverse', textAlign: 'right' }}>
             <div class="chat_img"> <img src={user.image} alt="sunil" /></div>
-            <div class="chat_ib"><h5>{user.fullName} <span class="chat_date" style={{ float: 'left' }}>Dec 25</span></h5>
+            <div class="chat_ib"><h5>{user.fullName} <span class="chat_date" style={{ float: 'left' }}>{`${user.type}/ת`}</span></h5>
             </div>
         </div>
     </div>
@@ -29,4 +29,4 @@ const ManagerBoxName = ({ isActive, user, setChoosenManager, managerSelected }) 
 }
 
 
-export default ManagerBoxName
+export default BoxNames
