@@ -7,7 +7,7 @@ import deLocale from "date-fns/locale/he";
 import { Container } from '@material-ui/core';
 import MapCard from './MapCard';
 import { serverGetPackages, serverSetScheduleDistribution } from '../../axios_requests'
-
+import './Schedule.css'
 
 
 const Schedule = ({ handlers }) => {
@@ -54,6 +54,7 @@ const Schedule = ({ handlers }) => {
                         disableToolbar
                         variant="inline"
                         format="dd/MM/yyyy"
+                       
                         margin="normal"
                         id="date-picker-inline"
                         //label="Date picker inline"
@@ -74,8 +75,12 @@ const Schedule = ({ handlers }) => {
                 </Grid>
             </Container>
             <br />
-            <div style={{ background: "transparent" }}>
-                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "870px", marginTop: "27px", borderColor: "transparent" }} />
+            <div style={{
+                background: "transparent", display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+            }}>
+                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginTop: "27px", borderColor: "transparent" }} />
             </div>
 
         </div>

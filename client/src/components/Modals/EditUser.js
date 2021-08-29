@@ -51,7 +51,7 @@ const EditUser = ({ user, handleClose, display, handleSave }) => {
                     <div className="row" style={{ display: "flex" }}>
                         {/* closeIcon */}
                         <div className="col-lg-4">
-                            <div className="card" style={{ height: "445px" }}>
+                            <div className="card" style={{ height: "457px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />

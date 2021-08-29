@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ColumnChart } from '@ui5/webcomponents-react-charts';
+import './Chart.css'
 
 
 

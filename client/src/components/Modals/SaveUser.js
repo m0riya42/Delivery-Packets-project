@@ -81,7 +81,7 @@ const SaveUser = ({ handleClose, display, handleSave }) => {
                     <div className="row" style={{ display: "flex" }}>
                         {/* closeIcon */}
                         <div className="col-lg-3">
-                            <div className="card" style={{ height: "570px" }}>
+                            <div className="card" style={{ height: "584px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />

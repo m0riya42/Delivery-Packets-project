@@ -14,16 +14,22 @@ import MonthChart from "./PieCharts/MonthChart";
 import DayBarChart from "./PieCharts/DayBarChart";
 import WeekBarChart from "./PieCharts/WeekBarChart";
 import MonthBarChart from "./PieCharts/MonthBarChart";
+import './Chart.css'
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
         width: "100%",
         backgroundColor: theme.palette.background.paper
+    },
+    borderLeftSize: {
+        borderLeftStyle: 'dotted',
+        borderColor: 'cadetblue',
+        borderWidth: '4px',
     }
 }));
 
-const Chart = ({}) => {
+const Chart = ({ }) => {
 
     const classes = useStyles();
     const [value, setValue] = useState(0);
@@ -37,30 +43,29 @@ const Chart = ({}) => {
         { label: "חתך חודשי", icon: <BarChartIcon /> },
     ]
 
-    return ( 
-  
+    return (
+
         <div className={classes.root} style={{ direction: "rtl", background: "transparent" }} >
             <PagesTitles value={value} setValue={setValue} listOfTabs={listOfTabs} />
 
             {/* Pages Itself */}
             <TabPanel value={value} index={0}>
-                <DayChart/>
+                <DayChart />
             </TabPanel>
 
             <TabPanel value={value} index={2}>
-               <WeekChart />
+                <WeekChart />
             </TabPanel>
-
             <TabPanel value={value} index={4}>
                 <MonthChart />
             </TabPanel>
 
-            <TabPanel value={value} index={1}>
-                <DayBarChart/>
+            <TabPanel value={value} index={1}   >
+                <DayBarChart />
             </TabPanel>
 
             <TabPanel value={value} index={3}>
-               <WeekBarChart />
+                <WeekBarChart />
             </TabPanel>
 
             <TabPanel value={value} index={5}>

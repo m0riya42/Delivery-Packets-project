@@ -10,7 +10,8 @@ body{
  /* background: url(/assets/images/chat_pattern.png) repeat !important ; */
      border-radius:38px;
        position: absolute;
-        margin-top:-65px;
+        /* margin-top:-65px; */
+        margin-top: -134px;
         /* margin-top: 50px; */
          top:200px;
 

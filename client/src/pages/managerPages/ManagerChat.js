@@ -90,7 +90,7 @@ const ManagerChat = ({ user: currentUser }) => {
             })
         }).catch(err => {
         })
-    })
+    }, [])
 
 
     const props = { user: currentUser, usersList }
