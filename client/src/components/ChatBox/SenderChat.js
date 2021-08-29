@@ -22,7 +22,7 @@ const SenderChat = ({ initialState, avatarImg, chatText, date, uId, handleDelete
                 <img src={avatarImg ? avatarImg : "https://ptetutorials.com/images/user-profile.png"} alt="sunil" />
             </div>
             <div class="sent_msg" onContextMenu={clickHandler} style={{ cursor: 'context-menu' }} >
-                <p id={uId} style={{ marginLeft: "-42px" }}>{chatText}</p>
+                <p id={uId} style={{ marginLeft: "-74px" }}>{chatText}</p>
                 <span class="time_date"> {msgDate?.toDateString()}</span>
             </div>
             <div className={'deleteMsg'} onClick={handleDelMsg}>

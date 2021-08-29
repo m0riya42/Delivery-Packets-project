@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import DefaultPieChart from "../../../components/Accessories/Charts/DefaultPieChart";
-import { serverGetPackages, serverSetScheduleDistribution } from '../../../axios_requests'
+import { serverGetPackages } from '../../../axios_requests'
 import DefaultBarChart from '../../../components/Accessories/Charts/DefaultBarChart';
 
 let city_list = [
-    ["ירושלים",0,0,"Jerusalem"],
-    ["עפולה",0,0,"Afula"],
-    ["אשדוד",0,0,"Ashdod"],
-    ["אשקלון",0,0,"Ashkelon"],
-    ["תל-אביב",0,0,"Tel Aviv"],
-    ["רמת-גן",0,0,"Ramat Gan"]
+    ["ירושלים", 0, 0, "Jerusalem"],
+    ["עפולה", 0, 0, "Afula"],
+    ["אשדוד", 0, 0, "Ashdod"],
+    ["אשקלון", 0, 0, "Ashkelon"],
+    ["תל-אביב", 0, 0, "Tel Aviv"],
+    ["רמת-גן", 0, 0, "Ramat Gan"]
 ]
 
 serverGetPackages()

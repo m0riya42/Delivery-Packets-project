@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { serverGetPackages, serverSetScheduleDistribution } from '../../../axios_requests'
+import { serverGetPackages } from '../../../axios_requests'
 import DefaultBarChart from '../../../components/Accessories/Charts/DefaultBarChart';
 
 let city_list = [

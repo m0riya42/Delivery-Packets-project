@@ -44,7 +44,7 @@ const WorkerInfo = ({ user, handleSave }) => {
             <div className="main-body">
                 <div className="row" style={{ display: "flex" }}>
                     <div className="col-lg-4">
-                        <div className="card" style={{ height: "445px" }}>
+                        <div className="card" style={{ height: "456px" }}>
                             <div className="card-body">
                                 <div className="d-flex flex-column align-items-center text-center">
                                     <img src={userInformation.image} alt="Admin" class="rounded-circle p-1" width="110" style={{ backgroundColor: "#3bb6b1" }} />
@@ -72,6 +72,7 @@ const WorkerInfo = ({ user, handleSave }) => {
                                     // style={{ borderColor: "#3bb6b1", borderRadius: 5, textAlign: 'right', right: ' 0% !important' }}
                                     value={userInformation.id}
                                     onChange={handleChange('id')}
+                                    disabled
                                 />
                                 <TextField fullWidth
                                     label="שם מלא"

@@ -7,7 +7,7 @@ import deLocale from "date-fns/locale/he";
 import { Container } from '@material-ui/core';
 import MapCard from './MapCard';
 import { serverGetPackages, serverSetScheduleDistribution } from '../../axios_requests'
-import './Schedule.css'
+// import './Schedule.css'
 
 
 const Schedule = ({ handlers }) => {

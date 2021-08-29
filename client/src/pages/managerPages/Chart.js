@@ -60,7 +60,7 @@ const Chart = ({ }) => {
                 <MonthChart />
             </TabPanel>
 
-            <TabPanel value={value} index={1}   >
+            <TabPanel value={value} index={1}  >
                 <DayBarChart />
             </TabPanel>
 

@@ -13,7 +13,7 @@ const ReciverChat = ({ initialState, reciverName, avatarImg, chatText, date, uId
 
 
     return <>
-        <div class="incoming_msg">
+        <div class="incoming_msg" style={{ paddingTop: '22px', }}>
             <div class="incoming_msg_img">
                 <img src={avatarImg ? avatarImg : "https://ptetutorials.com/images/user-profile.png"} alt="sunil" />
             </div>

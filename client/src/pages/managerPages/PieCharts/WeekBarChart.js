@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import { serverGetPackages, serverSetScheduleDistribution } from '../../../axios_requests'
+import { serverGetPackages } from '../../../axios_requests'
 import DefaultBarChart from '../../../components/Accessories/Charts/DefaultBarChart';
 
 let city_list = [
-    ["ירושלים",0,0,"Jerusalem"],
-    ["עפולה",0,0,"Afula"],
-    ["אשדוד",0,0,"Ashdod"],
-    ["אשקלון",0,0,"Ashkelon"],
-    ["תל-אביב",0,0,"Tel Aviv"],
-    ["רמת-גן",0,0,"Ramat Gan"]
+    ["ירושלים", 0, 0, "Jerusalem"],
+    ["עפולה", 0, 0, "Afula"],
+    ["אשדוד", 0, 0, "Ashdod"],
+    ["אשקלון", 0, 0, "Ashkelon"],
+    ["תל-אביב", 0, 0, "Tel Aviv"],
+    ["רמת-גן", 0, 0, "Ramat Gan"]
 ]
 
 serverGetPackages()
@@ -35,7 +35,7 @@ const WeekBarChart = ({ }) => {
     let data = []
     //1 - true, 2 - false
     city_list.map((city) => {
-        data.push({ name: city[3], package_arrived_true: Math.ceil((city[1]+city[2])*7*0.8), package_arrived_false: Math.ceil((city[2]+city[1])*7*0.2) })
+        data.push({ name: city[3], package_arrived_true: Math.ceil((city[1] + city[2]) * 7 * 0.8), package_arrived_false: Math.ceil((city[2] + city[1]) * 7 * 0.2) })
 
     })
 
