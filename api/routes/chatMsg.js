@@ -16,7 +16,7 @@ User.REQUEST().then(list => {
         return allUsers
     }, {})
     console.log('******************************')
-    console.log(POSSIBLE_USERS)
+    // console.log(POSSIBLE_USERS)
 }).catch((msg) => { })
 
 
