@@ -129,10 +129,10 @@ router.post('/addSchedule', async function (req, res, next) {
                 g2_min = d_g2.indexOf(Math.min(...d_g2));
                 g3_min = d_g3.indexOf(Math.min(...d_g3));
 
-                // console.log(g0_min);
-                // console.log(g1_min);
-                // console.log(g2_min);
-                // console.log(g3_min);
+                console.log(g0_min);
+                console.log(g1_min);
+                console.log(g2_min);
+                console.log(g3_min);
 
                 if ((g0_min != g1_min) && (g1_min != g2_min) && (g1_min != g3_min) && (g2_min != g3_min) && (g0_min != g3_min) && (g0_min != g2_min)) {
                     flag = true;
@@ -142,20 +142,20 @@ router.post('/addSchedule', async function (req, res, next) {
                         packages: p_g0
                     }
                     //console.log(s0);
-                    // await Schedule.UPDATEPACKAGE(s0)
+                    await Schedule.UPDATEPACKAGE(s0)
                     let s1 = {
                         id: today_schedule[g1_min].id,
                         date: date,
                         packages: p_g1
                     }
-                    // await Schedule.UPDATEPACKAGE(s1)
+                    await Schedule.UPDATEPACKAGE(s1)
                     //console.log(s1)
                     let s2 = {
                         id: today_schedule[g2_min].id,
                         date: date,
                         packages: p_g2
                     }
-                    // await Schedule.UPDATEPACKAGE(s2)
+                    await Schedule.UPDATEPACKAGE(s2)
                     //console.log(s2)
                     let s3 = {
                         id: today_schedule[g3_min].id,
@@ -163,7 +163,7 @@ router.post('/addSchedule', async function (req, res, next) {
                         packages: p_g3
                     }
                     //console.log(s3)
-                    // await Schedule.UPDATEPACKAGE(s3)
+                    await Schedule.UPDATEPACKAGE(s3)
                 }
 
             }
