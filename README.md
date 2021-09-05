@@ -7,11 +7,20 @@ A volunteer management system for distributing packets of food.
 line..
 
 
-### Manager
+### Manager System:
 line..
 
-### Worker
+<img src="https://user-images.githubusercontent.com/44200760/132139977-d26933ad-35ac-4469-be2f-8736d5295a1e.gif" alt="Manager System" width="450">
+
+
+[![Click to see in full size](https://user-images.githubusercontent.com/44200760/132139977-d26933ad-35ac-4469-be2f-8736d5295a1e.gif)](https://youtu.be/uqDbqxBjjX4)
+
+
+
+### Worker System:
 line..
+
+<img src="https://user-images.githubusercontent.com/44200760/130370395-9f562f28-b2c9-43d0-a228-d9dbc057e622.gif" alt="before duplicateMe" width="450">
 
 
 
