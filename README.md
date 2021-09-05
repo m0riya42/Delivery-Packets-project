@@ -7,23 +7,23 @@ A volunteer management system for distributing packets of food.
 line..
 
 
+*******************
 ### Manager System:
-line..
+long line..
 
-<img src="https://user-images.githubusercontent.com/44200760/132139977-d26933ad-35ac-4469-be2f-8736d5295a1e.gif" alt="Manager System" width="450">
-
-
-[![Click to see in full size](https://user-images.githubusercontent.com/44200760/132139977-d26933ad-35ac-4469-be2f-8736d5295a1e.gif)](https://youtu.be/uqDbqxBjjX4)
-
-
-
+<a href="https://youtu.be/uqDbqxBjjX4">
+<img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="270">
+<a/>
+  
+********************
+  
 ### Worker System:
-line..
+long line..
 
-<img src="https://user-images.githubusercontent.com/44200760/130370395-9f562f28-b2c9-43d0-a228-d9dbc057e622.gif" alt="before duplicateMe" width="450">
-
-
-
+  
+  <a href="https://www.youtube.com/watch?v=kM8w1MFvvEE">
+<img src="https://user-images.githubusercontent.com/44200760/132144160-0b5baaf3-a088-4d49-a25e-f34e4cbf873b.gif" alt="Click to watch on YouTube" width="270">
+<a/>
 
 
 ### Chat
