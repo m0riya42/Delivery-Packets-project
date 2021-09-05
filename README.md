@@ -1,7 +1,6 @@
 # Hand to friend
+A volunteer management system for distributing packets of food.
 
-## A volunteer management system for distributing packets of food.
-line..
 
 
 ### UnAuthenticated User
