@@ -1,22 +1,22 @@
-# Hand to friend
+# Hand to friend 
 A volunteer management system for distributing packets of food.
 
+### Icon of Organization:
+<img src="https://user-images.githubusercontent.com/44200760/132144584-c262bd13-f16b-4e32-b67e-ad1eb971e623.png" alt="Click to watch on YouTube" width="75">
+
+---**--***--***--**--**--**--**--**--**--**--**--**--**--**--**--**---
+### UnAuthenticated User- Landing Page:
+long line..
 
 
-### UnAuthenticated User
-line..
 
-
-*******************
 ### Manager System:
 long line..
 
 <a href="https://youtu.be/uqDbqxBjjX4">
 <img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="270">
-<a/>
-  
-********************
-  
+</a>
+    
 ### Worker System:
 long line..
 
@@ -26,12 +26,32 @@ long line..
 <a/>
 
 
-### Chat
-line..
+  
+  ---**--***--***--**--**--**--**--**--**--**--**--**--**--**--**--**---
 
 
-### Blog
-line..
+### Blog  
+ #### Blog Page:
+<img src="https://user-images.githubusercontent.com/44200760/132145442-bc8d8c20-0917-44b9-bf5a-82e35f7b0f6e.png" alt="Blog Page" width="480">
+  
+ #### Create New Post:
+  <img src="https://user-images.githubusercontent.com/44200760/132145419-44eb1741-c5cb-4ddc-b737-702665ba24e5.png" alt="Create New Post" width="480">
+
+  
+### Chat Components
+#### Basic Chat:
+
+ <img src="https://user-images.githubusercontent.com/44200760/132145329-09bec905-5c46-445e-b729-eed7f6cc7880.png" alt="Basic Chat" width="240">
+  
+#### Advanced Chat:
+
+<img src="https://user-images.githubusercontent.com/44200760/132145208-fcd1d8e0-9774-469b-97b4-a23807d3bd3c.png" alt="Advanced Chat" width="480">
+
+
+
+
+
+
 
 
 ### Dependencies Packages:
