@@ -6,7 +6,6 @@ var router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const axios = require('axios').default;
 const User = require('../models')("users");
 
 
@@ -67,7 +66,7 @@ router.post('/login', async function (req, res, next) {
 })
 
 router.post('/getUsers', async function (req, res, next) {
- // console.log("give me users");
+  // console.log("give me users");
   let users = [];
   try {
     users = await User.REQUEST();
@@ -82,7 +81,7 @@ router.post('/addUser', async function (req, res, next) {
   console.log("add user");
   let user = req.body;
   var newUser = {};
-  console.log(user) 
+  console.log(user)
 
   await bcrypt.hash(user.password, saltRounds, async (err, hash) => {
     if (err) {
@@ -107,7 +106,7 @@ router.post('/addUser', async function (req, res, next) {
     }
     catch (err) { console.log(`Failed: ${err}`) }
   });
-  
+
 })
 
 
@@ -127,7 +126,7 @@ router.post('/getUserByName', async function (req, res, next) {
   let name = req.body.name;
   console.log(name);
 
-  let user ={};
+  let user = {};
   try {
     user = await User.REQUESTBYNAME(name);
     res.send(user);
