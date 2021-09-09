@@ -3,20 +3,20 @@ A volunteer management system for distributing packets of food using MERN TECHNO
 
 
 
+### Landing Page:
+<img src="https://user-images.githubusercontent.com/44200760/132674252-52cf0ce3-344b-47dd-9088-6164b27d65b8.gif" alt="Landing page" width="430">
+
+
 ### Icon of Organization:
 <img src="https://user-images.githubusercontent.com/44200760/132144584-c262bd13-f16b-4e32-b67e-ad1eb971e623.png" alt="Click to watch on YouTube" width="75">
 
 ---**--***--***--**--**--**--**--**--**--**--**--**--**--**--**--**---
-### UnAuthenticated User- Landing Page:
-long line..
-
-
 
 ### Manager System:
 long line..
 
 <a href="https://youtu.be/uqDbqxBjjX4">
-<img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="270">
+<img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="400">
 </a>
     
 ### Worker System:
