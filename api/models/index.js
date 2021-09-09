@@ -1,5 +1,5 @@
 const mongo = require("mongoose");
-const apiKeys = require("../../api-keys")
+const apiKeys = require("../api-keys-server")
 mongo.set('useFindAndModify', false);
 let URI = apiKeys.mongoDB;
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { locationIQ as locationIQkey } from './api-keys-in-src'
+import { locationIQ as locationIQkey } from './api-keys-client'
 
 
 /********************************************** */

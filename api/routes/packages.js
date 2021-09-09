@@ -15,6 +15,7 @@ router.post('/getPackages', async function (req, res, next) {
 
     res.send(packages);
 })
+
 router.post('/updatePackage', async function (req, res, next) {
     console.log("update package");
     let package = req.body;

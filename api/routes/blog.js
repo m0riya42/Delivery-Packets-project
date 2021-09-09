@@ -26,8 +26,6 @@ router.post('/createRightPost', async function (req, res, next) {
         res.sendStatus(200)
     }
     catch (err) { console.log(`Failed: ${err}`) }
-    // res.sendStatus()
-    // res.send)(blogInfo);
 });
 
 module.exports = router;

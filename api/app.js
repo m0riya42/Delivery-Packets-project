@@ -9,8 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var blogRouter = require('./routes/blog');
 var chatRouter = require('./routes/chatMsg');
-var testAPIRouter = require("./routes/testApi");//add as test
-var testDBRouter = require("./routes/testDB");//add as test
+// var testDBRouter = require("./routes/testDB");//add as test
 var workScheduleRouter = require('./routes/workSchedule')
 var packagesRouter = require('./routes/packages')
 
@@ -37,8 +36,7 @@ app.use('/workSchedule', workScheduleRouter);
 app.use('/packages', packagesRouter);
 
 
-app.use("/testApi", testAPIRouter);//add as test
-app.use("/testDB", testDBRouter);//add as test
+// app.use("/testDB", testDBRouter);//add as test
 
 
 
