@@ -1,27 +1,56 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Users from '../../components/Accessories/Users';
 import EditUser from '../../components/Modals/EditUser';
 import SaveUser from '../../components/Modals/SaveUser';
-import Chat from '../../components/Modals/Chat/Chat';
-import axios from 'axios';
+import Chat from '../../components/Modals/ManagerChat/Chat';
+import { serverGetUsersData, serverGetUserChatMsgs } from '../../axios_requests'
+import { getChatMsgsOfUser } from '../../utils'
+// import { , serverGetUserByNameData } from './axios_requests'
 
-var users = []
-axios.post('http://localhost:9000/usersInfo/getUsers')
-    .then(res => {
-        users = res.data;
+import { ChatMessages } from '../../App'
+
+let users;
+serverGetUsersData()
+    .then(data => {
+        users = data;
     })
-    .catch(err => {
-    })
 
 
-const UsersInfo = () => {
-
+const UsersInfo = ({ user: connectedUser }) => {
+    // const  chatMsgs, setChatMsgs } = useContext(ChatMessages)
+    const [chatMsgs, setChatMsgs] = useState([])
     const [editUserIsOpen, setEditUserIsOpen] = useState(false);
     const [chatIsOpen, setChatIsOpen] = useState(false);
     const [userToEdit, setUserToEdit] = useState({});
     const [saveUserIsOpen, setSaveUserIsOpen] = useState(false);
+    const [specificChatMsgs, setSpecificChatMsgs] = useState([])
+    console.log('IF SAVED')
+    console.log(chatMsgs)
+    const requestForMsgs = () => {
+        serverGetUserChatMsgs({ userName: window.name }).then((data) => {
+            setChatMsgs(data)
+            console.log(data)
+        })
 
-    //const users = [{id:'123456789', fullName: 'אוריה כהן', userName: 'oriaCh', password: '11212', phone: '050-467-3212', email: 'none@gmail.com', address:'ירושלים 453' }, { fullName: 'ליאור אדרי', phone: '050-654-3212', email: 'lior@gmail.com' }, { fullName: 'מאיה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }, { fullName: 'אוריה כהן', phone: '050-467-3212', email: 'none@gmail.com' }]
+    }
+    useEffect(() => {
+        requestForMsgs()
+        // serverGetUserChatMsgs({ userName: window.name }).then((data) => {
+        //     setChatMsgs(data)
+        // })
+    }, [])
+
+    const updatChatUserList = (user) => {
+        const currentUser = user ? user : userToEdit
+        setSpecificChatMsgs(
+            getChatMsgsOfUser({ chatMsgs, currentUser, connectedUser }))
+
+    }
+
+    useEffect(() => {
+        updatChatUserList()
+        console.log('updated list: ', specificChatMsgs)
+    }, [chatMsgs])
 
 
 
@@ -37,8 +66,9 @@ const UsersInfo = () => {
 
             //maybe to delete:
             handlers.updateUserToEdit(user);
-
-            //
+            // console.log(chatMsgs)
+            // specificChatMsgs, setSpecificChatMsgs
+            updatChatUserList(user)
             setChatIsOpen(true)
         },
         closeChat: () => {
@@ -74,6 +104,13 @@ const UsersInfo = () => {
             //Show User Information
             //handlers.updateUserToEdit();
 
+        },
+        handleNewMsg: (msg) => {
+            setChatMsgs([...chatMsgs, msg])
+
+        },
+        handleDeleteMsg: () => {
+            requestForMsgs()
         }
 
     }
@@ -82,7 +119,7 @@ const UsersInfo = () => {
         <>
             <EditUser handleClose={handlers.closeHandle} display={editUserIsOpen} user={userToEdit} handleSave={handlers.saveUser} />
             <Users users={users} handlers={handlers} />
-            <Chat handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} />
+            <Chat handleDeleteMsg={handlers.handleDeleteMsg} senderName={connectedUser.fullName} handleNewMsg={handlers.handleNewMsg} handleClose={handlers.closeChat} display={chatIsOpen} reciverName={userToEdit.fullName} reciverIcon={userToEdit.image} msgs={specificChatMsgs} />
             <SaveUser handleClose={handlers.closeHandleSave} display={saveUserIsOpen} handleSave={handlers.saveUser} />
 
         </>

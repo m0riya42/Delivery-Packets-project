@@ -2,6 +2,7 @@ const User = require('./models')("users");
 const Package = require('./models')("packages");
 const RightPosts = require('./models')("rightPosts");
 const LeftPosts = require('./models')("leftPosts");
+const ChatMSG = require('./models')("chatMsg");
 
 
 
@@ -23,22 +24,22 @@ const LeftPosts = require('./models')("leftPosts");
   ];
 
   let rPosts = [
-    ["פתיחת שנה ביד לחבר",  "חבילות לראש השנה", new Date(2020, 8, 25), `
+    ["פתיחת שנה ביד לחבר", "חבילות לראש השנה", new Date(2020, 8, 25), `
     <p><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.pinimg.com/originals/74/67/21/746721e4f831240a660d7a389bebb5a1.png" alt="מתנות לראש השנה - צפו במארזי מתנה, חבילות שי לראש השנה - פרלינה | Perlina" /></p>
     <p>בשעה טובה נפתח את פעילותנו במשלוח מיוחד לכבוד ראש השנה.</p>
     <p ><strong>עובדים יקרים! </strong>יש לעדכן את שעות הפעילות בהם לא תוכלו לעבוד.</p>
     <p><span style="color: #ff0000;"><strong>שנה טובה לכולנו!</strong></span></p>`],
-    ["מעבר כתובת",  "שינוי כתובת העמותה",  new Date(2020, 8, 31), `<p>&nbsp;</p>
+    ["מעבר כתובת", "שינוי כתובת העמותה", new Date(2020, 8, 31), `<p>&nbsp;</p>
     <p>&nbsp;</p>
     <p><img src="https://icon-library.com/images/position-icon/position-icon-8.jpg" width="184" height="184" /></p>
     <p><strong>שימו לב!&nbsp;</strong>עברנו לכתובת חדשה:</p>
     <p>&nbsp;בית הדפוס 7, גבעת שאול, ירושלים</p>
     <p>&nbsp;</p>`],
-    ['שעות חלוקה בשבוע הקרוב',  'עדכון שעות',  new Date(2020, 9, 4), `<p><img src="https://www.ynet.co.il/PicServer5/2019/04/11/9180259/917944801000100980651no.jpg" alt="היכן נתנדב השבוע?" width="343" height="213" /></p>
+    ['שעות חלוקה בשבוע הקרוב', 'עדכון שעות', new Date(2020, 9, 4), `<p><img src="https://www.ynet.co.il/PicServer5/2019/04/11/9180259/917944801000100980651no.jpg" alt="היכן נתנדב השבוע?" width="343" height="213" /></p>
     <p>בשבוע הקרוב החלוקות ייתקיימו בין השעות:</p>
     <p>15:30-20:00</p>
     <p>נסיעה טובה!</p>`]
-     //["פתיחת שנה", "חבילות לראש השנה", new Date(2020, 08, 25), ""]
+    //["פתיחת שנה", "חבילות לראש השנה", new Date(2020, 08, 25), ""]
     // ["פתיחת שנה", "חבילות לראש השנה", "", []]
     //["פתיחת שנה", "חבילות לראש השנה", "",""]
   ]
@@ -46,10 +47,17 @@ const LeftPosts = require('./models')("leftPosts");
   let lPosts = [
 
     [` <img src="/assets/images/yadToFriend.svg" alt="יד לחבר" />
-      <h4>עמותת עזרה לנזקקים</h4>`], 
-     [` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`]
+      <h4>עמותת עזרה לנזקקים</h4>`],
+    [` <h3><b>בית הדפוס 7, גבעת שאול, ירושלים</b></h3>`]
   ]
- 
+
+  let chatMsgs = [
+    ['צוות יד לחבר', '*', 'ברכות להצטרפותך למשפחת יד לחבר!🌹', new Date(2020, 8, 25), 'c989c3b9-0636-4cf0-8278-e5efc6b34b66'],
+    ['אלכס כהן', 'דניאל יצחקי', 'יש לי משימה בשבילך', new Date(2020, 12, 25), 'c989c3b9-0636-5462-8278-e5efc6b34b66'],
+    ['דניאל יצחקי', 'אלכס כהן', 'אוקי, מה המשימה?', new Date(2020, 12, 26), 'b989c3b9-0636-4cf0-8278-e5efc6b34b66'],
+    ['אלכס כהן', 'טל מרום ישראל', 'יש לי משימה בשבילך', new Date(2020, 12, 25), 'a989c3b9-0636-5462-8278-e5efc6b34b66'],
+  ]
+
 
   //console.log(Users);           
 
@@ -59,6 +67,7 @@ const LeftPosts = require('./models')("leftPosts");
   try {
     //Packages.forEach(async item => await Package.CREATE(item));
     //rPosts.forEach(async item => await RightPosts.CREATE(item));
-    lPosts.forEach(async item => await LeftPosts.CREATE(item));
+    // lPosts.forEach(async item => await LeftPosts.CREATE(item));
+    chatMsgs.forEach(async item => await ChatMSG.CREATE(item));
   } catch (err) { }
 })();

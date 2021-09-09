@@ -8,7 +8,7 @@ const OurPartnersSection = () => {
                 <div className="row">
                     <div className="main_test fix">
                         <div className="col-md-6 sm-m-top-40">
-                            <div className="test_item1 fix ">
+                            <div className="test_item1 fix " style={{marginTop: "-30px"}}>
                                 <div className="head_title fix">
                                     <h2 className="text-uppercase" style={{ borderColor: "#feb099", borderLeftWidth: "10px" }}>השותפים <strong>שלנו</strong></h2>
                                 </div>
@@ -26,34 +26,29 @@ const OurPartnersSection = () => {
                             </div>
                         </div>
 
-
-
-
-
-
-
                         <div className="col-md-6">
                             <div className="cbrand text-center">
+                                <br/>
                                 <div className="divider_horizontal"></div>
                                 <div className="divider_vertical"></div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item">
-                                        <img src="/assets/images/friends.jpg" alt="" />
+                                        <img src="/assets/images/friends.jpg" alt="" style={{marginTop: "-30px"}}/>
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item">
-                                        <img src="/assets/images/intel.jpg" alt="" />
+                                        <img src="/assets/images/intel.jpg" alt="" style={{marginTop: "-30px"}}/>
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item m-top-40">
-                                        <img src="/assets/images/mako.jpg" alt="" />
+                                        <img src="/assets/images/mako.jpg" alt="" style={{marginTop: "-35px"}}/>
                                     </div>
                                 </div>
                                 <div className="col-xs-6">
                                     <div className="cbrand_item m-top-40">
-                                        <img src="/assets/images/store.jpg" alt="" />
+                                        <img src="/assets/images/store.jpg" alt="" style={{marginTop: "-45px"}} />
                                     </div>
                                 </div>
                             </div>

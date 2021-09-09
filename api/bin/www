@@ -7,6 +7,9 @@
 var app = require('../app');
 var debug = require('debug')('api:server');
 var http = require('http');
+const User = require('../models')("users");
+const ChatMSG = require('../models')("chatMsg");
+
 //const PORT = 8080;
 
 /**
@@ -40,37 +43,49 @@ server.on('listening', onListening);
  * Listen on Socket.io
  */
 
-var io = require('socket.io')(server, {
+const io = require('socket.io')(server, {
   cors: { origin: "*" }
 });
+
+// module.exports = io
+
+
+// let POSSIBLE_USERS;
+// io.use((socket, next) => {
+//   User.REQUEST().then(list => {
+//     POSSIBLE_USERS = list.map(user => { return { [user.userName]: user.fullName } })
+//     socket.users = POSSIBLE_USERS
+//     console.log(POSSIBLE_USERS)
+
+//   }).catch((msg) => { })
+//   const username = socket.handshake.auth.username;
+//   if (username) {
+//     socket.username = username;
+//     console.log('**********USERNAME IS: ', username)
+//     next();
+//   }
+//   //CHECKS FOR USER IN DB
+// });
 io.on('connection', (socket) => { /* socket object may be used to send specific messages to the new connected client */
+  const CONNECTED_USERS = [];
 
-  socket.on('message', ({ name, message, date }) => {
-    io.emit('message', { name, message, date })
-    console.log({ name, message, date })
+  socket.on("private_message", ({ from, to, msg, date, uId }) => {
+    console.log('private msg: ', { from, to, msg, date, uId });
+    io.emit("private_message", { from, to, msg, date, uId });
+    ChatMSG.CREATE([from, to, msg, date, uId])
+    // socket.to(to).emit("private message", {
+    //   message, date,
+    //   from, to
+    // });
+
   })
-  // console.log(socket)
-  // console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+  socket.on("delete_msg", ({ }) => {
+    console.log('delete_msg');
+    io.emit("delete_msg");
+  })
+})
 
-  // console.log('new client connected'.green);
-  // socket.on("connect_error", (err) => {
-  //   console.log(`connect_error due to ${err.message}`);
-  // });
-  // // socket.emit('connection', null);
-  // socket.emit("greetings", "Hey!", { "ms": "jane" }, Buffer.from([4, 3, 3, 1]));
-  // socket.on("message", (data) => {
-  //   console.log(data);
-  // });
 
-  // // // handle the event sent with socket.emit()
-  // socket.on("salutations", (elem1, elem2, elem3) => {
-  //   console.log(elem1, elem2, elem3);
-  // });
-  // socket.on('disconnect', function () {
-  //   console.log('Client disconnected.');
-  // });
-
-});
 /**
  * Normalize a port into a number, string, or false.
  */

@@ -4,7 +4,7 @@ import Input from '../Accessories/Input'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { serverLogIn } from '../../axios_requests';
 
 
 const SignIn = ({ handleClose, display, setToken, authenticate }) => {
@@ -22,27 +22,21 @@ const SignIn = ({ handleClose, display, setToken, authenticate }) => {
             password: passwordinfo
         }
         console.log(data);
-        axios.post('http://localhost:9000/usersInfo/login', data)
+        serverLogIn(data)
             .then(res => {
-                //debugger
                 console.log(res);
                 if (res.status === 200) {
                     console.log('work')
-                    // setTimeout(
-                    // () => 
                     authenticate({
                         token: res.data.token
                     })
-                    //userName: res.data.user.userName, user: res.data.user,
-                    // , 2000)
+                    window.scrollTo(0, 0);
                 }
                 else {
                     alert('Wrong username/password ')
                 }
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch(err => console.log(err))
     }
 
     return (

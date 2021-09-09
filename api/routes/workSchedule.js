@@ -25,17 +25,17 @@ router.post('/addSchedule', async function (req, res, next) {
     catch (err) { console.log(`Failed: ${err}`) }
 }),
 
-router.post('/getSchedule', async function (req, res, next) {
-    console.log('i am in getSchedule')
-    let date = req.body.date;
-    let list_Schedule = [];
-    //console.log(date)
-    try {
-        list_Schedule = await Schedule.REQUESTBYDATE(date);
-        res.send(list_Schedule);
-    }
-    catch (err) { console.log(`Failed: ${err}`) }
-}),
+    router.post('/getSchedule', async function (req, res, next) {
+        console.log('i am in getSchedule')
+        let date = req.body.date;
+        let list_Schedule = [];
+        //console.log(date)
+        try {
+            list_Schedule = await Schedule.REQUESTBYDATE(date);
+            res.send(list_Schedule);
+        }
+        catch (err) { console.log(`Failed: ${err}`) }
+    }),
 
 
     router.post('/setDistribution', async function (req, res, next) {
@@ -155,15 +155,15 @@ router.post('/getSchedule', async function (req, res, next) {
                         date: date,
                         packages: p_g2
                     }
-                   await Schedule.UPDATEPACKAGE(s2)
-                   //console.log(s2)
+                    await Schedule.UPDATEPACKAGE(s2)
+                    //console.log(s2)
                     let s3 = {
                         id: today_schedule[g3_min].id,
                         date: date,
                         packages: p_g3
                     }
                     //console.log(s3)
-                   await Schedule.UPDATEPACKAGE(s3)
+                    await Schedule.UPDATEPACKAGE(s3)
                 }
 
             }

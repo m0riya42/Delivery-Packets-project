@@ -4,9 +4,7 @@ const mongo = require("mongoose");
 module.exports = db => {
     // create a schema
     let schema = new mongo.Schema({
-
         innerHtml: { type: String, required: true }
-
         // images: { type: Array }
     }, { autoIndex: true });
 
@@ -14,21 +12,15 @@ module.exports = db => {
     schema.statics.CREATE = async function (post) {
         console.log("create \n");
         return this.create({
-
             innerHtml: post[0],
-
         });
     }
 
     schema.statics.REQUEST = async function () {
         console.log('I am in REQUEST function');
-        // no arguments - bring all at once
         const args = Array.from(arguments); // [...arguments]
         if (args.length === 0) {
-            //console.log("request: no arguments - bring all at once");
             return this.find({}, (err, res) => { }).select('-__v -_id').exec();
-            // return this.find({}).select('-__v -_id -password');
-            // return this.find({}, { "password": 0 }).exec();
         }
 
         // perhaps last argument is a callback for every single document
@@ -64,7 +56,6 @@ module.exports = db => {
 
         // There is no callback - bring requested at once
         console.log(`request: without callback: ${JSON.stringify(args)}`)
-        //console.log(await this.find(...args).exec());
         let cursor = await this.find(...args).select('-__v -_id').cursor();
         let result = [];
         while (null !== (user = await cursor.next())) {

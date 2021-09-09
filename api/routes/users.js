@@ -6,7 +6,6 @@ var router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
 const User = require('../models')("users");
 
 
@@ -67,7 +66,7 @@ router.post('/login', async function (req, res, next) {
 })
 
 router.post('/getUsers', async function (req, res, next) {
- // console.log("give me users");
+  // console.log("give me users");
   let users = [];
   try {
     users = await User.REQUEST();
@@ -81,31 +80,13 @@ router.post('/getUsers', async function (req, res, next) {
 router.post('/addUser', async function (req, res, next) {
   console.log("add user");
   let user = req.body;
-  let newUser = {};
+  var newUser = {};
   console.log(user)
-  let lat = 0
-  let lon = 0
-  let israel = " ישראל";
-  let location = (israel + " "+user.address).replaceAll(' ', '%20');
 
-  await bcrypt.hash(user.password, saltRounds, (err, hash) => {
+  await bcrypt.hash(user.password, saltRounds, async (err, hash) => {
     if (err) {
       console.log(err);
     }
-    
-    let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
-    //console.log(url);
-    axios.post(url)
-      .then(res => {
-         lat = res.data[0]['lat'];
-         lon = res.data[0]['lon'];
-        
-      })
-      .catch(err => {
-        console.log(err);
-      })
-
-
     newuser = {
       type: user.type,
       id: user.id,
@@ -116,15 +97,16 @@ router.post('/addUser', async function (req, res, next) {
       email: user.email,
       address: user.address,
       image: user.image,
-      lat: lat,
-      lon: lon
+      lat: user.lat,
+      lon: user.lon
     }
+    try {
+      await User.create(newuser);
+      res.send(200);
+    }
+    catch (err) { console.log(`Failed: ${err}`) }
   });
-  try {
-    await User.create(newuser);
-    res.send(200);
-  }
-  catch (err) { console.log(`Failed: ${err}`) }
+
 })
 
 
@@ -144,7 +126,7 @@ router.post('/getUserByName', async function (req, res, next) {
   let name = req.body.name;
   console.log(name);
 
-  let user ={};
+  let user = {};
   try {
     user = await User.REQUESTBYNAME(name);
     res.send(user);

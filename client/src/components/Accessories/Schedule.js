@@ -4,10 +4,10 @@ import 'date-fns';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/pickers';
 import deLocale from "date-fns/locale/he";
-import axios from 'axios';
 import { Container } from '@material-ui/core';
 import MapCard from './MapCard';
-
+import { serverGetPackages, serverSetScheduleDistribution } from '../../axios_requests'
+// import './Schedule.css'
 
 
 const Schedule = ({ handlers }) => {
@@ -19,28 +19,18 @@ const Schedule = ({ handlers }) => {
     const setDistribution = () => {
         console.log('i am here');
 
-        let package_list = {};
-        axios.post('http://localhost:9000/packages/getPackages')
-            .then(res => {
-                package_list = res.data;
+        serverGetPackages()
+            .then(package_list => {
                 var string_date = selectedDate.toLocaleString();
                 var today = (string_date.split(',')[0]).replaceAll('.', '/')
                 let info = {
                     package_list: package_list,
                     date: today
-            }
-                axios.post('http://localhost:9000/workSchedule/setDistribution', info)
-                .then(res => {
-                    console.log(res)
-
-                })
-                .catch(err => {
-                    console.log(err)
-                })
+                }
+                serverSetScheduleDistribution(info)
+                    .then(res => console.log(res)).catch(err => console.log(err))
             })
-            .catch(err => {
-                console.log(err)
-            })
+            .catch(err => console.log(err))
 
 
     }
@@ -64,6 +54,7 @@ const Schedule = ({ handlers }) => {
                         disableToolbar
                         variant="inline"
                         format="dd/MM/yyyy"
+                       
                         margin="normal"
                         id="date-picker-inline"
                         //label="Date picker inline"
@@ -84,8 +75,12 @@ const Schedule = ({ handlers }) => {
                 </Grid>
             </Container>
             <br />
-            <div style={{ background: "transparent" }}>
-                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginLeft: "870px", marginTop: "27px", borderColor: "transparent" }} />
+            <div style={{
+                background: "transparent", display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+            }}>
+                <input type="button" onClick={() => { setDistribution() }} className="btn btn-primary px-4" value="בצע חלוקת חבילות" style={{ background: "#3bb6b1", fontWeight: 'bold', marginTop: "27px", borderColor: "transparent" }} />
             </div>
 
         </div>

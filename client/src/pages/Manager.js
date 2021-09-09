@@ -10,48 +10,18 @@ import Maps from './managerPages/Maps';
 import Blog from '../components/Layout/Blog';
 import { Button } from '@material-ui/core';
 import CreatePost from '../components/Modals/CreatePost'
-import socketClient from "socket.io-client";
-import axios from 'axios';
 import ScheduleInfo from './managerPages/ScheduleInfo';
+import ManagerChat from './managerPages/ManagerChat';
 
-
-// var io = require('socket.io-client')
-// const ENDPOINT = 'http://127.0.0.1:9000'
-// // // var socket = io(ENDPOINT);
-// var socket = io.connect(ENDPOINT);
-// socket.on('connect', function (socket) {
-//   console.log('Connected!');
-// })
+import { serverGetBlogData, serverCreateRightPost } from '../axios_requests'
 
 
 
 
-// const SERVER = "ws://127.0.0.1:9000";
-// const SERVER = "http://localhost:9000";
-// var socket = socketClient(SERVER);
-// socket.on('connect', () => {
-//   console.log(`I'm connected with the back-end`);
-// });
 
 
-// var io = require('socket.io-client')
-// var socket = io.connect('http://localhost:9000', { reconnect: true, rejectUnauthorized: false, allowEIO3: true });
-// socket.on('connect', function (socket) {
-//   console.log('Connected!');
-// });
-
-// const io = require('socket.io-client');
-// const socket = io.connect('http://localhost:9000');
-
-// socket.on('connect', () => {
-//   console.log('Successfully connected!');
-// });
-
-
-
-
-const Manager = ({ pagesHandler }) => {
-  pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
+const Manager = ({ pagesHandler, user }) => {
+  pagesHandler([{ ref: "/ManagerHome", text: "דף הבית" }, { ref: "/Users", text: "פרטי עובדים" }, { ref: "/Schedule", text: "סידור עבודה" }, { ref: "/ContactUsers", text: "צ'אט" }, { ref: "/Charts", text: "גרפים" }, { ref: "/Maps", text: "מפות" }]);
   const [isOpen, setIsOpen] = useState(false);
   const [listOfPosts, updateListOfPosts] = useState({
     leftPosts: [{}],
@@ -61,17 +31,13 @@ const Manager = ({ pagesHandler }) => {
 
   const requestListOfPosts = () => {
     let blogData = []
-    axios.post('http://localhost:9000/blog')
-      .then(res => {
-        blogData = res.data;
+    serverGetBlogData()
+      .then(data => {
+        blogData = data;
         console.log(blogData);
-
         updateListOfPosts(blogData);
-
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => console.log(err))
   }
 
   useEffect(() => {
@@ -92,16 +58,13 @@ const Manager = ({ pagesHandler }) => {
     debugger
     //send to DB
     const body = { rightPost: newPost }
-    axios.post('http://localhost:9000/blog/createRightPost', body)
+    serverCreateRightPost(body)
       .then(res => {
         console.log(res);
-
         //update list 
         requestListOfPosts()
       })
-      .catch(err => {
-        console.log(err);
-      })
+      .catch(err => console.log(err))
 
   }
 
@@ -109,10 +72,13 @@ const Manager = ({ pagesHandler }) => {
     <div id="managerContainer" style={{ height: "fitContent", "paddingBottom": "106px", "paddingTop": "106px", background: "url(/assets/images/a0010.jpg)" }}>
       <Switch>
         <Route path="/Users" >
-          <UsersInfo />
+          <UsersInfo user={user} />
         </Route>
         <Route path="/Schedule" >
           <ScheduleInfo />
+        </Route>
+        <Route path="/ContactUsers" >
+          <ManagerChat user={user} />
         </Route>
         <Route path="/Charts" >
           <Chart />

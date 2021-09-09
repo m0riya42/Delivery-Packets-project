@@ -3,19 +3,14 @@ import '../EditUser.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { useStyles } from '../utils'
-import axios from 'axios';
+import { serverGetUsersData, serverAddSchedule } from '../../../axios_requests'
 import DeliversTabel from './DeliversTabel';
 import { without } from 'lodash'
 // import $ from 'jquery'
 
-var users = []
-axios.post('http://localhost:9000/usersInfo/getUsers')
-    .then(res => {
-        users = res.data;
-    })
-    .catch(err => {
-        console.log(err);
-    })
+let users
+serverGetUsersData().then(data => { users = data })
+    .catch(err => console.log(err))
 var cityDict = {
     'צפון': ['עפולה'],
     'דרום': ['אשקלון', 'אשדוד'],
@@ -81,13 +76,11 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
                 id: workerid
             }
             console.log(info)
-            axios.post('http://localhost:9000/workSchedule/addSchedule', info)
+            serverAddSchedule(info)
                 .then(res => {
                     console.log(res);
                 })
-                .catch(err => {
-                    console.log(err);
-                })
+                .catch(err => console.log(err))
 
             //use deliverList
 
@@ -107,7 +100,7 @@ const TableSchedule = ({ location, date, handleClose, display, handleSave }) => 
                 <div className="main-body">
                     <div className="row" style={{ display: "flex" }}>
                         <div className="col-lg-12">
-                            <div className="card" style={{ height: "350px" }}>
+                            <div className="card" style={{ height: "375px" }}>
                                 <div className="card-body">
                                     <span className="close-icon" onClick={handleClose}>
                                         <FontAwesomeIcon icon={faTimes} />
