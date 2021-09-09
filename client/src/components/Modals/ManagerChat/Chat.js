@@ -26,7 +26,7 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
             handleDeleteMsg()
             console.log('delete msg')
             //ask for msgs again
-            
+
         })
 
     })
@@ -56,8 +56,17 @@ const Chat = ({ handleClose, display, senderName, senderIcon, reciverIcon, reciv
                         <div className="direct-chat-messages" style={{ height: "300px" }}>
                             {
                                 chat?.map(({ from, to, msg, date, uId }, index) => {
-                                    return from !== reciverName ? <SenderChat avatarImg={senderIcon} chatText={msg} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} />
+                                    if (from !== 'צוות יד לחבר')
+                                        return from !== reciverName ? <SenderChat avatarImg={senderIcon} chatText={msg} date={date} /> : <ReciverChat avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} />
                                 })
+
+
+                                // chat?.map(({ from, to, msg, date, uId }, index) => {
+                                // if(to==='*'){
+                                // return from === 'צוות יד לחבר' ? <CrewMsg handleDeleteMsg={handleDeleteMsg} initialState={initialState} chatText={msg} date={date} uId={uId} /> :
+                                // }
+                                //         from !== reciverName ? <SenderChat initialState={initialState} uId={uId} avatarImg={senderIcon} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} /> : <ReciverChat uId={uId} initialState={initialState} avatarImg={reciverIcon} reciverName={reciverName} chatText={msg} date={date} handleDeleteMsg={handleDeleteMsg} />
+                                // })
                             }
 
                         </div>

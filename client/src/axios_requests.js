@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { locationIQ as locationIQkey } from './api-keys-in-src'
 
 
 /********************************************** */
@@ -67,7 +67,6 @@ export const serverGetWorkSchedule = (info) => {
 /********************************************** */
 export const serverDeleteMsg = ({ uId, userName }) => {
     return axios.post('http://localhost:9000/chatMsg/deleteMsg', { uId, userName }).then(res => res.data)
-    // .then(() => serverGetUserChatMsgs({ userName }))
 }
 
 export const serverGetUserChatMsgs = ({ userName, handler }) => {
@@ -93,7 +92,7 @@ export const serverCreateRightPost = (body) => {
 
 
 export const serverLocationIqRequest = (location) => {
-    let url = 'https://us1.locationiq.com/v1/search.php?key=pk.1b51763a32aec03e04936d4c92da7191&q=' + location + '&format=json'
+    let url = 'https://us1.locationiq.com/v1/search.php?key=' + locationIQkey + '&q=' + location + '&format=json'
     console.log(url);
     return axios.post(url).then(res => res.data)
 }

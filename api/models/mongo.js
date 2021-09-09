@@ -1,8 +1,10 @@
 const mongo = require("mongoose");
+const apiKeys = require("../../api-keys")
+let URI = apiKeys.mongoDB;
 
-let db = mongo.createConnection('mongodb+srv://shirmoriya:ACUa2ziP1yuGJXPe@clusterex4.qrrlf.mongodb.net/DeliveryProject?retryWrites=true&w=majority');
-db.on('open', function() { console.log("On open DB") });
-db.on('error', function() {  console.log("Error connecting to DB") });
+let db = mongo.createConnection(mongoDB);
+db.on('open', function () { console.log("On open DB") });
+db.on('error', function () { console.log("Error connecting to DB") });
 db.on('connecting', () => { console.log('On connecting to MongoDB: '); });
 db.on('connected', () => { console.log('On connected to MongoDB: '); });
 db.on('disconnecting', () => { console.log('On disconnecting to MongoDB: '); });
