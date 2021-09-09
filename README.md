@@ -14,8 +14,9 @@ A volunteer management system for distributing packets of food using MERN TECHNO
 
 ### Manager System:
 Manager can view and create posts to the Organization's blog, view and change user's information details, Make contact with any of them using two options of chats, creates schedule for the workers with their packets to deliver, view all the packets on Map with the status ('delivered' / 'not yet') and view statics of the work according to day, week and months data.
+
 <a href="https://youtu.be/uqDbqxBjjX4">
-<img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="400">
+<img src="https://user-images.githubusercontent.com/44200760/132144050-496f4646-2901-4984-ba47-0dd6b3f6482b.gif" alt="Click to watch on YouTube" width="270">
 </a>
     
 ### Worker System:
