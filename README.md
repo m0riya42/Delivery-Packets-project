@@ -1,5 +1,7 @@
 # Hand to friend 
-A volunteer management system for distributing packets of food.
+A volunteer management system for distributing packets of food using MERN TECHNOLOGY STACK.
+
+
 
 ### Icon of Organization:
 <img src="https://user-images.githubusercontent.com/44200760/132144584-c262bd13-f16b-4e32-b67e-ad1eb971e623.png" alt="Click to watch on YouTube" width="75">
@@ -55,7 +57,6 @@ long line..
 
 
 ### Dependencies Packages:
-Using MERN TECHNOLOGY STACK
 #### Client
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 * [socket.io-client](https://github.com/socketio/socket.io-client) - Enables real-time bidirectional event- Client-side.
